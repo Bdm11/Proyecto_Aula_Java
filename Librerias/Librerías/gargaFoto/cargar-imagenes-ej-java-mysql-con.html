@@ -1,0 +1,2425 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:expr="http://www.google.com/2005/gml/expr" xmlns:data="http://www.google.com/2005/gml/data" xmlns:b="http://www.google.com/2005/gml/b" xmlns="http://www.w3.org/1999/xhtml" dir="ltr"><head>
+
+
+<script type="text/javascript">(function() { var a=window;function e(b){this.t={};this.tick=function(c,h,d){d=d?d:(new Date).getTime();this.t[c]=[d,h]};this.tick("start",null,b)}var f=new e;a.jstiming={Timer:e,load:f};try{a.jstiming.pt=a.chrome&&a.chrome.csi?Math.floor(a.chrome.csi().pageT):a.gtbExternal&&a.gtbExternal.pageT()||a.external&&a.external.pageT}catch(g){};a.tickAboveFold=function(b){b=b;var c=0;if(b.offsetParent){do c+=b.offsetTop;while(b=b.offsetParent)}b=c;b<=750&&a.jstiming.load.tick("aft")};var i=false;function j(){if(!i){i=true;a.jstiming.load.tick("firstScrollTime")}}a.addEventListener?a.addEventListener("scroll",j,false):a.attachEvent("onscroll",j); })();</script>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<meta content="true" name="MSSmartTagsPreventParsing">
+<meta content="blogger" name="generator">
+<link href="http://www.blogger.com/favicon.ico" rel="icon" type="image/vnd.microsoft.icon">
+<link href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html" rel="canonical">
+<link rel="alternate" type="application/atom+xml" title="mouse - Atom" href="http://jc-mouse.blogspot.com/feeds/posts/default">
+<link rel="alternate" type="application/rss+xml" title="mouse - RSS" href="http://jc-mouse.blogspot.com/feeds/posts/default?alt=rss">
+<link rel="service.post" type="application/atom+xml" title="mouse - Atom" href="http://www.blogger.com/feeds/4428182206738080209/posts/default">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.blogger.com/rsd.g?blogID=4428182206738080209">
+<link rel="alternate" type="application/atom+xml" title="mouse - Atom" href="http://jc-mouse.blogspot.com/feeds/5997900424248699190/comments/default">
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } })(); </script> <![endif]-->
+<title>mouse: Cargar imagenes en java + mysql con netbeans</title>
+<link type="text/css" rel="stylesheet" href="cargar-imagenes-ej-java-mysql-con_files/1216305151-widget_css_bundle.css">
+ <link rel="stylesheet" type="text/css" href="cargar-imagenes-ej-java-mysql-con_files/authorization.css">
+<style type="text/css">#navbar-iframe { display:block }
+</style>
+
+<style id="page-skin-1" type="text/css"><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name : Community
+Designer: Bie
+URL     : http://www.bietemplates.com
+Collaborated with http://www.ipietoon.com
+THE CONTENTS OF THIS TEMPLATE IS MADE BY BIETEMPLATES (Icon is copyrighted to respective artist).
+PLEASE BE RESPECTFUL AND DO NOT REMOVE CREDIT FOOTER LINK WITHOUT MY PERMISSION.
+YOU ARE ALLOWED TO DISTRIBUTE BUT NOT ALLOWED TO ADD ANY LINK ON FOOTER
+----------------------------------------------- */
+#navbar-iframe {
+height: 0px;
+visibility: hidden;
+display: none;
+}
+body {
+background:#f7f6f6;
+font-size: 12px;
+font-family:arial, Verdana, tahoma,  Sans-Serif;
+text-align: left;
+margin: 0 auto 0;
+padding: 0;
+}
+#wrap {
+width: 960px;
+margin: 0px auto 0px;
+padding: 0;
+position: relative;
+}
+a, a:visited {
+color: #2888b5;
+text-decoration: none;
+}
+a:hover {
+color: #2888b5;
+text-decoration: underline;
+}
+a img {
+border-width: 0;
+}
+/* Header
+-----------------------------------------------*/
+#head{
+margin:auto;
+padding: 0;
+width: 100%;
+background:#252423;
+}
+#header-wrapper{
+width: 960px;
+height:100px;
+color: #fff;
+margin: 0 auto 0;
+padding: 5px;
+overflow: hidden;
+}
+#header-inner {
+background-position: left;
+background-repeat: no;
+}
+#header h1 {
+color: #FFF;
+font-family: Georgia, Times New Roman;
+font-weight: normal;
+margin: 0;
+padding: 0;
+text-decoration: none;
+}
+#header h3 {
+font-family: Lucida sans unicode,Georgia, Times New Roman;
+font-weight: normal;
+margin: 0;
+padding: 0;
+}
+#header .description {
+color: #0d78bf;
+margin-left: 0px;
+padding-left: 0px;
+font-size:12px;
+}
+.headerleft {
+width: 480px;
+float: left;
+margin: 0;
+padding: 0;
+}
+.headerright {
+width: 470px;
+float: right;
+margin: 0;
+padding: 10px 0px 5px 0px;
+font-weight: bold;
+}
+/*The top Menu*/
+#top{
+margin:auto;
+padding: 0;
+width: 100%;
+background:#171615;
+border-bottom:1px solid #393837;
+}
+#top-wrap{
+margin:auto;
+padding: 0;
+width: 960px;
+background:#080705;
+}
+#navwrap {margin:auto; width:560px; float:left;}
+.topnav ul {list-style:none;margin:0;padding:0px;  float:left;}
+.topnav li {float:left;margin:0;text-align:center;}
+.topnav li a {font-family: georgia; font-weight:normal; font-size:10px; text-transform:uppercase; display:block;padding:10px;color:#a4a5a1;text-decoration:none;}
+.topnav li a {background:none; }
+.topnav li a:hover, li a:focus, li a:active {text-decoration:none; background:#393837; color:#fff;}
+#navwrapright {margin: 0px auto; width:400px; float:right; text-align:right;}
+.topnavright ul {list-style:none;margin:0;padding:0px;  float:right;}
+.topnavright li {float:left;margin:0;text-align:center;}
+.topnavright li a {background:url(http://s4.subirimagenes.com/imagen/3342995rss.png) no-repeat left center; font-family: georgia; font-weight:normal; font-size:10px; text-transform:uppercase; display:block;padding:10px 10px 10px 20px;color:#a4a5a1;text-decoration:none;}
+.topnav li a:hover, li a:focus, li a:active {text-decoration:none; background:#393837; color:#fff;}
+/* Navigation Menu
+------------------------------------------------------*/
+#menu{
+margin:0px auto 30px;
+height:30px;
+padding:5px;
+background:#383838 url(http://3.bp.blogspot.com/_sunpK_FtO1E/SmMf4NmxtaI/AAAAAAAAAKw/GCICHlow_JU/s1600/menubg.png) repeat-x bottom;
+text-align:left;
+border-top:1px solid #4a4d4c;
+}
+#navbarmenu {
+width: 960px;
+font-size: 12px;
+color: #FFF;
+font-weight: bold;
+margin: 0 auto 0;
+padding: 0px auto 0;
+}
+#nav {
+margin: 0;
+padding: 0;
+}
+#nav ul {
+float: left;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+#nav li {
+list-style: none;
+margin: 0;
+padding: 0;
+background:url(http://1.bp.blogspot.com/_sunpK_FtO1E/SmL1PXWfW8I/AAAAAAAAAKE/02lw7FcSEhw/s1600/sep.png) no-repeat left bottom;
+}
+#nav li a, #nav li a:link, #nav li a:visited {
+color: #FFF;
+display: block;
+font-weight: normal;
+text-transform: lowercase;
+margin: 0;
+padding: 5px 15px 5px;
+}
+#nav li a:hover, #nav li a:active {
+background:#4a4d4c;
+margin: 0;
+padding: 5px 15px 5px;
+text-decoration: none;
+}
+#nav li li a, #nav li li a:link, #nav li li a:visited {
+background: #383838;
+width: 150px;
+color: #FFF;
+font-weight: normal;
+text-transform: lowercase;
+float: none;
+margin: 0;
+padding: 7px 10px;
+border-bottom: 1px solid #4a4d4c;
+border-left: 1px solid #4a4d4c;
+border-right: 1px solid #4a4d4c;
+}
+#nav li li a:hover, #nav li li a:active {
+background:  #5eb7c3;
+color: #FFF;
+padding: 7px 10px;
+}
+#nav li {
+float: left;
+padding: 0;
+}
+#nav li ul {
+z-index: 9999;
+position: absolute;
+left: -999em;
+height: auto;
+width: 170px;
+margin: 0;
+padding: 0;
+}
+#nav li ul a {
+width: 140px;
+}
+#nav li ul ul {
+margin: -32px 0 0 171px;
+}
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li.sfhover ul ul, #nav li.sfhover ul ul ul {
+left: -999em;
+}
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+left: auto;
+}
+#nav li:hover, #nav li.sfhover {
+position: static;
+}
+/*----------------SEARCH----------------*/
+#search {
+float: left;
+margin:0;
+padding:0;
+}
+#search form {
+margin: 0;
+padding:5px auto;
+}
+#search fieldset {
+margin: 0;
+padding: 0;
+border: none;
+}
+#search p {
+margin: 0;
+font-size: 85%;
+}
+#s {
+margin:0px;
+float: left;
+width:200px;
+padding: 4px;
+background:#fff;
+border:1px solid #fff;
+font: normal 100%;
+color:#333;
+}
+#searchsubmit {
+margin-left:20px;
+float: right;
+margin-top: 0px;
+background: url(http://s4.subirimagenes.com/imagen/3343006lupa.png) no-repeat right center;
+border: none;
+height:24px;
+width:24px;
+line-height:24px
+}
+#outer-wrapper {
+width: 960px;
+margin: 0px auto 0;
+padding: 0;
+line-height: 18px;
+}
+#main-wrapper {
+float: left;
+width: 500px;
+margin: 0;
+padding: 0;
+}
+#sidebar-wrapper {
+float: right;
+width: 455px;
+margin: 0;
+padding: 0;
+display: inline;
+text-align:justify;
+}
+#rightsidebar-wrapper {
+width: 280px;
+float: right;
+overflow: hidden;
+}
+#midsidebar-wrapper {
+width: 165px;
+overflow: hidden;
+float: left;
+margin: 0 10px 0 0;
+padding:0;
+display: inline;
+}
+.midsidebar .widget-content{
+margin-bottom:10px; overflow:hidden;
+}
+.rightsidebar, .midsidebar {
+line-height: 1.5em;
+}
+.rightsidebar h2,.midsidebar h2{
+color: #000;
+font-size: 18px;
+font-family:georgia, trebuchet ms, times new roman;
+font-weight: bold;
+font-style:italic;
+text-transform: titlecase;
+margin: 0px 0px 5px;
+padding: 3px 0 6px 0px;
+background:url(http://1.bp.blogspot.com/_sunpK_FtO1E/SmLcWE0YCAI/AAAAAAAAAJE/XLBnsrGWN0A/s1600/hl-dot.gif) repeat-x bottom center;
+}
+#sidebar p {
+margin: 0;
+padding: 0 0 0 45px;
+}
+#sidebar a img {
+border: none;
+margin: 0;
+padding: 0;
+}
+.rightsidebar ul, .midsidebar ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+.rightsidebar ul li {
+float:left;
+list-style-type: none;
+margin: 0 0 5px;
+padding-left: 15px;
+background:url(http://s4.subirimagenes.com/imagen/3343013siguiente.png) no-repeat left center;
+}
+.midsidebar ul li{
+list-style-type: none;
+margin: 0 0 5px;
+padding-left: 15px;
+border-bottom:1px solid #cfcfcf;
+background:url(http://s4.subirimagenes.com/imagen/3343013siguiente.png) no-repeat left center;
+}
+.rightsidebar .widget {
+background:#fff url(http://s4.subirimagenes.com/imagen/3343020boxbgr.gif) repeat-x top;
+border:1px solid #cfcfcf;
+float: left;
+width: 258px;
+margin: 0 0 10px;
+padding: 10px 10px;
+}
+.midsidebar .widget {
+background:#fff url(http://s4.subirimagenes.com/imagen/3343020boxbgr.gif) repeat-x top;
+border:1px solid #cfcfcf;
+float: left;
+width: 153px;
+margin: 0 0 10px;
+padding: 10px 5px;
+}
+.main .widget {
+margin: 0 0 1.5em;
+padding: 0 0 1.5em;
+}
+/*POST ELEMENT*/
+h2.date-header {
+margin: 1.5em 0 .5em;
+display: none;
+}
+.post {
+background:#fff url(http://s4.subirimagenes.com/imagen/3343020boxbgr.gif) repeat-x top;
+float: left;
+width: 475px;
+margin-bottom:5px;
+padding: 10px;
+overflow:hidden;
+border:1px solid #cfcfcf;
+}
+.post h3 {
+margin: 0 0 5px;
+padding-bottom:6px;
+background:url(http://1.bp.blogspot.com/_sunpK_FtO1E/SmLcWE0YCAI/AAAAAAAAAJE/XLBnsrGWN0A/s1600/hl-dot.gif) repeat-x bottom center;
+}
+.post h3 a, #content h1 a:visited {
+color: #000;
+font-size: 32px;
+font-family: Georgia,trebuchet ms, tahoma, Verdana, Arial, Sans-Serif;
+font-weight: normal;
+font-style:italic;
+margin: 0 0 5px;
+padding: 0;
+}
+.post h3 a:hover {
+color: #000;
+text-decoration: none;
+}
+.post-body {
+text-align:justify;
+margin: 2em 0 .5em;
+line-height: 1.6em;
+}
+.post-body blockquote {
+line-height: 1.3em;
+}
+.post img {
+padding: 10px;
+}
+.post blockquote {
+margin: 5px;
+padding: 0px 20px 0 15px;
+border-left: 4px solid #cfcfcf;
+color:#777;
+font-size: 18px;
+font-family: Georgia,trebuchet ms, tahoma, Verdana, Arial, Sans-Serif;
+font-weight: normal;
+font-style:italic;
+}
+.post blockquote p {
+margin: 0;
+padding: 0 0 0px;
+}
+.postmeta {
+background:#5eb7c3;
+padding:3px;
+color:#fff;
+}
+.postmeta a {
+color:#fff;
+}
+/*COMMENTS*/
+.comments {
+background:#fff url(http://s4.subirimagenes.com/imagen/3343020boxbgr.gif) repeat-x top;
+float: left;
+width: 475px;
+margin-bottom:5px;
+padding: 10px;
+overflow:hidden;
+border:1px solid #cfcfcf;
+}
+#comments h4 {
+color: #000;
+font-size: 20px;
+font-family: Georgia,trebuchet ms, tahoma, Verdana, Arial, Sans-Serif;
+font-weight: normal;
+font-style:italic;
+margin: 0 0 5px;
+padding: 0 0 10px 0;
+}
+#comments-block {
+width: 475px;
+float: left;
+padding: 0;
+margin: 0;
+}
+#comments-block .comment-author {
+margin: 0em 0;
+font-weight: bold;
+}
+#comments-block .comment-body {
+margin: .25em 0 10px;
+padding-left: 20px;
+font-size:12px;
+text-align:justify;
+}
+#comments-block .comment-footer {
+margin: -.25em 0 2em;
+line-height: 1.4em;
+text-transform: uppercase;
+letter-spacing: .1em;
+border-bottom:1px solid #cfcfcf;
+}
+#comments-block .comment-body p {
+margin: 0 0 .75em;
+}
+.deleted-comment {
+font-style: italic;
+color: gray;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+display:none;
+}
+.main .widget {
+margin: 0 0 1.5em;
+padding: 0 0 1.5em;
+}
+.main .Blog {
+border-bottom-width: 0;
+}
+/*FOOTER*/
+#footer {
+width: 960px;
+clear: both;
+margin: 0 auto;
+padding-top: 15px;
+line-height: 1.6em;
+text-transform: uppercase;
+letter-spacing: .1em;
+text-align: center;
+}
+/* -----   LOWER SECTION   ----- */
+#lower {
+margin:auto;
+padding: 0px 0px 0px 0px;
+width: 100%;
+background:#252423 url(http://4.bp.blogspot.com/_sunpK_FtO1E/SmMfd-sXSwI/AAAAAAAAAKo/0_h1MZzE4N8/s1600/lowerbg.png) repeat-x top;
+}
+#lower-wrapper {
+margin:auto;
+padding: 5px 0px 0px 0px;
+width: 960px;
+}
+#lowerbar-wrapper {
+color:#a4a5a1;
+float: left;
+margin: 0px 5px auto;
+padding-bottom: 20px;
+width: 32%;
+text-align: justify;
+font-size:100%;
+line-height: 1.6em;
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden; /* fix for long non-text content breaking IE sidebar float */
+}
+.lowerbar {margin: 0; padding: 0;}
+.lowerbar .widget {margin: 0; padding: 10px 20px 0px 20px;}
+.lowerbar h2 {
+margin: 0px 0px 10px 0px;
+padding: 3px 0px 6px 0px;
+text-align: left;
+font-style:italic;
+color: #2888b5;
+font-size:20px;
+font-family:georgia, trebuchet ms, times new roman;
+background:url(http://s4.subirimagenes.com/otros/3342935border.jpg) repeat-x bottom;
+}
+.lowerbar ul {
+margin: 0px 0px 0px 0px;
+padding: 0px 0px 0px 0px;
+list-style-type: none;
+}
+.lowerbar li {
+margin: 0px 0px 2px 0px;
+padding: 0px 0px 1px 0px;
+border-bottom:1px solid #373127;
+}
+.lowerbar a {color: #fff; text-decoration: none;}
+.lowerbar a:hover {text-decoration: underline; color: #171615}
+.lowerbar a:visited {text-decoration: none; color: #fff;}
+#credit {
+margin: 0px 0px 0px 0px;
+padding: 10px 0px 0px 0px;
+width: 100%;
+height: 30px;
+font-size:12px;
+clear: both;
+color:#a4a5a1;
+font-weight: normal;
+background:#171615;
+border-top:1px solid #393837;
+text-align:center;
+}
+#credit p {
+margin: 0;
+padding: 0
+}
+#credit a,  .credit a:visited {
+color: #2888b5;
+text-decoration: none;
+font:verdana;
+font-size:12px;
+}
+#credit a:hover{
+color: #fff;
+background:#2888b5;
+text-decoration: underline;
+}
+/*-----------ADSENSE------------------*/
+.adspost {
+background:#fff;
+float: left;
+width: 578px;
+margin-bottom:5px;
+padding: 10px;
+overflow:hidden;
+border:1px solid #f3f1eb;
+}
+/* Ads Spots 125x125 */
+#adspot {
+overflow: hidden;
+padding:0;
+}
+.ad1, .ad3 {
+float: left;
+margin-bottom: 5px;
+padding-left:0px;
+}
+.ad2, .ad4 {
+float: right;
+margin-bottom: 5px;
+padding-right:0px;
+}
+#twitter {
+background:url(http://3.bp.blogspot.com/_sunpK_FtO1E/SmIGQ2hT6BI/AAAAAAAAAG4/gk-uddLqVqE/s1600/2.png) no-repeat top left ;
+float:left;
+width:430px;
+display:inline;
+padding:20px 5px 5px 40px;
+margin-bottom:10px;
+}
+#twitter_update_list ul{
+margin-left:60px;
+}
+#twitter li{
+list-style-type: none;
+}
+#feeds {
+font-size:12px;
+background: url(http://2.bp.blogspot.com/_sunpK_FtO1E/SmLoW5O6mAI/AAAAAAAAAJc/lhwnIELUmtY/s1600/subscribe.png) no-repeat top left;
+margin-bottom:10px
+}
+.textarea {
+background:#cfcfcf none repeat scroll 0 0;
+border:medium none;
+font-size:12px;
+height:20px;
+margin:70px 0 5px 0px;
+padding:5px 0 0 5px;
+width:148px;
+}
+#feeds a {font-size:11px;color:#FF7300;text-decoration:none}
+#feeds p {color:#51616E;margin:0px;}
+pre {
+background:transparent url(http://1.bp.blogspot.com/_aQGkfw6J-yo/SuuVuKWzh5I/AAAAAAAAAuw/o-kC0bT3WH8/s1600/code-blog.jpg) no-repeat 0 0;
+padding-top:24px;
+}
+pre code {
+overflow:auto;
+background-color:#CFCFCF;
+border:1px solid #3D3625;
+color:#7e1f09;
+display:block;
+padding:5px;
+white-space:pre;
+text-align:left;
+min-height:63px;
+}
+code:hover {
+background-color:#E4F0F2;
+border:1px solid #CFCFCF;
+}
+
+--></style>
+<style type="text/css">
+div.sexy-bookmarks {
+height:50px;
+background:url(http://s4.subirimagenes.com/imagen/3342979compartir.png) no-repeat left bottom;
+position:relative;
+width:450px;
+padding-top:10px;
+}
+
+div.sexy-bookmarks span.sexy-rightside {
+width:17px;
+height:58px;
+position:absolute;
+right:-17px;
+}
+
+div.sexy-bookmarks ul.socials {
+margin:0 !important;
+padding:0 !important;
+position:absolute;
+bottom:0;
+left:10px;
+}
+
+div.sexy-bookmarks ul.socials li {
+display:inline-block !important;
+float:left !important;
+list-style-type:none !important;
+margin:0 !important;
+height:29px !important;
+width:48px !important;
+cursor:pointer !important;
+padding:0px !important;
+}
+
+div.sexy-bookmarks ul.socials a {
+display:block !important;
+width:48px !important;
+height:29px !important;
+font-size:0 !important;
+color:transparent !important;
+
+}
+
+.sexy-furl, .sexy-furl:hover, .sexy-digg, .sexy-digg:hover, .sexy-reddit, .sexy-reddit:hover, .sexy-stumble, .sexy-stumble:hover, .sexy-delicious, .sexy-delicious:hover, .sexy-yahoo, .sexy-yahoo:hover, .sexy-blinklist, .sexy-blinklist:hover, .sexy-technorati, .sexy-technorati:hover, .sexy-facebook, .sexy-facebook:hover, .sexy-twitter, .sexy-twitter:hover, .sexy-myspace, .sexy-myspace:hover, .sexy-mixx, .sexy-mixx:hover, .sexy-script-style, .sexy-script-style:hover, .sexy-designfloat, .sexy-designfloat:hover, .sexy-syndicate, .sexy-syndicate:hover, .sexy-email, .sexy-email:hover {
+background:url('http://s4.subirimagenes.com/imagen/3343068sexysprite.png') no-repeat !important;
+}
+
+.sexy-furl {
+background-position:-300px top !important;
+}
+.sexy-furl:hover {
+background-position:-300px bottom !important;
+}
+.sexy-digg {
+background-position:-500px top !important;
+}
+.sexy-digg:hover {
+background-position:-500px bottom !important;
+}
+.sexy-reddit {
+background-position:-100px top !important;
+}
+.sexy-reddit:hover {
+background-position:-100px bottom !important;
+}
+.sexy-stumble {
+background-position:-50px top !important;
+}
+.sexy-stumble:hover {
+background-position:-50px bottom !important;
+}
+.sexy-delicious {
+background-position:left top !important;
+}
+.sexy-delicious:hover {
+background-position:left bottom !important;
+}
+.sexy-yahoo {
+background-position:-650px top !important;
+}
+.sexy-yahoo:hover {
+background-position:-650px bottom !important;
+}
+.sexy-blinklist {
+background-position:-600px top !important;
+}
+.sexy-blinklist:hover {
+background-position:-600px bottom !important;
+}
+.sexy-technorati {
+background-position:-700px top !important;
+}
+.sexy-technorati:hover {
+background-position:-700px bottom !important;
+}
+.sexy-myspace {
+background-position:-200px top !important;
+}
+.sexy-myspace:hover {
+background-position:-200px bottom !important;
+}
+.sexy-twitter {
+background-position:-350px top !important;
+}
+.sexy-twitter:hover {
+background-position:-350px bottom !important;
+}
+.sexy-facebook {
+background-position:-450px top !important;
+}
+.sexy-facebook:hover {
+background-position:-450px bottom !important;
+}
+.sexy-mixx {
+background-position:-250px top !important;
+}
+.sexy-mixx:hover {
+background-position:-250px bottom !important;
+}
+.sexy-script-style {
+background-position:-400px top !important;
+}
+.sexy-script-style:hover {
+background-position:-400px bottom !important;
+}
+.sexy-designfloat {
+background-position:-550px top !important;
+}
+.sexy-designfloat:hover {
+background-position:-550px bottom !important;
+}
+.sexy-syndicate {
+background-position:-150px top !important;
+}
+.sexy-syndicate:hover {
+background-position:-150px bottom !important;
+}
+.sexy-email {
+background-position:-753px top !important;
+}
+.sexy-email:hover {
+background-position:-753px bottom !important;
+}
+
+</style>
+<!--[if IE]> <style type="text/css"> #menu li { position:static; } </style> <![endif]-->
+<!--Internet Explorer Trancparency fix-->
+<!--[if lt IE 8]> <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script> <![endif]-->
+<script type="text/javascript">
+//<![CDATA[
+    var relatedTitles = new Array();
+    var relatedTitlesNum = 0;
+    var relatedUrls = new Array();
+    function related_results_labels(json) {
+      for (var i = 0; i < json.feed.entry.length; i++) {
+        var entry = json.feed.entry[i];
+        relatedTitles[relatedTitlesNum] = entry.title.$t;
+          for (var k = 0; k < entry.link.length; k++) {
+            if (entry.link[k].rel == 'alternate') {
+              relatedUrls[relatedTitlesNum] = entry.link[k].href;
+              relatedTitlesNum++;
+              break;
+            }
+          }
+      } 
+    }
+function removeRelatedDuplicates() {
+    var tmp = new Array(0);
+    var tmp2 = new Array(0);
+    for(var i = 0; i < relatedUrls.length; i++) {
+      if(!contains(tmp, relatedUrls[i])) {
+        tmp.length += 1;
+        tmp[tmp.length - 1] = relatedUrls[i];
+        tmp2.length += 1;
+        tmp2[tmp2.length - 1] = relatedTitles[i];
+      }
+    }
+    relatedTitles = tmp2;
+    relatedUrls = tmp;
+ }
+function contains(a, e) {
+  for(var j = 0; j < a.length; j++) if (a[j]==e) return true;
+  return false;
+}
+function printRelatedLabels() {
+  var r = Math.floor((relatedTitles.length - 1) * Math.random());
+  var i = 0;
+  document.write('<ul>');
+  while (i < relatedTitles.length && i < 20) {
+    document.write('<li><a href="' + relatedUrls[r] + '">' + relatedTitles[r] + '</a></li>');
+    if (r < relatedTitles.length - 1) {
+      r++;
+    } else {
+      r = 0;
+    }
+    i++;
+  }
+  document.write('</ul>');
+}
+//]]>
+</script>
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</script><script type="text/javascript">var thumbnail_mode = "no-float" ;
+summary_noimg = 500;
+summary_img = 400;
+img_thumb_height = 150;
+img_thumb_width = 150;
+</script>
+<script type="text/javascript">
+//<![CDATA[
+function removeHtmlTag(strx,chop){ 
+	if(strx.indexOf("<")!=-1)
+	{
+		var s = strx.split("<"); 
+		for(var i=0;i<s.length;i++){ 
+			if(s[i].indexOf(">")!=-1){ 
+				s[i] = s[i].substring(s[i].indexOf(">")+1,s[i].length); 
+			} 
+		} 
+		strx =  s.join(""); 
+	}
+	chop = (chop < strx.length-1) ? chop : strx.length-2; 
+	while(strx.charAt(chop-1)!=' ' && strx.indexOf(' ',chop)!=-1) chop++; 
+	strx = strx.substring(0,chop-1); 
+	return strx+'...'; 
+}
+
+function createSummaryAndThumb(pID){
+	var div = document.getElementById(pID);
+	var imgtag = "";
+	var img = div.getElementsByTagName("img");
+	var summ = summary_noimg;
+	if(img.length>=1) {	
+		imgtag = '<span style="float:left; padding:0px 10px 5px 0px;"><img src="'+img[0].src+'" width="'+img_thumb_width+'px" height="'+img_thumb_height+'px"/></span>';
+		summ = summary_img;
+	}
+	
+	var summary = imgtag + '<div>' + removeHtmlTag(div.innerHTML,summ) + '</div>';
+	div.innerHTML = summary;
+}
+
+
+//]]>
+</script>
+<link media="screen" href="cargar-imagenes-ej-java-mysql-con_files/a.css" rel="stylesheet" type="text/css"><script src="cargar-imagenes-ej-java-mysql-con_files/a_002" type="text/javascript" charset="utf-8"></script><link media="screen" href="cargar-imagenes-ej-java-mysql-con_files/a_002.css" rel="stylesheet" type="text/css"><script src="cargar-imagenes-ej-java-mysql-con_files/a" type="text/javascript" charset="utf-8"></script></head><body>
+<div class="navbar section" id="navbar"><div class="widget Navbar" id="Navbar1"><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener("load",
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<iframe src="cargar-imagenes-ej-java-mysql-con_files/navbar.htm" marginwidth="0" marginheight="0" id="navbar-iframe" allowtransparency="true" title="Blogger Navigation and Search" width="100%" frameborder="0" height="30px" scrolling="no"></iframe>
+<div></div></div></div>
+<div id="top">
+<div id="top-wrap">
+<div id="navwrap">
+<div class="topnav">
+<ul id="topnav">
+<li><a href="http://jc-mouse.blogspot.com/">Home</a></li>
+<li><a href="http://www.bietemplates.com/" target="_blank">
+Template Gallery</a>
+</li>
+<li><a href="http://yachaywasi.webcindario.com/" target="_blank">yachaywasi</a></li>
+</ul>
+</div>
+</div>
+<div id="navwrapright">
+<div class="topnavright">
+<ul id="topnavright">
+<li><a href="http://jc-mouse.blogspot.com/feeds/posts/default">Posts RSS</a></li>
+<li><a href="http://jc-mouse.blogspot.com/feeds/comments/default">Comments RSS</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div id="head">
+<div id="header-wrapper">
+<div class="headerleft">
+<div class="headerleft section" id="headerleft"><div class="widget Header" id="Header1">
+<div id="header-inner">
+<a href="http://jc-mouse.blogspot.com/" style="display: block;">
+<img alt="mouse" id="Header1_headerimg" src="cargar-imagenes-ej-java-mysql-con_files/bhermanos.jpg" style="display: block;" width="981" height="101">
+</a>
+</div>
+</div></div>
+</div>
+<div class="headerright">
+<div class="headerright section" id="headerright">
+</div>
+</div>
+</div>
+</div>
+<div id="menu">
+<div id="navbarmenu">
+<ul id="nav">
+<li><a href="http://your-link-here/">Photoshop</a></li>
+<li><a href="http://jc-mouse.blogspot.com/search/label/3d%20Max">3d Max</a></li>
+<li><a href="http://jc-mouse.blogspot.com/search/label/Java">Java</a></li>
+<li><a href="http://your-link-here/">PHP</a></li>
+<li><a href="http://your-link-here/">Visual Basic</a></li>
+<li><a href="http://your-link-here/">Batch</a></li>
+<li><a href="http://your-link-here/">.NET</a></li>
+<li><a href="http://your-link-here/">Facebook</a></li>
+<li><a href="http://jc-mouse.blogspot.com/search/label/Blogger">Blogger</a></li>
+</ul>
+</div>
+</div>
+<div id="wrap">
+<div id="outer-wrapper"><div id="wrap2">
+<div id="content-wrapper">
+<div id="crosscol-wrapper" style="text-align: center;">
+<div class="crosscol section" id="crosscol"></div>
+</div>
+<div id="main-wrapper">
+<div class="main section" id="main"><div class="widget Blog" id="Blog1">
+<div class="blog-posts hfeed">
+<!-- google_ad_section_start -->
+<h2 class="date-header">05/12/09</h2>
+<div class="post hentry">
+<a name="5997900424248699190"></a>
+<h3 class="post-title entry-title">
+<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">Cargar imagenes en java + mysql con netbeans</a>
+</h3>
+<div class="post-header-line-1">
+<div class="postmeta">
+<span class="post-author vcard">
+<span class="author" style="padding-left: 0px; font-size: 11px;">
+
+          Author: <span class="fn">Mouse</span>
+| Posted at: 08:30 |
+<span class="post-labels">
+Etiquetas:
+<a href="http://jc-mouse.blogspot.com/search/label/Java" rel="tag">Java</a>,
+<script src="cargar-imagenes-ej-java-mysql-con_files/Java" type="text/javascript"></script>
+<a href="http://jc-mouse.blogspot.com/search/label/Netbeans" rel="tag">Netbeans</a>
+<script src="cargar-imagenes-ej-java-mysql-con_files/Netbeans" type="text/javascript"></script>
+
+|
+      </span>
+</span>
+</span>
+<span class="item-action">
+<a href="http://www.blogger.com/email-post.g?blogID=4428182206738080209&amp;postID=5997900424248699190" title="Enviar entrada por correo electrónico">
+<img alt="" class="icon-action" src="cargar-imagenes-ej-java-mysql-con_files/icon18_email.gif" width="18" height="13">
+</a>
+</span>
+<span class="item-control blog-admin pid-1089002713">
+<a href="http://www.blogger.com/post-edit.g?blogID=4428182206738080209&amp;postID=5997900424248699190" title="Editar entrada">
+<img alt="" class="icon-action" src="cargar-imagenes-ej-java-mysql-con_files/icon18_edit_allbkg.gif" width="18" height="18">
+</a>
+</span>
+</div>
+</div>
+<div class="post-body entry-content">
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_aQGkfw6J-yo/SxqKLqg2DxI/AAAAAAAAB3c/-NLImn34OVU/s1600-h/foto-netbeans.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="cargar-imagenes-ej-java-mysql-con_files/foto-netbeans.jpg" border="0"></a><br>
+</div><div style="text-align: justify;">Investigando un poco la
+manipulacion de imagenes en base de datos, la introduccion previa
+conversion a una cadena de bytes en la base de datos no necesito de
+mucha ciencia, pero el problema se presento cuando se necesita leer la
+imagen guardada y mostrarla en un entorno grafico, soluciones hay
+varias pero yo me incline por <b>leer la cadena de bytes convertirla en imagen y cargarla en un objeto JLabel,</b>
+todo esto en memoria, en ningun momento se guarda la imagen leida
+fisicamente en la pc como lei en otros sitios. No se si el codigo que
+te presento a continuacion sea optima, lo que si se es que hace lo que
+debe hacer.<br>
+</div><br>
+<b>Empezemos.</b><br>
+<br>
+Antes de seguir con este tutorial te sugiero que te des una vuelta por el anterior post "<a href="http://jc-mouse.blogspot.com/2009/12/guardar-imagen-en-mysql-con-netbeans.html">Guardar imagen en MySQL con Netbeans</a>" ya que dare por entendido un par de cosas.<br>
+<br>
+<b>Paso 1:</b> Insertaremos previamente unas cuantas imagenes en la
+base de datos, en la tabla "fotos". Esto nos servira mas adelante para
+probar la interfaz.<br>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://3.bp.blogspot.com/_aQGkfw6J-yo/SxqFlZe94FI/AAAAAAAAB3E/FaWCku4LodY/s1600-h/nuevas-fotos.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="cargar-imagenes-ej-java-mysql-con_files/nuevas-fotos.jpg" border="0"></a><br>
+</div><b>Paso 2:</b> Modificaremos nuestra clase <a href="http://jc-mouse.blogspot.com/2009/12/guardar-imagen-en-mysql-con-netbeans.html">fotoclass.java</a>, añadiendo dos metodos mas <b>getfoto()</b> y <b>convertirImagen()</b>. ambos metodos se encuentran explicados en el codigo fuente.<br>
+<pre><code>
+package imagen;
+import java.awt.Image;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.*;
+import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReadParam;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+/**
+&nbsp;* @web http://jc-mouse.blogspot.com
+&nbsp;* @author mouse
+&nbsp;*/
+public class fotoclass {
+&nbsp;&nbsp;&nbsp;&nbsp;conectate con;
+&nbsp;&nbsp;&nbsp;&nbsp;private Image data;
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;public fotoclass (){
+&nbsp;&nbsp;&nbsp;&nbsp;con = new conectate();
+&nbsp;&nbsp;} 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+public void guardarfoto(String nombre, String foto) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis = null;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File file = new File(foto);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis = new FileInputStream(file);
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PreparedStatement pstm = con.getConnection().prepareStatement("insert into " + 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" fotos(nombre, foto) " + " values(?,?)");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pstm.setString(1, nombre);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pstm.setBinaryStream(2, fis,(int) file.length());
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pstm.execute();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pstm.close();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (FileNotFoundException ex) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logger.getLogger(fotoclass.class.getName()).log(Level.SEVERE, null, ex);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (SQLException e) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(e);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} finally {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis.close();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (IOException ex) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logger.getLogger(fotoclass.class.getName()).log(Level.SEVERE, null, ex);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp; }
+
+//metodo&nbsp;&nbsp;que dado un parametro "id" realiza una consulta y devuelve como resultado
+// una imagen
+&nbsp;public Image getfoto(String id){&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try{&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PreparedStatement pstm = con.getConnection().prepareStatement("SELECT " +
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" foto " +
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" FROM fotos " +
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" where id = ? ");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pstm.setString(1, id);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ResultSet res = pstm.executeQuery();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int i = 0;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while(res.next()){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//se lee la cadena de bytes de la base de datos
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte[] b = res.getBytes("foto");
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// esta cadena de bytes sera convertida en una imagen
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = ConvertirImagen(b);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i++;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; res.close();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} catch (IOException ex) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logger.getLogger(fotoclass.class.getName()).log(Level.SEVERE, null, ex);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}catch(SQLException e){
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; System.out.println(e);
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;return data;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;}
+&nbsp;
+&nbsp;//metodo que dada una cadena de bytes la convierte en una imagen con extension jpeg
+&nbsp;private Image ConvertirImagen(byte[] bytes) throws IOException {
+&nbsp;&nbsp;&nbsp;&nbsp;ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+&nbsp;&nbsp;&nbsp;&nbsp;Iterator readers = ImageIO.getImageReadersByFormatName("jpeg");
+&nbsp;&nbsp;&nbsp;&nbsp;ImageReader reader = (ImageReader) readers.next();
+&nbsp;&nbsp;&nbsp;&nbsp;Object source = bis; // File or InputStream
+&nbsp;&nbsp;&nbsp;&nbsp;ImageInputStream iis = ImageIO.createImageInputStream(source);
+&nbsp;&nbsp;&nbsp;&nbsp;reader.setInput(iis, true);
+&nbsp;&nbsp;&nbsp;&nbsp;ImageReadParam param = reader.getDefaultReadParam();
+&nbsp;&nbsp;&nbsp;&nbsp;return reader.read(0, param);
+&nbsp;} 
+}
+</code>
+</pre><br>
+<b>Paso 3:</b> Agregaremos a nuestro proyecto en netbeans <b>"imagen"</b> un nuevo JFrame al que llamaremos <b>fotoform.java</b> con la siguiente distribucion:<br>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://4.bp.blogspot.com/_aQGkfw6J-yo/SxqIKQaGrhI/AAAAAAAAB3M/W8KTAMrb-H8/s1600-h/interfaz-foto.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="cargar-imagenes-ej-java-mysql-con_files/interfaz-foto.jpg" border="0"></a><br>
+</div><br>
+<b>Paso 4: </b>En el source de nuestro fotoform declaramos<br>
+<br>
+fotoclass&nbsp; f = new fotoclass();<br>
+<br>
+<b>Paso 5:</b> Agregamos el evento <b>MouseClicked </b>al objeto cmdCargar y añadimos el siguiente codigo:<br>
+<br>
+<pre><code>
+&nbsp;private void cmdCargarMouseClicked(java.awt.event.MouseEvent evt) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// TODO add your handling code here:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String cod = txtID.getText();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Image dtCat = f.getfoto(cod);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Icon icon = new ImageIcon(dtCat);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lbFoto.setIcon(icon);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+</code>
+</pre>el objeto txtID captura el codigo de la imagen que queremos ver,
+pasa como parametro a getfoto() la cual la transforma a imagen y esta
+imagen la utilizamos en el objeto jLabel: lbFoto.<br>
+<br>
+El resultado:<br>
+<div class="separator" style="clear: both; text-align: center;"><a href="http://1.bp.blogspot.com/_aQGkfw6J-yo/SxqJix6pgyI/AAAAAAAAB3U/wHU5dl-Zw74/s1600-h/foto-mysql.jpg" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img src="cargar-imagenes-ej-java-mysql-con_files/foto-mysql.jpg" border="0"></a><br>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="post-footer">
+<div class="post-footer-line post-footer-line-1">
+</div>
+<div class="post-footer-line post-footer-line-2"></div>
+<div class="post-footer-line post-footer-line-3" style="border-top: 1px dashed rgb(243, 241, 235);"></div>
+<div class="post-footer-line post-footer-line-3"></div>
+<div class="sexy-bookmarks">
+<ul class="socials">
+<li class="sexy-delicious"><a href="http://del.icio.us/post?url=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-digg"><a href="http://digg.com/submit?url=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-technorati"><a href="http://technorati.com/faves?add=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-reddit"><a href="http://www.reddit.com/submit?url=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-stumble"><a href="http://www.stumbleupon.com/submit?url=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-facebook"><a href="http://www.facebook.com/sharer.php?u=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-twitter"><a href="http://twitthis.com/twit?url=http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html&amp;title=Cargar%20imagenes%20en%20java%20+%20mysql%20con%20netbeans" target="_blank"></a></li>
+<li class="sexy-syndicate"><a href="http://feeds2.feedburner.com/YOUR-FEEDBURNER-ID" title="Subscribe to RSS"></a></li>
+</ul>
+<span class="sexy-rightside"></span></div>
+</div>
+</div>
+<div class="comments" id="comments">
+<a name="comments"></a>
+<h4>
+2
+comentarios:
+        
+</h4>
+<dl id="comments-block">
+<dt class="comment-author " id="c6791155654164831767">
+<a name="c6791155654164831767"></a>
+<a href="http://www.blogger.com/profile/08432536634391093087" rel="nofollow">grupoubuntu</a> on                 2 de febrero de 2010 22:08
+dijo...
+</dt>
+<dd class="comment-body">
+<p>hola bueno muy buen aporte .. solo tengo una duda en esta linea <br><br>    Iterator readers = ImageIO.getImageReadersByFormatName("jpeg");<br><br>como vemos esta leyendo un jpeg pero que pasa si la imagen que lee tiene otro formato por ejemplo gif <br><br>bastaría con cambiar así<br><br>    Iterator readers = ImageIO.getImageReadersByFormatName("gif");<br><br>peor si tengo esos dos formatos en mi bd o asta mas .... como lo haría ??? esa es mi duda<br><br>aa y otra era como hago para q la imagen salga con el tamaño del label (lblFoto) no de su tamaño original <br><br>desde ya muchas gracias</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<span class="item-control blog-admin pid-2130498467">
+<a href="http://www.blogger.com/delete-comment.g?blogID=4428182206738080209&amp;postID=6791155654164831767" title="Suprimir comentario">
+<img src="cargar-imagenes-ej-java-mysql-con_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+<dt class="comment-author " id="c3392274288391201353">
+<a name="c3392274288391201353"></a>
+<a href="http://jc-mouse.blogspot.com/" rel="nofollow">Mouse</a> on                 3 de febrero de 2010 12:56
+dijo...
+</dt>
+<dd class="comment-body">
+<p>Hola, vamos por partes dijo jack el destripador :)<br><br>1.
+respecto a la primera pregunta, es correcto, el objeto BLOB almacena
+bytes y los bytes de un archivo JPG, GIF, PNG son diferentes y por
+tanto no se puede reconstruir un GIF de un JPG a menos que cambies los
+bytes y esto solo te complicaria las cosas. <br><br>Por tanto te
+aconsejo que utilices una "bandera" osea al guardar imagenes en la base
+de datos, por ejemplo para la tabla IMAGEN(id, nombre, foto, tipo); el
+campo FOTO almacena los bytes, y el campo TIPO, almacena el tipo de
+imagen que guardaras, asi al reconstruir la imagen puedes hacer uso de
+esta bandera para utilizar uno u otro tipo de extension.<br><br>Iterator readers = ImageIO.getImageReadersByFormatName("jpeg");<br>Iterator readers = ImageIO.getImageReadersByFormatName("gif");<br><br>2. respecto al tamaño de la imagens te recomiendo utilizar la propiedad "getScaledInstance" del objeto IMAGE.<br><br>por ejemplo para el codigo de este post:<br>/*este codigo carga la imagen en el label*/<br>   String cod = txtID.getText();<br>   Image dtCat = f.getfoto(cod);<br>   Icon icon = new ImageIcon(dtCat);<br>   lbFoto.setIcon(icon);<br><br>cambialos a:<br><br>   String cod = txtID.getText();<br>   Image dtCat = f.getfoto(cod); <br>   //crea un nuevo objeto IMAGE y escalalo<br>   //donde ANCHO y ALTO son las dimensiones de la nueva imagen, por ejemplo las de tu objeto jLabel<br>   Image i = dtCat.getScaledInstance(ANCHO,ALTO, Image.SCALE_AREA_AVERAGING);<br>   Icon icon = new ImageIcon(i);<br>   lbFoto.setIcon(icon);<br><br>espero te sirva la ayuda y gracias por pasarte por mi blog</p>
+</dd>
+<dd class="comment-footer">
+<span class="comment-timestamp">
+<span class="item-control blog-admin pid-1016619152">
+<a href="http://www.blogger.com/delete-comment.g?blogID=4428182206738080209&amp;postID=3392274288391201353" title="Suprimir comentario">
+<img src="cargar-imagenes-ej-java-mysql-con_files/icon_delete13.gif">
+</a>
+</span>
+</span>
+</dd>
+</dl>
+<p class="comment-footer">
+</p><div class="comment-form">
+<a name="comment-form"></a>
+<h4 id="comment-post-message">Publicar un comentario en la entrada</h4>
+<p>
+</p>
+<a href="http://www.blogger.com/comment-iframe.g?blogID=4428182206738080209&amp;postID=5997900424248699190" id="comment-editor-src"></a>
+<iframe allowtransparency="true" class="blogger-iframe-colorize" id="comment-editor" src="cargar-imagenes-ej-java-mysql-con_files/comment-iframe.htm" width="100%" frameborder="0" height="275" scrolling="no"></iframe>
+<script type="text/javascript" src="cargar-imagenes-ej-java-mysql-con_files/2383433370-iframe_colorizer.js"></script>
+</div>
+
+<div id="backlinks-container">
+<div id="Blog1_backlinks-container">
+</div>
+</div>
+</div>
+<!-- google_ad_section_end -->
+<script type="text/javascript"><!--
+google_ad_client="pub-1333258237238083";
+google_ad_host="pub-1556223355139109";
+google_ad_width=336;
+google_ad_height=280;
+google_ad_format="336x280_as";
+google_ad_type="text_image";
+google_ad_host_channel="00000";
+google_color_border="F7F6F6";
+google_color_bg="F7F6F6";
+google_color_link="5C93B9";
+google_color_url="008000";
+google_color_text="000000";
+//--></script>
+<script type="text/javascript" src="cargar-imagenes-ej-java-mysql-con_files/show_ads.js">
+</script><script src="cargar-imagenes-ej-java-mysql-con_files/expansion_embed.js"></script><script src="cargar-imagenes-ej-java-mysql-con_files/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 280px; position: relative; visibility: visible; width: 336px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 280px; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="cargar-imagenes-ej-java-mysql-con_files/ads.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" width="336" frameborder="0" height="280" scrolling="no"></iframe></ins></ins>
+<!-- google_ad_section_start -->
+<!-- google_ad_section_end -->
+</div>
+<div class="blog-pager" id="blog-pager">
+<span id="blog-pager-newer-link">
+<a class="blog-pager-newer-link" href="http://jc-mouse.blogspot.com/2009/12/entorno-grafico-de-clips-las-ventanas.html" id="Blog1_blog-pager-newer-link" title="Entrada más reciente">Entrada más reciente</a>
+</span>
+<span id="blog-pager-older-link">
+<a class="blog-pager-older-link" href="http://jc-mouse.blogspot.com/2009/12/descargar-video-de-youtube-sin-instalar.html" id="Blog1_blog-pager-older-link" title="Entradas antiguas">Entradas antiguas</a>
+</span>
+<a class="home-link" href="http://jc-mouse.blogspot.com/">Página principal</a>
+</div>
+<div class="clear"></div>
+<div class="post-feeds">
+<div class="feed-links">
+Suscribirse a:
+<a class="feed-link" href="http://jc-mouse.blogspot.com/feeds/5997900424248699190/comments/default" target="_blank" type="application/atom+xml">Enviar comentarios (Atom)</a>
+</div>
+</div>
+</div><div class="widget HTML" id="HTML6">
+<h2 class="title">Artículos Relacionados</h2>
+<div class="widget-content">
+<script type="text/javascript">
+removeRelatedDuplicates();
+printRelatedLabels();
+</script><ul><li><a href="http://jc-mouse.blogspot.com/2010/03/jtextfield-texto-al-reves-en-java.html">[JTextField] Texto al revés en java</a></li><li><a href="http://jc-mouse.blogspot.com/2010/03/imagen-de-fondo-en-una-aplicacion-mdi.html">Imagen de fondo en una aplicacion MDI en Java</a></li><li><a href="http://jc-mouse.blogspot.com/2010/02/obtener-sistema-operativo-con-clase.html">Obtener "Sistema Operativo" con clase System en Java</a></li><li><a href="http://jc-mouse.blogspot.com/2010/02/obtener-tamanodimension-de-la-pantalla.html">Obtener tamaño/Dimensión de la pantalla en java</a></li><li><a href="http://jc-mouse.blogspot.com/2010/03/respuesta-redimensionar-el-video-en-jmf.html">[Respuesta] Redimensionar el video en JMF</a></li><li><a href="http://jc-mouse.blogspot.com/2010/02/reproductor-de-videos-en-java.html">Reproductor de videos en java: The ProgressBar - parte 5</a></li><li><a href="http://jc-mouse.blogspot.com/2010/02/los-skin-de-substance.html">Los Skin de Substance</a></li><li><a href="http://jc-mouse.blogspot.com/2010/03/agujero-de-seguridad-en-navegadores-y.html">Agujero de seguridad en navegadores y java</a></li></ul>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML6&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML6"));' target="configHTML6" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<!-- Sidebar -->
+<div id="sidebar-wrapper">
+<div id="midsidebar-wrapper">
+<div class="midsidebar section" id="midsidebar"><div class="widget Image" id="Image1">
+<h2>Acerca de</h2>
+<div class="widget-content">
+<a href="http://yachaywasi.webcindario.com/">
+<img alt="Acerca de" id="Image1_img" src="cargar-imagenes-ej-java-mysql-con_files/minime.jpg" width="150" height="362">
+</a>
+<br>
+<span class="caption">Mouse</span>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Image&amp;widgetId=Image1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Image1"));' target="configImage1" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" id="Label2">
+<h2>Categorias</h2>
+<div class="widget-content cloud-label-widget-content">
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/3d%20Max">3d Max</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Applet">Applet</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Base%20de%20datos">Base de datos</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Batch">Batch</a>
+</span>
+<span class="label-size-4">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Blogger">Blogger</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/CLIPS">CLIPS</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Codigo%20Fuente">Codigo Fuente</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Comercio%20Electronico">Comercio Electronico</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Criptografia">Criptografia</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Curiosidades">Curiosidades</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Descargas">Descargas</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Dise%C3%B1o%20Web">Diseño Web</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Divertido">Divertido</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Ejercicios%20resueltos">Ejercicios resueltos</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Esteganografia">Esteganografia</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Estructura%20de%20datos">Estructura de datos</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Facebook">Facebook</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Flash">Flash</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/HTML">HTML</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Info%20Util">Info Util</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Ingenieria%20de%20Software">Ingenieria de Software</a>
+</span>
+<span class="label-size-5">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Java">Java</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Java%20Media%20Framework">Java Media Framework</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Joomla">Joomla</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Juegos">Juegos</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/messenger">messenger</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Modelo%20de%20requerimientos">Modelo de requerimientos</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Multimedia">Multimedia</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/MySQL">MySQL</a>
+</span>
+<span class="label-size-4">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Netbeans">Netbeans</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Noticias">Noticias</a>
+</span>
+<span class="label-size-4">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Photoshop">Photoshop</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/PHP">PHP</a>
+</span>
+<span class="label-size-1">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Portables">Portables</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Programaci%C3%B3n">Programación</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Programas">Programas</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Seguridad%20Informatica">Seguridad Informatica</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Substance">Substance</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Trucos">Trucos</a>
+</span>
+<span class="label-size-5">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Tutoriales">Tutoriales</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/UML">UML</a>
+</span>
+<span class="label-size-2">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/VB.NET">VB.NET</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Video%20Tutorial">Video Tutorial</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Visual%20Basic">Visual Basic</a>
+</span>
+<span class="label-size-3">
+<a dir="ltr" href="http://jc-mouse.blogspot.com/search/label/Youtube">Youtube</a>
+</span>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Label&amp;widgetId=Label2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Label2"));' target="configLabel2" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Followers" id="Followers2">
+<h2 class="title">Followers</h2>
+<div class="widget-content">
+<div id="Followers2-wrapper">
+<div style="margin-right: 2px;">
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script><script type="text/javascript" src="comment-iframe_data/friendconnect.js"></script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/4428182206738080209/posts/default/5997900424248699190";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/4428182206738080209/5997900424248699190/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 5997900424248699190
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/4428182206738080209/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/4428182206738080209/comments/default";
+          
+          holder.currentBlogUrl = "http://jc-mouse.blogspot.com/";
+          holder.currentBlogId = "4428182206738080209";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    // We don't do anything w/ this, but don't let it bubble up and cause an
+    // exception
+    // TODO(henrywong): Don't just one-off this, fix at a more comprehensive
+    // level.
+    gadgets.rpc.register('set_pref', function() {});
+
+    
+    gadgets.rpc.register('registerGadgetForRpcs', function(gadgetDomain, iframeName) {
+      // TODO(sauravshah): We don't need this. Remove it from the google.Blog api
+    });
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div class="gadgets-gadget-container" id="div-1ph0foi755umg" style="width: 100%; visibility: visible;"><div id="gfc_iframe_1286820616_0_body"><iframe id="gfc_iframe_1286820616_0" name="gfc_iframe_1286820616_0" style="width: 100%; height: 176px;" allowtransparency="true" frameborder="0" height="260" scrolling="no"></iframe></div></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "260";
+    skin['TITLE'] = "Followers";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#000000";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "Arial";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderMembersGadget"](
+    {id: "div-1ph0foi755umg",
+     height: 260,
+     
+     
+     
+     site: "10195970019756336182",
+      
+     locale: 'es' },
+     skin);
+  </script>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Followers&amp;widgetId=Followers2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Followers2"));' target="configFollowers2" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget Image" id="Image2">
+<h2>Tu portada</h2>
+<div class="widget-content">
+<a href="http://yachaywasi.webcindario.com/blog/app/pic/tuportada.php">
+<img alt="Tu portada" id="Image2_img" src="cargar-imagenes-ej-java-mysql-con_files/tuportadab.jpg" width="150" height="472">
+</a>
+<br>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Image&amp;widgetId=Image2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Image2"));' target="configImage2" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML1">
+<h2 class="title">Estadisticas</h2>
+<div class="widget-content">
+<!-- Histats.com  START  -->
+<a href="http://www.histats.com/es/" target="_blank" title="contadores visitas"><script language="javascript" type="text/javascript">
+var s_sid = 889589;var st_dominio = 4;
+var cimg = 405;var cwi =118;var che =80;
+</script></a>
+<script language="javascript" src="cargar-imagenes-ej-java-mysql-con_files/js9.js" type="text/javascript"></script><script type="text/javascript" language="JavaScript" src="cargar-imagenes-ej-java-mysql-con_files/889589.txt"><\/script>');
+</script><script language="JavaScript">document.writeln('<embed src="http://s10.histats.com/405.swf" flashvars="esterno=1&var_esterno=Hits =31514#Hits hoy=281#Visitantes=17693#Visit. hoy=191#Online=3#&acsid=889589" width="118" height="80" quality="high" wmode="transparent" name="405.swf" align="middle" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">');</script><embed src="cargar-imagenes-ej-java-mysql-con_files/405.swf" flashvars="esterno=1&amp;var_esterno=Hits =31514#Hits hoy=281#Visitantes=17693#Visit. hoy=191#Online=3#&amp;acsid=889589" quality="high" wmode="transparent" name="405.swf" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" width="118" align="middle" height="80">
+
+
+
+<noscript><a href="http://www.histats.com/es/" target="_blank">
+<img border="0" alt="contadores visitas" src="http://s103.histats.com/stats/0.gif?889589&1"/></a>
+</noscript>
+<!-- Histats.com  END  -->
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target="configHTML1" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML3">
+<div class="widget-content">
+<a href="http://www.blogalaxia.com/"><img src="cargar-imagenes-ej-java-mysql-con_files/blogalaxia3.gif" border="0"></a>
+<a href="http://www.doomos.com.bo/ci/santa-cruz/venta_de_terrenos_en_urubo.html" target="_blank" title="venta de terrenos en urubo"><img alt="venta de terrenos en urubo" src="cargar-imagenes-ej-java-mysql-con_files/doomos.gif" width="80" border="0" height="15"></a>
+<a href="http://www.visitasblog.com/" title="Directorio de Blogs"><table border="0"><tbody><tr><td></td></tr></tbody></table></a><a href="http://www.visitasblog.com/"><img alt="Directorio de Blogs" src="cargar-imagenes-ej-java-mysql-con_files/banner3.gif" width="80" border="0" height="15"></a><a href="http://www.jogosymeninas.com/"><img alt="Jogos de Meninas" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"> </a><a href="http://www.visitasblog.com/contador/"><img alt="contadores de visitas" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.juegoszaping.com/"><img alt="Juegos" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.juegosben10gratis.com/"><img alt="Juegos de Ben 10" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.bratzgames.tv/"><img alt="Bratz Games" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.juegines.com/"><img alt="minijuegos" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.juegosdecocinar.tv/"><img alt="juegos de cocinar" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a><a href="http://www.solojuegosdechicas.com/"><img alt="juegos de chicas" src="cargar-imagenes-ej-java-mysql-con_files/banner.gif" width="0" border="0" height="0"></a>
+<a href="http://www.olebebe.com/"><img alt="olebebe" src="cargar-imagenes-ej-java-mysql-con_files/btn80.gif" border="0"></a>
+<a href="http://www.blogazos.com/"><img alt="Blogazos.com. Directorio de Blogs en Español" src="cargar-imagenes-ej-java-mysql-con_files/blogazos-boton.gif" width="95" border="0" height="28"></a>
+<br><a href="http://www.sitiopedia.com/paginas/informatica">Estoy en Sitiopedia</a>
+<a href="http://www.totalping.com/pin.totalping?idioma=ES&amp;skin=1&amp;bookmark=cf7d8a95&amp;name=El+blog+de+Mouse&amp;url=http://jc-mouse.blogspot.com&amp;rss=http://feeds.feedburner.com/blogspot/jcmouse&amp;ping=1&amp;ser1=1-2-3-4-5-9-11-12-16-17-18-21-22-23-24-25-26-27-28-29-31-&amp;ser2=1-4-5-8-9-10-11-14-15-16-17-18-19-20-21-22-23-24-26-27-28-29-30-31-32-33-34-&amp;tipo=3&amp;pagina=1" title="Mi Ping en TotalPing.com"><img alt="Mi Ping en TotalPing.com" src="cargar-imagenes-ej-java-mysql-con_files/recurso_3_1.jpg" width="80" border="0" height="15"></a>
+<a href="http://www.blogarama.com/"><img alt="blogarama - the blog directory" src="cargar-imagenes-ej-java-mysql-con_files/button.gif" title="blogarama - the blog directory" border="0"></a>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML3&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML3"));' target="configHTML3" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Image" id="Image3">
+<h2>YTube</h2>
+<div class="widget-content">
+<a href="http://jc-mouse.blogspot.com/2010/02/personalizarconfigurar-reproductor-de.html">
+<img alt="YTube" id="Image3_img" src="cargar-imagenes-ej-java-mysql-con_files/ytubeban.jpg" width="150" height="400">
+</a>
+<br>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Image&amp;widgetId=Image3&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Image3"));' target="configImage3" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<div id="rightsidebar-wrapper">
+<div class="rightsidebar section" id="rightsidebar"><div class="widget HTML" id="HTML4">
+<h2 class="title">Hammerfall - Templars of Steel</h2>
+<div class="widget-content">
+<object width="250" height="185">
+<param value="http://www.youtube.com/v/PCR5Ez2vmT0&amp;hl=es_ES&amp;fs=1&amp;rel=0&amp;color1=0x006699&amp;color2=0x54abd6&amp;border=1" name="movie">
+<param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess">
+<embed allowscriptaccess="always" src="cargar-imagenes-ej-java-mysql-con_files/PCR5Ez2vmT0hles_ESfs1rel0color10x006699color20x54abd6border1.htm" allowfullscreen="true" type="application/x-shockwave-flash" width="250" height="185">
+</object>
+<a href="http://aitves.blogspot.com/"><img src="cargar-imagenes-ej-java-mysql-con_files/aitves2.jpg" border="0"></a>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML4&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML4"));' target="configHTML4" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML10">
+<div class="widget-content">
+<object id="obj_1259981127864" width="250" height="360"><param value="http://jc-mouse.chatango.com/group" name="movie"><param value="transparent" name="wmode"><param value="always" name="AllowScriptAccess"><param value="all" name="AllowNetworking"><param value="true" name="AllowFullScreen"><param value="cid=1259981127864&amp;a=04699B&amp;b=60&amp;c=242321&amp;l=242321&amp;q=242321&amp;r=100&amp;w=0" name="flashvars"><embed allownetworking="all" allowscriptaccess="always" flashvars="cid=1259981127864&amp;a=04699B&amp;b=60&amp;c=242321&amp;l=242321&amp;q=242321&amp;r=100&amp;w=0" type="application/x-shockwave-flash" src="cargar-imagenes-ej-java-mysql-con_files/group" id="emb_1259981127864" allowfullscreen="true" wmode="transparent" width="250" height="360"></object><br>[ <a href="http://jc-mouse.chatango.com/clonegroup?ts=1259981127864">Copy this</a> | <a href="http://chatango.com/creategroup?ts=1259981127864">Start New</a> | <a href="http://jc-mouse.chatango.com/">Full Size</a> ]
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML10&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML10"));' target="configHTML10" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML5">
+<h2 class="title">Más visitados</h2>
+<div class="widget-content">
+<script src="cargar-imagenes-ej-java-mysql-con_files/a.js" type="text/javascript"></script><div id="FJ_PP_Cont"><table id="FJ_TListC" cellpadding="0" cellspacing="0"> <tbody><tr><td> <table id="FJ_PPC" cellpadding="0" cellspacing="0"> <tbody><tr><td> <table id="FJ_PP" class="FJ_TopTable" cellpadding="1" cellspacing="1"> <tbody><tr><td colspan="2"> <div class="FJ_Heading" id="FJTITLE1_pop"> Popular Pages Today </div> </td></tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;1.&nbsp;</td> <td class="FJ_Line"> <a title="23.03" href="http://jc-mouse.blogspot.com/2009/10/descargar-video-de-youtube-con.html">mouse: Descargar video de youtube con voobys.com</a>&nbsp;<span style="font-size: 9px;">23.03%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;2.&nbsp;</td> <td class="FJ_Line"> <a title="16.38" href="http://jc-mouse.blogspot.com/2009/12/modelos-semanticos.html">mouse: Modelos semánticos</a>&nbsp;<span style="font-size: 9px;">16.38%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;3.&nbsp;</td> <td class="FJ_Line"> <a title="10.92" href="http://jc-mouse.blogspot.com/2009/12/base-de-datos-netbeans-mysql-proyecto.html">mouse: Base de Datos + Netbeans + MySQL (Proyecto Completo)</a>&nbsp;<span style="font-size: 9px;">10.92%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;4.&nbsp;</td> <td class="FJ_Line"> <a title="9.06" href="http://jc-mouse.blogspot.com/">mouse</a>&nbsp;<span style="font-size: 9px;">9.06%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;5.&nbsp;</td> <td class="FJ_Line"> <a title="7.86" href="http://jc-mouse.blogspot.com/2009/12/codigo-cesar-algoritmo-de.html">mouse: Codigo Cesar: Algoritmo de encriptamiento en java</a>&nbsp;<span style="font-size: 9px;">7.86%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;6.&nbsp;</td> <td class="FJ_Line"> <a title="7.75" href="http://jc-mouse.blogspot.com/2009/12/jframe-con-imagen-de-fondo-en-netbeans.html">mouse: JFrame con imagen de fondo en Netbeans</a>&nbsp;<span style="font-size: 9px;">7.75%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;7.&nbsp;</td> <td class="FJ_Line"> <a title="6.66" href="http://jc-mouse.blogspot.com/2010/02/formularios-mdi-en-netbeans-sencillo.html">mouse: Formularios MDI en Netbeans (Sencillo)</a>&nbsp;<span style="font-size: 9px;">6.66%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;8.&nbsp;</td> <td class="FJ_Line"> <a title="6.44" href="http://jc-mouse.blogspot.com/2009/12/reproducir-video-en-java-y-netbeans-con.html">mouse: Reproducir video en java y netbeans con Java Media Framework</a>&nbsp;<span style="font-size: 9px;">6.44%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;9.&nbsp;</td> <td class="FJ_Line"> <a title="6.11" href="http://jc-mouse.blogspot.com/2009/12/ejercicio-resuelto-palindromo-en-java.html">mouse: Ejercicio resuelto: Palindromo en java</a>&nbsp;<span style="font-size: 9px;">6.11%</span> </td> </tr> <tr> <td class="FJ_Line" style="vertical-align: top;"> &nbsp;10.&nbsp;</td> <td class="FJ_Line"> <a title="5.79" href="http://jc-mouse.blogspot.com/2009/11/leer-base-de-datos-con-netbeans.html">mouse: Leer base de datos con netbeans</a>&nbsp;<span style="font-size: 9px;">5.79%</span> </td> </tr> <tr><td colspan="2"> <div class="FJ_TrafFoot" id="FJ_TrafFoot_pop"> <center><a href="http://feedjit.com/join/"><img src="cargar-imagenes-ej-java-mysql-con_files/clickToGetFeedjit.png" style="margin: 0pt; padding: 0pt;" title="Click to Get Popular Pages for your Blog or Website" width="160" border="0" height="20"></a></center> </div> </td></tr> </tbody></table> </td></tr> </tbody></table> </td></tr> </tbody></table> <iframe src="cargar-imagenes-ej-java-mysql-con_files/pop.htm" style="border: medium none ;" width="0" height="0"></iframe></div><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML5&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML5"));' target="configHTML5" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML12">
+<h2 class="title">Mis videos en Youtube</h2>
+<div class="widget-content">
+<a href="http://www.youtube.com/user/DisceAutDiscede" target="_blank">
+<img src="cargar-imagenes-ej-java-mysql-con_files/ytube.jpg" width="250" border="0" height="120"></a>
+<script type="text/javascript">
+height = 90; width = 120;
+var	vid = new Array(5);
+var title = new Array(5);
+vid[1] = 'owDmq6WC0CU';
+title[1]= "Tutorial java: Animacion con Timer";
+vid[2] = 'VsaDhpQFe0Y';
+title[2]= "NTFS: Alternate Data Streams";
+vid[3] = 'WbCqAqzWlSc';
+title[3]= "Tutorial Java: Applet con Netbeans";
+vid[4] = 'ApkIKEeWhCk';
+title[4]= "3d max: Animación de bandera";
+vid[5] = '2BBnq4JWf3Y';
+title[5]= "Captura de pantalla con java";
+function createVideoList(){		
+var imgvid = '';
+for(i=1; i <= 5; i++){
+imgvid = imgvid + '<tr><td width="120"><a href="http://www.youtube.com/watch?v='+ vid[i] + '" target="_blank"><img src="http://i2.ytimg.com/vi/'+vid[i]+'/default.jpg" width="'+width+'px" height="'+height+'px"/></a></td><td width="130"><a href="http://www.youtube.com/watch?v='+ vid[i] + '">' + title[i]+'</a></td></tr>';		
+}
+document.write('<table width="250" border="0">'+imgvid+'</table>');
+}
+createVideoList();
+</script><table width="250" border="0"><tbody><tr><td width="120"><a href="http://www.youtube.com/watch?v=owDmq6WC0CU" target="_blank"><img src="cargar-imagenes-ej-java-mysql-con_files/default_004.jpg" width="120px" height="90px"></a></td><td width="130"><a href="http://www.youtube.com/watch?v=owDmq6WC0CU">Tutorial java: Animacion con Timer</a></td></tr><tr><td width="120"><a href="http://www.youtube.com/watch?v=VsaDhpQFe0Y" target="_blank"><img src="cargar-imagenes-ej-java-mysql-con_files/default_003.jpg" width="120px" height="90px"></a></td><td width="130"><a href="http://www.youtube.com/watch?v=VsaDhpQFe0Y">NTFS: Alternate Data Streams</a></td></tr><tr><td width="120"><a href="http://www.youtube.com/watch?v=WbCqAqzWlSc" target="_blank"><img src="cargar-imagenes-ej-java-mysql-con_files/default_005.jpg" width="120px" height="90px"></a></td><td width="130"><a href="http://www.youtube.com/watch?v=WbCqAqzWlSc">Tutorial Java: Applet con Netbeans</a></td></tr><tr><td width="120"><a href="http://www.youtube.com/watch?v=ApkIKEeWhCk" target="_blank"><img src="cargar-imagenes-ej-java-mysql-con_files/default_002.jpg" width="120px" height="90px"></a></td><td width="130"><a href="http://www.youtube.com/watch?v=ApkIKEeWhCk">3d max: Animación de bandera</a></td></tr><tr><td width="120"><a href="http://www.youtube.com/watch?v=2BBnq4JWf3Y" target="_blank"><img src="cargar-imagenes-ej-java-mysql-con_files/default.jpg" width="120px" height="90px"></a></td><td width="130"><a href="http://www.youtube.com/watch?v=2BBnq4JWf3Y">Captura de pantalla con java</a></td></tr></tbody></table>
+<a href="http://www.youtube.com/user/DisceAutDiscede" target="_blank">mas videos</a>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML12&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML12"));' target="configHTML12" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget HTML" id="HTML11">
+<div class="widget-content">
+<a href="http://feeds.feedburner.com/blogspot/jcmouse">
+<img src="cargar-imagenes-ej-java-mysql-con_files/feedmouse.jpg" border="0">
+</a>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML11&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML11"));' target="configHTML11" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div><div class="widget Label" id="Label99">
+<h2>Categorias en 3d</h2>
+<div class="widget-content">
+<script src="cargar-imagenes-ej-java-mysql-con_files/swfobject.js" type="text/javascript"></script>
+<div id="flashcontent">Blogumulus by <a href="http://www.roytanck.com/">Roy Tanck</a> and <a href="http://www.bloggerbuster.com/">Amanda Fazani</a></div>
+<script type="text/javascript">
+var so = new SWFObject("http://halotemplates.s3.amazonaws.com/wp-cumulus-example/tagcloud.swf", "tagcloud", "240", "300", "7", "#ffffff");
+// uncomment next line to enable transparency
+//so.addParam("wmode", "transparent");
+so.addVariable("tcolor", "0x333333");
+so.addVariable("mode", "tags");
+so.addVariable("distr", "true");
+so.addVariable("tspeed", "100");
+so.addVariable("tagcloud", "<tags><a href='http://jc-mouse.blogspot.com/search/label/3d%20Max' style='12'>3d Max</a><a href='http://jc-mouse.blogspot.com/search/label/Applet' style='12'>Applet</a><a href='http://jc-mouse.blogspot.com/search/label/Base%20de%20datos' style='12'>Base de datos</a><a href='http://jc-mouse.blogspot.com/search/label/Batch' style='12'>Batch</a><a href='http://jc-mouse.blogspot.com/search/label/Blogger' style='12'>Blogger</a><a href='http://jc-mouse.blogspot.com/search/label/CLIPS' style='12'>CLIPS</a><a href='http://jc-mouse.blogspot.com/search/label/Codigo%20Fuente' style='12'>Codigo Fuente</a><a href='http://jc-mouse.blogspot.com/search/label/Comercio%20Electronico' style='12'>Comercio Electronico</a><a href='http://jc-mouse.blogspot.com/search/label/Criptografia' style='12'>Criptografia</a><a href='http://jc-mouse.blogspot.com/search/label/Curiosidades' style='12'>Curiosidades</a><a href='http://jc-mouse.blogspot.com/search/label/Descargas' style='12'>Descargas</a><a href='http://jc-mouse.blogspot.com/search/label/Dise%C3%B1o%20Web' style='12'>Diseño Web</a><a href='http://jc-mouse.blogspot.com/search/label/Divertido' style='12'>Divertido</a><a href='http://jc-mouse.blogspot.com/search/label/Ejercicios%20resueltos' style='12'>Ejercicios resueltos</a><a href='http://jc-mouse.blogspot.com/search/label/Esteganografia' style='12'>Esteganografia</a><a href='http://jc-mouse.blogspot.com/search/label/Estructura%20de%20datos' style='12'>Estructura de datos</a><a href='http://jc-mouse.blogspot.com/search/label/Facebook' style='12'>Facebook</a><a href='http://jc-mouse.blogspot.com/search/label/Flash' style='12'>Flash</a><a href='http://jc-mouse.blogspot.com/search/label/HTML' style='12'>HTML</a><a href='http://jc-mouse.blogspot.com/search/label/Info%20Util' style='12'>Info Util</a><a href='http://jc-mouse.blogspot.com/search/label/Ingenieria%20de%20Software' style='12'>Ingenieria de Software</a><a href='http://jc-mouse.blogspot.com/search/label/Java' style='12'>Java</a><a href='http://jc-mouse.blogspot.com/search/label/Java%20Media%20Framework' style='12'>Java Media Framework</a><a href='http://jc-mouse.blogspot.com/search/label/Joomla' style='12'>Joomla</a><a href='http://jc-mouse.blogspot.com/search/label/Juegos' style='12'>Juegos</a><a href='http://jc-mouse.blogspot.com/search/label/messenger' style='12'>messenger</a><a href='http://jc-mouse.blogspot.com/search/label/Modelo%20de%20requerimientos' style='12'>Modelo de requerimientos</a><a href='http://jc-mouse.blogspot.com/search/label/Multimedia' style='12'>Multimedia</a><a href='http://jc-mouse.blogspot.com/search/label/MySQL' style='12'>MySQL</a><a href='http://jc-mouse.blogspot.com/search/label/Netbeans' style='12'>Netbeans</a><a href='http://jc-mouse.blogspot.com/search/label/Noticias' style='12'>Noticias</a><a href='http://jc-mouse.blogspot.com/search/label/Photoshop' style='12'>Photoshop</a><a href='http://jc-mouse.blogspot.com/search/label/PHP' style='12'>PHP</a><a href='http://jc-mouse.blogspot.com/search/label/Portables' style='12'>Portables</a><a href='http://jc-mouse.blogspot.com/search/label/Programaci%C3%B3n' style='12'>Programación</a><a href='http://jc-mouse.blogspot.com/search/label/Programas' style='12'>Programas</a><a href='http://jc-mouse.blogspot.com/search/label/Seguridad%20Informatica' style='12'>Seguridad Informatica</a><a href='http://jc-mouse.blogspot.com/search/label/Substance' style='12'>Substance</a><a href='http://jc-mouse.blogspot.com/search/label/Trucos' style='12'>Trucos</a><a href='http://jc-mouse.blogspot.com/search/label/Tutoriales' style='12'>Tutoriales</a><a href='http://jc-mouse.blogspot.com/search/label/UML' style='12'>UML</a><a href='http://jc-mouse.blogspot.com/search/label/VB.NET' style='12'>VB.NET</a><a href='http://jc-mouse.blogspot.com/search/label/Video%20Tutorial' style='12'>Video Tutorial</a><a href='http://jc-mouse.blogspot.com/search/label/Visual%20Basic' style='12'>Visual Basic</a><a href='http://jc-mouse.blogspot.com/search/label/Youtube' style='12'>Youtube</a></tags>");
+so.addParam("allowScriptAccess", "always");
+so.write("flashcontent");
+</script>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=Label&amp;widgetId=Label99&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("Label99"));' target="configLabel99" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget AdSense" id="AdSense1">
+<div class="widget-content">
+<script type="text/javascript"><!--
+google_ad_client="pub-1333258237238083";
+google_ad_host="pub-1556223355139109";
+google_ad_width=250;
+google_ad_height=250;
+google_ad_format="250x250_as";
+google_ad_type="text_image";
+google_ad_host_channel="00000";
+google_color_border="FFFFFF";
+google_color_bg="EFEFEF";
+google_color_link="2888B5";
+google_color_url="5388CF";
+google_color_text="000000";
+//--></script>
+<script type="text/javascript" src="cargar-imagenes-ej-java-mysql-con_files/show_ads.js">
+</script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 250px; position: relative; visibility: visible; width: 250px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 250px; position: relative; visibility: visible; width: 250px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame2" marginheight="0" marginwidth="0" name="google_ads_frame" src="cargar-imagenes-ej-java-mysql-con_files/ads_002.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" width="250" frameborder="0" height="250" scrolling="no"></iframe></ins></ins>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=AdSense&amp;widgetId=AdSense1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("AdSense1"));' target="configAdSense1" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget BlogArchive" id="BlogArchive1">
+<h2>Mis Archivos</h2>
+<div class="widget-content">
+<div id="ArchiveList">
+<div id="BlogArchive1_ArchiveList">
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=YEARLY-1262332800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/search?updated-min=2010-01-01T00%3A00%3A00-08%3A00&amp;updated-max=2011-01-01T00%3A00%3A00-08%3A00&amp;max-results=34">2010</a>
+<span class="post-count" dir="ltr">(34)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1267948800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_03_07_archive.html">03/07</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/03/respuesta-redimensionar-el-video-en-jmf.html">[Respuesta] Redimensionar el video en JMF</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/03/agujero-de-seguridad-en-navegadores-y.html">Agujero de seguridad en navegadores y java</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1267344000000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_02_28_archive.html">02/28</a>
+<span class="post-count" dir="ltr">(4)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/03/jtextfield-texto-al-reves-en-java.html">[JTextField] Texto al revés en java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/03/imagen-de-fondo-en-una-aplicacion-mdi.html">Imagen de fondo en una aplicacion MDI en Java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/03/un-sencillo-diario-con-el-bloc-de-notas.html">Un sencillo "diario" con el Bloc de Notas de Windo...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/03/ingenieria-de-software-proceso-basico.html">Ingenieria de Software (Proceso Básico)</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1266739200000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_02_21_archive.html">02/21</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/02/reproductor-de-videos-en-java.html">Reproductor de videos en java: The ProgressBar - p...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/los-skin-de-substance.html">Los Skin de Substance</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1266134400000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_02_14_archive.html">02/14</a>
+<span class="post-count" dir="ltr">(7)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/02/substance-java-look-feel.html">Substance Java look &amp; feel</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/obtener-sistema-operativo-con-clase.html">Obtener "Sistema Operativo" con clase System en Ja...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/obtener-tamanodimension-de-la-pantalla.html">Obtener tamaño/Dimensión de la pantalla en java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/reproductor-de-videos-en-java-el.html">Reproductor de videos en java: El Playlist y un po...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/formularios-mdi-en-netbeans-sencillo.html">Formularios MDI en Netbeans (Sencillo)</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/ventana-sin-bordes-en-java.html">Ventana sin bordes en Java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/objeto-vector-en-java.html">Objeto Vector en Java</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1265529600000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_02_07_archive.html">02/07</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/02/lecturaescritura-de-archivos-txt-en.html">Lectura/Escritura de archivos TXT en Netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/anadireliminar-elementos-de-jlist-en.html">Añadir/Eliminar elementos de JList en Netbeans</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1264924800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_01_31_archive.html">01/31</a>
+<span class="post-count" dir="ltr">(5)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/02/personalizarconfigurar-reproductor-de.html">Personalizar/Configurar reproductor de video de yo...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/ejercicio-resuelto-diagrama-e-r.html">Ejercicio Resuelto: Diagrama E-R "Universidad"</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/ocultar-imagenes-con-ads-alternate-data.html">Ocultar imagenes con ADS (Alternate Data Stream)</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/enviar-archivos-con-ads-por-internet.html">Enviar archivos con ADS por internet</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/02/alternate-data-stream-creacion-y.html">Alternate Data Stream: Creación y manipulación de ...</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1264320000000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_01_24_archive.html">01/24</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/01/instalacion-de-idioma-en-joomla.html">Instalación de idioma en Joomla</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/instalacion-de-joomla-en-servidor-local.html">Instalación de Joomla en servidor local con AppSer...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/crear-aplicaciones-portables-con.html">Crear aplicaciones portables con Thinstall</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1263715200000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_01_17_archive.html">01/17</a>
+<span class="post-count" dir="ltr">(1)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/01/captura-de-pantalla-en-java.html">Captura de pantalla en java</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1263110400000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_01_10_archive.html">01/10</a>
+<span class="post-count" dir="ltr">(5)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/01/codigo-cesar-algoritmo-de.html">Codigo Cesar: Algoritmo de encriptamiento en vb.ne...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/hola-mundo-en-vbnet.html">"Hola Mundo" en VB.NET</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/reproductor-de-videos-en-java-los.html">Reproductor de videos en java: Los controles - 3ra...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/reproductor-de-videos-en-java-la-api.html">Reproductor de videos en java: La API JMF - 2da pa...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/jfilechooser-en-java-y-netbeans.html">JFileChooser en java y netbeans</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1262505600000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2010_01_03_archive.html">01/03</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2010/01/reproductor-de-videos-en-java-la.html">Reproductor de videos en java: La Interfaz - 1ra P...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/animacion-con-timer-en-java-y-netbeans.html">Animación con Timer en java y netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2010/01/primer-applet-en-netbeans-video.html">Primer applet en netbeans - Video</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=YEARLY-1230796800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/search?updated-min=2009-01-01T00%3A00%3A00-08%3A00&amp;updated-max=2010-01-01T00%3A00%3A00-08%3A00&amp;max-results=50">2009</a>
+<span class="post-count" dir="ltr">(148)</span>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1261900800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_12_27_archive.html">12/27</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2009/12/material-avanzado-para-3d-oro-gold.html">Material Avanzado para 3d: Oro (Gold)</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/bandera-ondeando-en-3d-max.html">Bandera ondeando en 3d Max</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/primer-applet-en-netbeans.html">Primer applet en netbeans</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1261296000000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_12_20_archive.html">12/20</a>
+<span class="post-count" dir="ltr">(3)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2009/12/encriptacion-metodo-bifido-en-java.html">Encriptación: Metodo Bífido en java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/codigo-cesar-algoritmo-de.html">Codigo Cesar: Algoritmo de encriptamiento en java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/metodo-de-la-burbuja-bubble-sort-java.html">Metodo de la burbuja (bubble sort java)</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1260691200000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_12_13_archive.html">12/13</a>
+<span class="post-count" dir="ltr">(2)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2009/12/reproducir-video-en-java-y-netbeans-con.html">Reproducir video en java y netbeans con Java Media...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/jpanel-con-color-degradado-de-fondo-en.html">jPanel con color degradado de fondo en netbeans</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1260086400000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_12_06_archive.html">12/06</a>
+<span class="post-count" dir="ltr">(6)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2009/12/base-de-datos-netbeans-mysql-proyecto.html">Base de Datos + Netbeans + MySQL (Proyecto Complet...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/actualizarupdate-registros-de-la-base.html">Actualizar/update registros de la base de datos co...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/eliminarborrar-registros-de-base-de.html">Eliminar/Borrar registros de base de datos con net...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/modelos-semanticos.html">Modelos semánticos</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/ejercicio-resuelto-palindromo-en-java.html">Ejercicio resuelto: Palindromo en java</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/entorno-grafico-de-clips-las-ventanas.html">Entorno gráfico de Clips: Las ventanas</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate expanded">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=close&amp;toggle=WEEKLY-1259481600000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy toggle-open">▼ </span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_11_29_archive.html">11/29</a>
+<span class="post-count" dir="ltr">(16)</span>
+<ul class="posts">
+<li><a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">Cargar imagenes en java + mysql con netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/descargar-video-de-youtube-sin-instalar.html">Descargar video de youtube sin instalar nada</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/guardar-imagen-en-mysql-con-netbeans.html">Guardar imagen en MySQL con netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/anadirinstalar-nuevas-librerias.html">Añadir/Instalar nuevas librerias a Netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/ejercicio-resuelto-leer-validar-y.html">Ejercicio resuelto: leer, validar y contar dias co...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/fecha-actual-en-java-formato.html">Fecha actual en java + formato</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/imagen-de-fondo-en-jpanel-con-netbeans.html">Imagen de fondo en JPanel con Netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/ejericicio-resuelto-suma-y-producto-de.html">Ejericicio resuelto: Suma y Producto de matrices e...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/ejercicio-resuelto-diagrama-de-clase.html">Ejercicio resuelto: diagrama de clase "Sistema de ...</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/uml-recursividad-de-clases.html">UML: Recursividad de clases</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/agregar-registros-base-de-datos-con.html">Agregar registros a base de datos con netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/12/jframe-con-imagen-de-fondo-en-netbeans.html">JFrame con imagen de fondo en Netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/11/interfaz-y-base-de-datos-con-netbeans.html">Interfaz y base de datos con netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/11/leer-base-de-datos-con-netbeans.html">Leer base de datos con netbeans</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/11/evita-actualizar-messenger-2009.html">Evita actualizar a messenger 2009</a></li>
+<li><a href="http://jc-mouse.blogspot.com/2009/11/nubes-reales-con-photoshop.html">Nubes reales con photoshop</a></li>
+</ul>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1258876800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_11_22_archive.html">11/22</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1258272000000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_11_15_archive.html">11/15</a>
+<span class="post-count" dir="ltr">(9)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1257667200000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_11_08_archive.html">11/08</a>
+<span class="post-count" dir="ltr">(13)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1257058800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_11_01_archive.html">11/01</a>
+<span class="post-count" dir="ltr">(22)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1256454000000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_10_25_archive.html">10/25</a>
+<span class="post-count" dir="ltr">(21)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1255849200000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_10_18_archive.html">10/18</a>
+<span class="post-count" dir="ltr">(24)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1255244400000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_10_11_archive.html">10/11</a>
+<span class="post-count" dir="ltr">(19)</span>
+</li>
+</ul>
+<ul class="hierarchy">
+<li class="archivedate collapsed">
+<a class="toggle" href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html?widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=toggle&amp;dir=open&amp;toggle=WEEKLY-1254034800000&amp;toggleopen=WEEKLY-1259481600000">
+<span class="zippy">
+
+              ►
+            
+</span>
+</a>
+<a class="post-count-link" href="http://jc-mouse.blogspot.com/2009_09_27_archive.html">09/27</a>
+<span class="post-count" dir="ltr">(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=BlogArchive&amp;widgetId=BlogArchive1&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target="configBlogArchive1" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div><div class="widget HTML" id="HTML7">
+<div class="widget-content">
+<script src="cargar-imagenes-ej-java-mysql-con_files/a_002.js" type="text/javascript"></script><div id="FJ_TF_Cont"><table id="FJ_TListC" cellpadding="0" cellspacing="0"> <tbody><tr><td> <table id="FJ_TList" class="FJ_TopTable" cellpadding="1" cellspacing="1"> <tbody><tr><td> <div class="FJ_Heading" id="FJTITLE1_traf"> Live Traffic Feed </div> </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/pe.png" alt="" title="" width="16" border="0" height="11">&nbsp; Ayacucho left "<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">mouse: Cargar imagenes en java + mysql con netbeans</a>" via <a href="http://3.bp.blogspot.com/_aQGkfw6J-yo/SxqFlZe94FI/AAAAAAAAB3E/FaWCku4LodY/s1600-h/nuevas-fotos.jpg">3.bp.blogspot.com</a> </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/pe.png" alt="" title="" width="16" border="0" height="11">&nbsp; Ayacucho left "<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">mouse: Cargar imagenes en java + mysql con netbeans</a>" via <a href="http://3.bp.blogspot.com/_aQGkfw6J-yo/SxqFlZe94FI/AAAAAAAAB3E/FaWCku4LodY/s1600-h/nuevas-fotos.jpg">3.bp.blogspot.com</a> </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/pe.png" alt="" title="" width="16" border="0" height="11">&nbsp; Ayacucho arrived from <a href="http://www.google.com.pe/url?sa=t&amp;source=web&amp;ct=res&amp;cd=1&amp;ved=0CAYQFjAA&amp;url=http%3A%2F%2Fjc-mouse.blogspot.com%2F2009%2F12%2Fcargar-imagenes-ej-java-mysql-con.html&amp;rct=j&amp;q=como+cargar+una+foto+de+tipo+image+desde+SQL+++a+netbean&amp;ei=admWS8iVFdL28QaZmJBE&amp;usg">google.com.pe</a> on "<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">mouse: Cargar imagenes en java + mysql con netbeans</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/ec.png" alt="" title="" width="16" border="0" height="11">&nbsp; Machala, El Oro arrived from <a href="http://www.google.com.ec/url?sa=t&amp;source=web&amp;ct=res&amp;cd=3&amp;ved=0CA4QFjAC&amp;url=http%3A%2F%2Fjc-mouse.blogspot.com%2F2009%2F12%2Factualizarupdate-registros-de-la-base.html&amp;rct=j&amp;q=refrescar+la+base+de+datos+desde+netbeans&amp;ei=rNaWS96xDdSg8AaihN0d&amp;usg=AFQjCNHBBp">google.com.ec</a> on "<a href="http://jc-mouse.blogspot.com/2009/12/actualizarupdate-registros-de-la-base.html">mouse: Actualizar/update registros de la base de datos con netbeans</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/co.png" alt="" title="" width="16" border="0" height="11">&nbsp; Colombia arrived from <a href="http://www.google.com.co/search?hl=es&amp;source=hp&amp;q=voobys.com&amp;btnG=Buscar+con+Google&amp;meta=&amp;aq=f&amp;oq=">google.com.co</a> on "<a href="http://jc-mouse.blogspot.com/2009/10/descargar-video-de-youtube-con.html">mouse: Descargar video de youtube con voobys.com</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/co.png" alt="" title="" width="16" border="0" height="11">&nbsp; Bogotá, Cundinamarca arrived from <a href="http://www.google.com/search?hl=es&amp;ei=09WWS7mRC6LolAfxoOHeDQ&amp;sa=X&amp;oi=spell&amp;resnum=0&amp;ct=result&amp;cd=1&amp;ved=0CAUQBSgA&amp;q=frases+palindromes+en+java+usando+char+at&amp;spell=1">google.com</a> on "<a href="http://jc-mouse.blogspot.com/2009/12/ejercicio-resuelto-palindromo-en-java.html">mouse: Ejercicio resuelto: Palindromo en java</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/mx.png" alt="" title="" width="16" border="0" height="11">&nbsp; Zapopan, Jalisco arrived on "<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">mouse: Cargar imagenes en java + mysql con netbeans</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/uy.png" alt="" title="" width="16" border="0" height="11">&nbsp; Montevideo left "<a href="http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html">mouse: Cargar imagenes en java + mysql con netbeans</a>" via <a href="http://4.bp.blogspot.com/_aQGkfw6J-yo/SxqIKQaGrhI/AAAAAAAAB3M/W8KTAMrb-H8/s1600-h/interfaz-foto.jpg">4.bp.blogspot.com</a> </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/ar.png" alt="" title="" width="16" border="0" height="11">&nbsp; Mendoza arrived from <a href="http://www.google.com.ar/search?q=como+elimino+un+proyecto+en+netbeans&amp;ie=utf-8&amp;oe=utf-8&amp;aq=t&amp;rls=org.mozilla:es-ES:official&amp;client=firefox-a">google.com.ar</a> on "<a href="http://jc-mouse.blogspot.com/2009/12/base-de-datos-netbeans-mysql-proyecto.html">mouse: Base de Datos + Netbeans + MySQL (Proyecto Completo)</a>" </td></tr> <tr><td class="FJ_Line"> <img src="cargar-imagenes-ej-java-mysql-con_files/mx.png" alt="" title="" width="16" border="0" height="11">&nbsp; Jiutepec, Morelos arrived from <a href="http://www.google.es/search?q=MODELOS+SEMANTICOS&amp;hl=es&amp;adkw=AELymgXEvn0085-r3XRRC6qtddhaNo8_iYsMkfgTwzruFed5NGffonXw8GJcSLQmQKH8fbeKbArbEel0UxShBEMy7axB4vB__ey8kRceO-5i8mfcrZWqwJfKpxr_JyUvPCL4a_AIT3jf_dE-hvCAngEmbQbkhVPCFW8TsNhj6Yam9FzWJJ3pJ4mTH3QOdid-7HW">google.es</a> on "<a href="http://jc-mouse.blogspot.com/2009/12/modelos-semanticos.html">mouse: Modelos semánticos</a>" </td></tr> <tr><td class="FJ_Line" style="margin: 0px; padding: 0px;"> <div id="FJ_TrafLinks_traf"> <div style="margin: 3px 0px 5px; text-align: center;"> <center> <a href="http://live.feedjit.com/live/jc-mouse.blogspot.com/">Watch in Real-Time</a> </center> </div> <div style="padding: 0px; text-align: right;"> <a href="#" style="font-size: 10px;" onclick="this.parentNode.style.display='none'; document.getElementById('FJ_mnuDiv9703062').style.display='block'; return false;">Options&gt;&gt;</a>&nbsp; </div> <div style="padding: 5px 0px 5px 5px; display: none;" id="FJ_mnuDiv9703062"> ∙&nbsp;<a href="http://feedjit.com/changeLocation/">Change your Location</a><br> ∙&nbsp;<a href="#" onclick="fjit.ignoreMe(this);return false;">Ignore my browser</a> <br> ∙&nbsp;<a href="http://feedjit.com/stats/jc-mouse.blogspot.com/map/">Live Traffic Map</a><br> ∙&nbsp;<a href="http://feedjit.com/stats/jc-mouse.blogspot.com/toppages/">Popular Pages Today</a><br> </div> </div> </td></tr> <tr><td> <div class="FJ_TrafFoot" id="FJ_TrafFoot_traf"> <center><a href="http://feedjit.com/join/"><img src="cargar-imagenes-ej-java-mysql-con_files/clickToGetFeedjit.png" style="margin: 0pt; padding: 0pt;" title="Click to Get Live Traffic for your Blog or Website" width="160" border="0" height="20"></a></center> </div> </td></tr> </tbody></table> </td></tr> </tbody></table> <iframe src="cargar-imagenes-ej-java-mysql-con_files/tf.htm" style="border: medium none ;" width="0" height="0"></iframe> </div><noscript><a href="http://feedjit.com/">Feedjit Live Blog Stats</a></noscript>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML7&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML7"));' target="configHTML7" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class="clear">&nbsp;</div>
+</div>
+<!-- end content-wrapper -->
+<div id="footer-wrapper">
+<div class="footer section" id="footer"></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+</div>
+<div id="lower">
+<div id="lower-wrapper">
+<div id="lowerbar-wrapper">
+<div class="lowerbar section" id="lowerbar1"><div class="widget HTML" id="HTML9">
+<h2 class="title">Y quien soy yo</h2>
+<div class="widget-content">
+cuando lo descubra lo publico...
+"La verdadera locura quizá no sea otra cosa que la sabiduría misma que,
+cansada de descubrir las vergüenzas del mundo, ha tomado la inteligente
+resolución de volverse loca."
+-Poeta alemán-
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML9&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML9"));' target="configHTML9" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<div id="lowerbar-wrapper">
+<div class="lowerbar section" id="lowerbar2"><div class="widget HTML" id="HTML2">
+<div class="widget-content">
+<a id="clustrMapsLink" href="http://www3.clustrmaps.com/counter/maps.php?url=http://jc-mouse.blogspot.com/"><img id="clustrMapsImg" style="border: 0px none ;" alt="Locations of visitors to this page" src="cargar-imagenes-ej-java-mysql-con_files/index2.jpeg" onerror="this.onerror=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com';" title="Locations of visitors to this page">
+</a>
+</div>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=HTML&amp;widgetId=HTML2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML2"));' target="configHTML2" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div></div>
+</div>
+<div id="lowerbar-wrapper">
+<div class="lowerbar section" id="lowerbar3"><div class="widget AdSense" id="AdSense2">
+<div class="widget-content">
+<script type="text/javascript"><!--
+google_ad_client="pub-1333258237238083";
+google_ad_host="pub-1556223355139109";
+google_ad_width=336;
+google_ad_height=280;
+google_ad_format="336x280_as";
+google_ad_type="text_image";
+google_ad_host_channel="00000";
+google_color_border="252423";
+google_color_bg="252423";
+google_color_link="5388CF";
+google_color_url="B4D0DC";
+google_color_text="F0F0F0";
+//--></script>
+<script type="text/javascript" src="cargar-imagenes-ej-java-mysql-con_files/show_ads.js">
+</script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: inline-table; height: 280px; position: relative; visibility: visible; width: 336px;"><ins style="border: medium none ; margin: 0pt; padding: 0pt; display: block; height: 280px; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame3" marginheight="0" marginwidth="0" name="google_ads_frame" src="cargar-imagenes-ej-java-mysql-con_files/ads_003.htm" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" width="336" frameborder="0" height="280" scrolling="no"></iframe></ins></ins>
+<div class="clear"></div>
+<span class="widget-item-control">
+<span class="item-control blog-admin">
+<a class="quickedit" href="http://www.blogger.com/rearrange?blogID=4428182206738080209&amp;widgetType=AdSense&amp;widgetId=AdSense2&amp;action=editWidget" onclick='return _WidgetManager._PopupConfig(document.getElementById("AdSense2"));' target="configAdSense2" title="Editar">
+<img alt="" src="cargar-imagenes-ej-java-mysql-con_files/icon18_wrench_allbkg.png" width="18" height="18">
+</a>
+</span>
+</span>
+<div class="clear"></div>
+</div>
+</div></div>
+</div>
+<div style="clear: both;"></div>
+</div>
+</div><!-- end lower-wrapper -->
+<div id="credit">
+<p><a href="http://jc-mouse.blogspot.com/">mouse</a> Copyright © 2009 Community is Designed by <a href="http://www.bietemplates.com/" target="_blank">Free Blogger Template</a></p>
+</div>
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</script><script type="text/javascript" src="cargar-imagenes-ej-java-mysql-con_files/2160701936-widgets.js"></script>
+<script type="text/javascript">
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('http://www.blogger.com/rearrange?blogID=4428182206738080209', 'http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html','4428182206738080209');
+_WidgetManager._SetPageActionUrl('http://www.blogger.com/display?blogID=4428182206738080209', 'gBBfkFXAh5BFS-lC6VGP54nEml0:1268124765751');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'title': 'mouse', 'pageType': 'item', 'url': 'http://jc-mouse.blogspot.com/2009/12/cargar-imagenes-ej-java-mysql-con.html', 'homepageUrl': 'http://jc-mouse.blogspot.com/', 'enabledCommentProfileImages': true, 'searchLabel': '', 'searchQuery': '', 'pageName': 'Cargar imagenes en java + mysql con netbeans', 'pageTitle': 'mouse: Cargar imagenes en java + mysql con netbeans', 'encoding': 'UTF-8', 'locale': 'es', 'isPrivate': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42mouse - Atom\42 href\75\42http://jc-mouse.blogspot.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42mouse - RSS\42 href\75\42http://jc-mouse.blogspot.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42mouse - Atom\42 href\75\42http://www.blogger.com/feeds/4428182206738080209/posts/default\42 /\76\n\74link rel\75\42EditURI\42 type\75\42application/rsd+xml\42 title\75\42RSD\42 href\75\42http://www.blogger.com/rsd.g?blogID\0754428182206738080209\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42mouse - Atom\42 href\75\42http://jc-mouse.blogspot.com/feeds/5997900424248699190/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var a\75window;function e(b){this.t\75{};this.tick\75function(c,h,d){d\75d?d:(new Date).getTime();this.t[c]\75[d,h]};this.tick(\42start\42,null,b)}var f\75new e;a.jstiming\75{Timer:e,load:f};try{a.jstiming.pt\75a.chrome\46\46a.chrome.csi?Math.floor(a.chrome.csi().pageT):a.gtbExternal\46\46a.gtbExternal.pageT()||a.external\46\46a.external.pageT}catch(g){};a.tickAboveFold\75function(b){b\75b;var c\0750;if(b.offsetParent){do c+\75b.offsetTop;while(b\75b.offsetParent)}b\75c;b\74\075750\46\46a.jstiming.load.tick(\42aft\42)};var i\75false;function j(){if(!i){i\75true;a.jstiming.load.tick(\42firstScrollTime\42)}}a.addEventListener?a.addEventListener(\42scroll\42,j,false):a.attachEvent(\42onscroll\42,j); })();\74/script\076'}}]);
+_WidgetManager._SetSystemMarkup({'layout': {'varName': '', 'template': '\74div class\75\47widget-wrap1\47\76\n\74div class\75\47widget-wrap2\47\76\n\74div class\75\47widget-wrap3\47\76\n\74div class\75\47widget-content\47\76\n\74div class\75\47layout-title\47\76\74data:layout-title\76\74/data:layout-title\76\74/div\76\n\74a class\75\47editlink\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 target\75\47chooseWidget\47\76\74data:edit-link\76\74/data:edit-link\76\74/a\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'quickedit': {'varName': '', 'template': '\74div class\75\47clear\47\76\74/div\76\n\74span class\75\47widget-item-control\47\76\n\74span class\75\47item-control blog-admin\47\76\n\74a class\75\47quickedit\47 expr:href\75\47data:widget.quickEditUrl\47 expr:onclick\75\47\46quot;return _WidgetManager._PopupConfig(document.getElementById(\\\46quot;\46quot; +       data:widget.instanceId + \46quot;\\\46quot;));\46quot;\47 expr:target\75\47\46quot;config\46quot; + data:widget.instanceId\47 expr:title\75\47data:edit-link\47\76\n\74img alt\75\47\47 height\75\04718\47 src\75\47http://img1.blogblog.com/img/icon18_wrench_allbkg.png\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/span\76\n\74div class\75\47clear\47\76\74/div\076'}, 'all-head-content': {'varName': 'page', 'template': '\74data:blog.latencyHeadScript\76\74/data:blog.latencyHeadScript\76\n\74meta expr:content\75\47\46quot;text/html; charset\75\46quot; + data:page.encoding\47 http-equiv\75\47Content-Type\47/\76\n\74meta content\75\47true\47 name\75\47MSSmartTagsPreventParsing\47/\76\n\74meta content\75\47blogger\47 name\75\47generator\47/\76\n\74link href\75\47http://www.blogger.com/favicon.ico\47 rel\75\47icon\47 type\75\47image/vnd.microsoft.icon\47/\76\n\74link expr:href\75\47data:blog.url\47 rel\75\47canonical\47/\76\n\74data:blog.feedLinks\76\74/data:blog.feedLinks\76\n\74data:blog.meTag\76\74/data:blog.meTag\76\n\74data:blog.openIdOpTag\76\74/data:blog.openIdOpTag\076'}});
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML2', 'lowerbar2',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AdSenseView', new _WidgetInfo('AdSense2', 'lowerbar3',{'main': {'varName': '', 'template': '\74div class\75\47widget-content\47\76\n\74data:adCode\76\74/data:adCode\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('AdSense2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML9', 'lowerbar1',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML9'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ImageView', new _WidgetInfo('Image1', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:link !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:link\47\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/b:if\76\n\74br/\76\n\74b:if cond\75\47data:caption !\75 \46quot;\46quot;\47\76\n\74span class\75\47caption\47\76\74data:caption\76\74/data:caption\76\74/span\76\n\74/b:if\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('Image1'), {'resize': false}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label2', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div expr:class\75\47\46quot;widget-content \46quot; + data:display + \46quot;-label-widget-content\46quot;\47\76\n\74b:if cond\75\47data:display \75\75 \46quot;list\46quot;\47\76\n\74ul\76\n\74b:loop values\75\47data:labels\47 var\75\47label\47\76\n\74li\76\n\74b:if cond\75\47data:blog.url \75\75 data:label.url\47\76\n\74span expr:dir\75\47data:blog.languageDirection\47\76\74data:label.name\76\74/data:label.name\76\74/span\76\n\74b:else\76\74/b:else\76\n\74a expr:dir\75\47data:blog.languageDirection\47 expr:href\75\47data:label.url\47\76\74data:label.name\76\74/data:label.name\76\74/a\76\n\74/b:if\76\n\74b:if cond\75\47data:showFreqNumbers\47\76\n\74span dir\75\47ltr\47\76(\74data:label.count\76\74/data:label.count\76)\74/span\76\n\74/b:if\76\n\74/li\76\n\74/b:loop\76\n\74/ul\76\n\74b:else\76\74/b:else\76\n\74b:loop values\75\47data:labels\47 var\75\47label\47\76\n\74span expr:class\75\47\46quot;label-size-\46quot; + data:label.cssSize\47\76\n\74b:if cond\75\47data:blog.url \75\75 data:label.url\47\76\n\74span expr:dir\75\47data:blog.languageDirection\47\76\74data:label.name\76\74/data:label.name\76\74/span\76\n\74b:else\76\74/b:else\76\n\74a expr:dir\75\47data:blog.languageDirection\47 expr:href\75\47data:label.url\47\76\74data:label.name\76\74/data:label.name\76\74/a\76\n\74/b:if\76\n\74b:if cond\75\47data:showFreqNumbers\47\76\n\74span dir\75\47ltr\47\76(\74data:label.count\76\74/data:label.count\76)\74/span\76\n\74/b:if\76\n\74/span\76\n\74/b:loop\76\n\74/b:if\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('Label2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers2', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74b:if cond\75\47data:codeSnippet !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:totalFollowerCount !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76 (\74data:totalFollowerCount\76\74/data:totalFollowerCount\76)\74/h2\76\n\74/b:if\76\n\74/b:if\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;-wrapper\46quot;\47\76\n\74b:if cond\75\47data:codeSnippet !\75 \46quot;\46quot;\47\76\n\74div style\75\47margin-right:2px;\47\76\n\74data:codeSnippet\76\74/data:codeSnippet\76\n\74/div\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:totalFollowerCount \75\75 \46quot;\46quot;\47\76\n\74span class\75\47item-control following-not-admin\47\76\n\74b\76\74data:failureSnippet\76\74/data:failureSnippet\76\74/b\76\n\74/span\76\n\74span class\75\47item-control blog-admin\47\76\n\74b\76\74data:adminFailureSnippet\76\74/data:adminFailureSnippet\76\74/b\76\n\74/span\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:followingLinkPresent\47\76\n\74div class\75\47follow-this profile-link item-control following-follow-this\47\76\n\74a expr:href\75\47\46quot;javascript:_FollowersView._openPopup(\\\46quot;\46quot; + data:followUri + \46quot;\\\46quot;);\46quot;\47\76\n\74data:followThisMessage\76\74/data:followThisMessage\76\n\74/a\76\n\74/div\76\n\74div class\75\47follow-this profile-link item-control following-stop-following-this\47\76\n\74a expr:href\75\47\46quot;javascript:_FollowersView._openPopup(\\\46quot;\46quot; + data:followUri + \46quot;\\\46quot;);\46quot;\47\76\n\74data:stopFollowingMessage\76\74/data:stopFollowingMessage\76\n\74/a\76\n\74/div\76\n\74/b:if\76\n\74div class\75\47followers-grid\47\76\n\74b:if cond\75\47data:totalFollowerCount \75\75 0\47\76\n\74div class\75\47profile-link item-control following-follow-this\47\76\n\74data:emptyFollowersMessage\76\74/data:emptyFollowersMessage\76\n\74/div\76\n\74/b:if\76\n\74b:loop values\75\47data:followers\47 var\75\47follower\47\76\n\74div class\75\47follower\47\76\n\74a expr:href\75\47data:follower.profileUrl\47 expr:title\75\47data:follower.displayName\47 rel\75\47nofollow\47\76\n\74img class\75\47follower-img\47 expr:alt\75\47data:follower.displayName\47 expr:height\75\47data:follower.imageHeight\47 expr:onerror\75\47\46quot;this.onerror\75null;this.src\75\\\46quot;\46quot; + data:anonFollowerImageUrl + \46quot;\\\46quot;;\46quot;\47 expr:onload\75\47\46quot;setAttributeOnload(this, \\\46quot;src\\\46quot;, \\\46quot;\46quot; + data:follower.imageUrl + \46quot;\\\46quot;)\46quot;\47 expr:width\75\47data:follower.imageWidth\47 src\75\47http://img1.blogblog.com/img/blank.gif\47/\76\n\74/a\76\n\74/div\76\n\74/b:loop\76\n\74div class\75\47clear\47\76\74/div\76\n\74/div\76\n\74div class\75\47followers-canvas profile-link\47\76\n\74data:followersFooterMessage\76\74/data:followersFooterMessage\76\n\74span class\75\47item-control following-not-admin\47\76\n\74a expr:href\75\47data:followersUri\47\76\n\74data:viewAllMessage\76\74/data:viewAllMessage\76\n\74/a\76\n\74/span\76\n\74span class\75\47item-control blog-admin\47\76\n\74a expr:href\75\47data:manageFollowersUri\47\76\n\74data:manageFollowersMessage\76\74/data:manageFollowersMessage\76\n\74/a\76\n\74/span\76\n\74/div\76\n\74/b:if\76\n\74/b:if\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('Followers2'), {'title': 'Followers', 'codeSnippet': '\74script type\75\42text/javascript\42\76\n        if (!window.google || !google.friendconnect) {\n          document.write(\47\74script type\75\42text/javascript\42\47 +\n              \47src\75\42http://www.google.com/friendconnect/script/friendconnect.js\42\76\47 +\n              \47\74/scr\47 + \47ipt\76\47);\n        }\n      \74/script\76\n\74script type\75\42text/javascript\42\76\n      if (!window.registeredBloggerCallbacks) {\n        window.registeredBloggerCallbacks \75 true;\n\n        \n\n        \n        gadgets.rpc.register(\47requestReload\47, function() {\n          document.location.reload();\n        });\n\n        \n        gadgets.rpc.register(\47requestSignOut\47, function(siteId) {\n          \n          google.friendconnect.container.openSocialSiteId \75 siteId;\n          google.friendconnect.requestSignOut();\n        });\n      }\n    \74/script\76\n\74script type\75\42text/javascript\42\76\n    \n    function registerGetBlogUrls() {\n      gadgets.rpc.register(\47getBlogUrls\47, function() {\n        var holder \75 {};\n        \n          \n            \n            \n              holder.currentPost \75 \42http://www.blogger.com/feeds/4428182206738080209/posts/default/5997900424248699190\42;\n            \n            \n            \n              holder.currentComments \75 \42http://www.blogger.com/feeds/4428182206738080209/5997900424248699190/comments/default\42;\n            \n            holder.currentPostUrl \75 \42\42;\n            holder.currentPostId \75 5997900424248699190\n          \n          \n          \n            holder.postFeed \75 \42http://www.blogger.com/feeds/4428182206738080209/posts/default\42;\n          \n          \n          \n            holder.commentFeed \75 \42http://www.blogger.com/feeds/4428182206738080209/comments/default\42;\n          \n          holder.currentBlogUrl \75 \42http://jc-mouse.blogspot.com/\42;\n          holder.currentBlogId \75 \0424428182206738080209\42;\n        \n        return holder;\n      });\n    }\n  \74/script\76\n\74script type\75\42text/javascript\42\76\n  if (!window.registeredCommonBloggerCallbacks) {\n    window.registeredCommonBloggerCallbacks \75 true;\n\n    gadgets.rpc.register(\47resize_iframe\47, function(height) {\n      var el \75 document.getElementById(this[\47f\47]);\n      if (el) {\n        el.style.height \75 height + \47px\47;\n      }\n    });\n\n    // We don\47t do anything w/ this, but don\47t let it bubble up and cause an\n    // exception\n    // TODO(henrywong): Don\47t just one-off this, fix at a more comprehensive\n    // level.\n    gadgets.rpc.register(\47set_pref\47, function() {});\n\n    \n    gadgets.rpc.register(\47registerGadgetForRpcs\47, function(gadgetDomain, iframeName) {\n      // TODO(sauravshah): We don\47t need this. Remove it from the google.Blog api\n    });\n\n    registerGetBlogUrls();\n  }\n  \74/script\76\n\74div id\75\42div-17gm8vb4a0hzj\42 style\75\42width: 100%; \42\76\74/div\76\n\74script type\75\42text/javascript\42\76\n    var skin \75 {};\n    skin[\47FACE_SIZE\47] \75 \04732\47;\n    skin[\47HEIGHT\47] \75 \042260\42;\n    skin[\47TITLE\47] \75 \42Followers\42;\n    skin[\47BORDER_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47ENDCAP_TEXT_COLOR\47] \75 \42#000000\42;\n    skin[\47ENDCAP_LINK_COLOR\47] \75 \42#000000\42;\n    skin[\47ALTERNATE_BG_COLOR\47] \75 \42transparent\42;\n    \n    skin[\47CONTENT_BG_COLOR\47] \75 \42transparent\42;\n    skin[\47CONTENT_LINK_COLOR\47] \75 \42#000000\42;\n    skin[\47CONTENT_TEXT_COLOR\47] \75 \42#000000\42;\n    skin[\47CONTENT_SECONDARY_LINK_COLOR\47] \75 \42#FFFFFF\42;\n    skin[\47CONTENT_SECONDARY_TEXT_COLOR\47] \75 \42#000000\42;\n    skin[\47CONTENT_HEADLINE_COLOR\47] \75 \42#000000\42;\n    skin[\47FONT_FACE\47] \75 \42Arial\42;\n    google.friendconnect.container.setParentUrl(\42/\42);\n    google.friendconnect.container[\42renderMembersGadget\42](\n    {id: \42div-17gm8vb4a0hzj\42,\n     height: 260,\n     \n     \n     \n     site: \04210195970019756336182\42,\n      \n     locale: \47es\47 },\n     skin);\n  \74/script\076'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ImageView', new _WidgetInfo('Image2', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:link !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:link\47\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/b:if\76\n\74br/\76\n\74b:if cond\75\47data:caption !\75 \46quot;\46quot;\47\76\n\74span class\75\47caption\47\76\74data:caption\76\74/data:caption\76\74/span\76\n\74/b:if\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('Image2'), {'resize': false}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML3', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML3'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ImageView', new _WidgetInfo('Image3', 'midsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74b:if cond\75\47data:link !\75 \46quot;\46quot;\47\76\n\74a expr:href\75\47data:link\47\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74img expr:alt\75\47data:title\47 expr:height\75\47data:height\47 expr:id\75\47data:widget.instanceId + \46quot;_img\46quot;\47 expr:src\75\47data:sourceUrl\47 expr:width\75\47data:width\47/\76\n\74/b:if\76\n\74br/\76\n\74b:if cond\75\47data:caption !\75 \46quot;\46quot;\47\76\n\74span class\75\47caption\47\76\74data:caption\76\74/data:caption\76\74/span\76\n\74/b:if\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('Image3'), {'resize': false}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'headerleft'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML4', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML4'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML10', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML10'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML5', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML5'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML12', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML12'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML11', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML11'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_LabelView', new _WidgetInfo('Label99', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74script src\75\47http://halotemplates.s3.amazonaws.com/wp-cumulus-example/swfobject.js\47 type\75\47text/javascript\47\76\74/script\76\n\74div id\75\47flashcontent\47\76Blogumulus by \74a href\75\47http://www.roytanck.com/\47\76Roy Tanck\74/a\76 and \74a href\75\47http://www.bloggerbuster.com\47\76Amanda Fazani\74/a\76\74/div\76\n\74script type\75\47text/javascript\47\76\nvar so \75 new SWFObject(\46quot;http://halotemplates.s3.amazonaws.com/wp-cumulus-example/tagcloud.swf\46quot;, \46quot;tagcloud\46quot;, \46quot;240\46quot;, \46quot;300\46quot;, \46quot;7\46quot;, \46quot;#ffffff\46quot;);\n// uncomment next line to enable transparency\n//so.addParam(\46quot;wmode\46quot;, \46quot;transparent\46quot;);\nso.addVariable(\46quot;tcolor\46quot;, \46quot;0x333333\46quot;);\nso.addVariable(\46quot;mode\46quot;, \46quot;tags\46quot;);\nso.addVariable(\46quot;distr\46quot;, \46quot;true\46quot;);\nso.addVariable(\46quot;tspeed\46quot;, \46quot;100\46quot;);\nso.addVariable(\46quot;tagcloud\46quot;, \46quot;\74tags\76\74b:loop values\75\47data:labels\47 var\75\47label\47\76\74a expr:href\75\47data:label.url\47 style\75\04712\47\76\74data:label.name\76\74/data:label.name\76\74/a\76\74/b:loop\76\74/tags\76\46quot;);\nso.addParam(\46quot;allowScriptAccess\46quot;, \46quot;always\46quot;);\nso.write(\46quot;flashcontent\46quot;);\n\74/script\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('Label99'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_AdSenseView', new _WidgetInfo('AdSense1', 'rightsidebar',{'main': {'varName': '', 'template': '\74div class\75\47widget-content\47\76\n\74data:adCode\76\74/data:adCode\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}}, document.getElementById('AdSense1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title\47\76\n\74h2\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74div id\75\47ArchiveList\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_ArchiveList\46quot;\47\76\n\74b:if cond\75\47data:style \75\75 \46quot;HIERARCHY\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;FLAT\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47flat\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:style \75\75 \46quot;MENU\46quot;\47\76\n\74b:include data\75\47data\47 name\75\47menu\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\76\n\74/div\076'}, 'flat': {'varName': 'data', 'template': '\74ul class\75\47flat\47\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74li class\75\47archivedate\47\76\n\74a expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76 (\74data:i.post-count\76\74/data:i.post-count\76)\n      \74/li\76\n\74/b:loop\76\n\74/ul\076'}, 'menu': {'varName': 'data', 'template': '\74select expr:id\75\47data:widget.instanceId + \46quot;_ArchiveMenu\46quot;\47\76\n\74option value\75\47\47\76\74data:title\76\74/data:title\76\74/option\76\n\74b:loop values\75\47data:data\47 var\75\47i\47\76\n\74option expr:value\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76 (\74data:i.post-count\76\74/data:i.post-count\76)\74/option\76\n\74/b:loop\76\n\74/select\076'}, 'interval': {'varName': 'intervalData', 'template': '\74b:loop values\75\47data:intervalData\47 var\75\47i\47\76\n\74ul class\75\47hierarchy\47\76\n\74li expr:class\75\47\46quot;archivedate \46quot; + data:i.expclass\47\76\n\74b:include data\75\47i\47 name\75\47toggle\47\76\74/b:include\76\n\74a class\75\47post-count-link\47 expr:href\75\47data:i.url\47\76\74data:i.name\76\74/data:i.name\76\74/a\76\n\74span class\75\47post-count\47 dir\75\47ltr\47\76(\74data:i.post-count\76\74/data:i.post-count\76)\74/span\76\n\74b:if cond\75\47data:i.data\47\76\n\74b:include data\75\47i.data\47 name\75\47interval\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:i.posts\47\76\n\74b:include data\75\47i.posts\47 name\75\47posts\47\76\74/b:include\76\n\74/b:if\76\n\74/li\76\n\74/ul\76\n\74/b:loop\076'}, 'toggle': {'varName': 'interval', 'template': '\74b:if cond\75\47data:interval.toggleId\47\76\n\74b:if cond\75\47data:interval.expclass \75\75 \46quot;expanded\46quot;\47\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +       \46quot;\46amp;dir\75close\46amp;toggle\75\46quot; + data:interval.toggleId +       \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy toggle-open\47\76\46#9660; \74/span\76\n\74/a\76\n\74b:else\76\74/b:else\76\n\74a class\75\47toggle\47 expr:href\75\47data:widget.actionUrl + \46quot;\46amp;action\75toggle\46quot; +         \46quot;\46amp;dir\75open\46amp;toggle\75\46quot; + data:interval.toggleId +         \46quot;\46amp;toggleopen\75\46quot; + data:toggleopen\47\76\n\74span class\75\47zippy\47\76\n\74b:if cond\75\47data:blog.languageDirection \75\75 \46quot;rtl\46quot;\47\76\n              \46#9668;\n            \74b:else\76\74/b:else\76\n              \46#9658;\n            \74/b:if\76\n\74/span\76\n\74/a\76\n\74/b:if\76\n\74/b:if\076'}, 'posts': {'varName': 'posts', 'template': '\74ul class\75\47posts\47\76\n\74b:loop values\75\47data:posts\47 var\75\47i\47\76\n\74li\76\74a expr:href\75\47data:i.url\47\76\74data:i.title\76\74/data:i.title\76\74/a\76\74/li\76\n\74/b:loop\76\n\74/ul\076'}}, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML7', 'rightsidebar',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML7'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main',{'main': {'varName': 'top', 'template': '\74div class\75\47blog-posts hfeed\47\76\n\74b:include data\75\47top\47 name\75\47status-message\47\76\74/b:include\76\n\74data:adStart\76\74/data:adStart\76\n\74b:loop values\75\47data:posts\47 var\75\47post\47\76\n\74b:if cond\75\47data:post.dateHeader\47\76\n\74h2 class\75\47date-header\47\76\74data:post.dateHeader\76\74/data:post.dateHeader\76\74/h2\76\n\74/b:if\76\n\74b:include data\75\47post\47 name\75\47post\47\76\74/b:include\76\n\74b:if cond\75\47data:blog.pageType \75\75 \46quot;item\46quot;\47\76\n\74b:include data\75\47post\47 name\75\47comments\47\76\74/b:include\76\n\74/b:if\76\n\74b:if cond\75\47data:post.includeAd\47\76\n\74data:adEnd\76\74/data:adEnd\76\n\74data:adCode\76\74/data:adCode\76\n\74data:adStart\76\74/data:adStart\76\n\74/b:if\76\n\74/b:loop\76\n\74data:adEnd\76\74/data:adEnd\76\n\74/div\76\n\74b:include name\75\47nextprev\47\76\74/b:include\76\n\74b:include name\75\47feedLinks\47\76\74/b:include\76\n\74b:if cond\75\47data:top.showStars\47\76\n\74script src\75\47http://www.google.com/jsapi\47 type\75\47text/javascript\47\76\74/script\76\n\74script type\75\47text/javascript\47\76\n      google.load(\46quot;annotations\46quot;, \46quot;1\46quot;, {\46quot;locale\46quot;: \46quot;\74data:top.languageCode\76\74/data:top.languageCode\76\46quot;});\n      function initialize() {\n        google.annotations.setApplicationId(\74data:top.blogspotReviews\76\74/data:top.blogspotReviews\76);\n        google.annotations.createAll();\n        google.annotations.fetch();\n      }\n      google.setOnLoadCallback(initialize);\n    \74/script\76\n\74/b:if\076'}, 'nextprev': {'varName': '', 'template': '\74div class\75\47blog-pager\47 id\75\47blog-pager\47\76\n\74b:if cond\75\47data:newerPageUrl\47\76\n\74span id\75\47blog-pager-newer-link\47\76\n\74a class\75\47blog-pager-newer-link\47 expr:href\75\47data:newerPageUrl\47 expr:id\75\47data:widget.instanceId + \46quot;_blog-pager-newer-link\46quot;\47 expr:title\75\47data:newerPageTitle\47\76\74data:newerPageTitle\76\74/data:newerPageTitle\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:if cond\75\47data:olderPageUrl\47\76\n\74span id\75\47blog-pager-older-link\47\76\n\74a class\75\47blog-pager-older-link\47 expr:href\75\47data:olderPageUrl\47 expr:id\75\47data:widget.instanceId + \46quot;_blog-pager-older-link\46quot;\47 expr:title\75\47data:olderPageTitle\47\76\74data:olderPageTitle\76\74/data:olderPageTitle\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:if cond\75\47data:blog.homepageUrl !\75 data:blog.url\47\76\n\74a class\75\47home-link\47 expr:href\75\47data:blog.homepageUrl\47\76\74data:homeMsg\76\74/data:homeMsg\76\74/a\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:newerPageUrl\47\76\n\74a class\75\47home-link\47 expr:href\75\47data:blog.homepageUrl\47\76\74data:homeMsg\76\74/data:homeMsg\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/div\76\n\74div class\75\47clear\47\76\74/div\076'}, 'post': {'varName': 'post', 'template': '\74div class\75\47post hentry\47\76\n\74a expr:name\75\47data:post.id\47\76\74/a\76\n\74b:if cond\75\47data:post.title\47\76\n\74h3 class\75\47post-title entry-title\47\76\n\74b:if cond\75\47data:post.link\47\76\n\74a expr:href\75\47data:post.link\47\76\74data:post.title\76\74/data:post.title\76\74/a\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:post.url\47\76\n\74a expr:href\75\47data:post.url\47\76\74data:post.title\76\74/data:post.title\76\74/a\76\n\74b:else\76\74/b:else\76\n\74data:post.title\76\74/data:post.title\76\n\74/b:if\76\n\74/b:if\76\n\74/h3\76\n\74/b:if\76\n\74div class\75\47post-header-line-1\47\76\n\74div class\75\47postmeta\47\76\n\74span class\75\47post-author vcard\47\76\n\74b:if cond\75\47data:top.showAuthor\47\76\n\74span class\75\47author\47 style\75\47background:;Padding-left:0px; font:lucida sans unicode; font-size:11px;\47\76\n\74b:if cond\75\47data:top.showAuthor\47\76\n          Author: \74span class\75\47fn\47\76\74data:post.author\76\74/data:post.author\76\74/span\76\n\74/b:if\76| Posted at: \74data:post.timestamp\76\74/data:post.timestamp\76 |\n\74span class\75\47post-labels\47\76\n\74b:if cond\75\47data:post.labels\47\76\n\74data:postLabelsLabel\76\74/data:postLabelsLabel\76\n\74b:loop values\75\47data:post.labels\47 var\75\47label\47\76\n\74a expr:href\75\47data:label.url\47 rel\75\47tag\47\76\74data:label.name\76\74/data:label.name\76\74/a\76\74b:if cond\75\47data:label.isLast !\75 \46quot;true\46quot;\47\76,\74/b:if\76\n\74b:if cond\75\47data:blog.pageType \75\75 \46quot;item\46quot;\47\76\n\74script expr:src\75\47\46quot;/feeds/posts/default/-/\46quot; + data:label.name + \46quot;?alt\75json-in-script\46amp;callback\75related_results_labels\46amp;max-results\0755\46quot;\47 type\75\47text/javascript\47\76\74/script\76\n\74/b:if\76\n\74/b:loop\76\n\74/b:if\76\n|\n      \74/span\76\n\74b:if cond\75\47data:blog.url \75\75 data:blog.homepageUrl\47\76\n\74span class\75\47comment-link\47\76\n\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74a class\75\47comment-link\47 expr:href\75\47data:post.addCommentUrl\47 expr:onclick\75\47data:post.addCommentOnclick\47\76\74b:if cond\75\47data:post.numComments \75\75 1\47\0761 \74data:top.commentLabel\76\74/data:top.commentLabel\76\74b:else\76\74/b:else\76\74data:post.numComments\76\74/data:post.numComments\76\n\74data:top.commentLabelPlural\76\74/data:top.commentLabelPlural\76\74/b:if\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/span\76\n\74/b:if\76\n\74/span\76\n\74/b:if\76\n\74/span\76\n\74b:if cond\75\47data:post.emailPostUrl\47\76\n\74span class\75\47item-action\47\76\n\74a expr:href\75\47data:post.emailPostUrl\47 expr:title\75\47data:top.emailPostMsg\47\76\n\74img alt\75\47\47 class\75\47icon-action\47 height\75\04713\47 src\75\47http://www.blogger.com/img/icon18_email.gif\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/b:if\76\n\74b:include data\75\47post\47 name\75\47postQuickEdit\47\76\74/b:include\76\n\74/div\76\n\74/div\76\n\74div class\75\47post-body entry-content\47\76\n\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74div expr:id\75\47\46quot;summary\46quot; + data:post.id\47\76\74data:post.body\76\74/data:post.body\76\74/div\76\n\74script type\75\47text/javascript\47\76createSummaryAndThumb(\46quot;summary\74data:post.id\76\74/data:post.id\76\46quot;);\74/script\76\n\74span class\75\47rmlink\47 style\75\47float:right;padding-top:2px;\47\76\74a expr:href\75\47data:post.url\47\76\n\74img src\75\47http://3.bp.blogspot.com/_sunpK_FtO1E/SmLBFL8iCQI/AAAAAAAAAIY/AMxVeymd5ZQ/s1600/readmore.png\47/\76\74/a\76\74/span\76\n\74/b:if\76\n\74b:if cond\75\47data:blog.pageType \75\75 \46quot;item\46quot;\47\76\74data:post.body\76\74/data:post.body\76\74/b:if\76\n\74div style\75\47clear: both;\47\76\74/div\76\n\74/div\76\n\74div class\75\47post-footer\47\76\n\74div class\75\47post-footer-line post-footer-line-1\47\76\n\74/div\76\n\74div class\75\47post-footer-line post-footer-line-2\47\76\74/div\76\n\74div class\75\47post-footer-line post-footer-line-3\47 style\75\47border-top:1px dashed #f3f1eb;\47\76\74/div\76\n\74div class\75\47post-footer-line post-footer-line-3\47\76\74/div\76\n\74div class\75\47sexy-bookmarks\47\76\n\74ul class\75\47socials\47\76\n\74li class\75\47sexy-delicious\47\76\74a expr:href\75\47\46quot;http://del.icio.us/post?url\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-digg\47\76\74a expr:href\75\47\46quot; http://digg.com/submit?url\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-technorati\47\76\74a expr:href\75\47\46quot; http://technorati.com/faves?add\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-reddit\47\76\74a expr:href\75\47\46quot; http://www.reddit.com/submit?url\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-stumble\47\76\74a expr:href\75\47\46quot; http://www.stumbleupon.com/submit?url\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-facebook\47\76\74a expr:href\75\47\46quot; http://www.facebook.com/sharer.php?u\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-twitter\47\76\74a expr:href\75\47\46quot; http://twitthis.com/twit?url\75\46quot; + data:post.url + \46quot;\46amp;title\75\46quot; + data:post.title\47 target\75\47_blank\47\76\74/a\76\74/li\76\n\74li class\75\47sexy-syndicate\47\76\74a href\75\47http://feeds2.feedburner.com/YOUR-FEEDBURNER-ID\47 title\75\47Subscribe to RSS\47\76\74/a\76\74/li\76\n\74/ul\76\n\74span class\75\47sexy-rightside\47\76\74/span\76\74/div\76\n\74/div\76\n\74/div\076'}, 'postQuickEdit': {'varName': 'post', 'template': '\74b:if cond\75\47data:post.editUrl\47\76\n\74span expr:class\75\47\46quot;item-control \46quot; + data:post.adminClass\47\76\n\74a expr:href\75\47data:post.editUrl\47 expr:title\75\47data:top.editPostMsg\47\76\n\74img alt\75\47\47 class\75\47icon-action\47 height\75\04718\47 src\75\47http://www.blogger.com/img/icon18_edit_allbkg.gif\47 width\75\04718\47/\76\n\74/a\76\n\74/span\76\n\74/b:if\076'}, 'commentDeleteIcon': {'varName': 'comment', 'template': '\74span expr:class\75\47\46quot;item-control \46quot; + data:comment.adminClass\47\76\n\74a expr:href\75\47data:comment.deleteUrl\47 expr:title\75\47data:top.deleteCommentMsg\47\76\n\74img src\75\47http://www.blogger.com/img/icon_delete13.gif\47/\76\n\74/a\76\n\74/span\076'}, 'backlinkDeleteIcon': {'varName': 'backlink', 'template': '\74span expr:class\75\47\46quot;item-control \46quot; + data:backlink.adminClass\47\76\n\74a expr:href\75\47data:backlink.deleteUrl\47 expr:title\75\47data:top.deleteBacklinkMsg\47\76\n\74img src\75\47http://www.blogger.com/img/icon_delete13.gif\47/\76\n\74/a\76\n\74/span\076'}, 'comments': {'varName': 'post', 'template': '\74div class\75\47comments\47 id\75\47comments\47\76\n\74a name\75\47comments\47\76\74/a\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74h4\76\n\74b:if cond\75\47data:post.numComments \75\75 1\47\76\n          1 \74data:commentLabel\76\74/data:commentLabel\76:\n        \74b:else\76\74/b:else\76\n\74data:post.numComments\76\74/data:post.numComments\76\n\74data:commentLabelPlural\76\74/data:commentLabelPlural\76:\n        \74/b:if\76\n\74/h4\76\n\74b:if cond\75\47data:post.commentPagingRequired\47\76\n\74span class\75\47paging-control-container\47\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.oldestLinkUrl\47\76\74data:post.oldestLinkText\76\74/data:post.oldestLinkText\76\74/a\76\n          \46#160;\n          \74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.olderLinkUrl\47\76\74data:post.olderLinkText\76\74/data:post.olderLinkText\76\74/a\76\n          \46#160;\n          \74data:post.commentRangeText\76\74/data:post.commentRangeText\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newerLinkUrl\47\76\74data:post.newerLinkText\76\74/data:post.newerLinkText\76\74/a\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newestLinkUrl\47\76\74data:post.newestLinkText\76\74/data:post.newestLinkText\76\74/a\76\n\74/span\76\n\74/b:if\76\n\74dl id\75\47comments-block\47\76\n\74b:loop values\75\47data:post.comments\47 var\75\47comment\47\76\n\74dt expr:class\75\47\46quot;comment-author \46quot; + data:comment.authorClass\47 expr:id\75\47data:comment.anchorName\47\76\n\74a expr:name\75\47data:comment.anchorName\47\76\74/a\76\n\74b:if cond\75\47data:comment.authorUrl\47\76\n\74a expr:href\75\47data:comment.authorUrl\47 rel\75\47nofollow\47\76\74data:comment.author\76\74/data:comment.author\76\74/a\76 on                 \74data:comment.timestamp\76\74/data:comment.timestamp\76\n\74b:else\76\74/b:else\76\n\74data:comment.author\76\74/data:comment.author\76\n\74/b:if\76\n\74data:commentPostedByMsg\76\74/data:commentPostedByMsg\76\n\74/dt\76\n\74dd class\75\47comment-body\47\76\n\74b:if cond\75\47data:comment.isDeleted\47\76\n\74span class\75\47deleted-comment\47\76\74data:comment.body\76\74/data:comment.body\76\74/span\76\n\74b:else\76\74/b:else\76\n\74p\76\74data:comment.body\76\74/data:comment.body\76\74/p\76\n\74/b:if\76\n\74/dd\76\n\74dd class\75\47comment-footer\47\76\n\74span class\75\47comment-timestamp\47\76\n\74b:include data\75\47comment\47 name\75\47commentDeleteIcon\47\76\74/b:include\76\n\74/span\76\n\74/dd\76\n\74/b:loop\76\n\74/dl\76\n\74b:if cond\75\47data:post.commentPagingRequired\47\76\n\74span class\75\47paging-control-container\47\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.oldestLinkUrl\47\76\n\74data:post.oldestLinkText\76\74/data:post.oldestLinkText\76\n\74/a\76\n\74a expr:class\75\47data:post.oldLinkClass\47 expr:href\75\47data:post.olderLinkUrl\47\76\n\74data:post.olderLinkText\76\74/data:post.olderLinkText\76\n\74/a\76\n          \46#160;\n          \74data:post.commentRangeText\76\74/data:post.commentRangeText\76\n          \46#160;\n          \74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newerLinkUrl\47\76\n\74data:post.newerLinkText\76\74/data:post.newerLinkText\76\n\74/a\76\n\74a expr:class\75\47data:post.newLinkClass\47 expr:href\75\47data:post.newestLinkUrl\47\76\n\74data:post.newestLinkText\76\74/data:post.newestLinkText\76\n\74/a\76\n\74/span\76\n\74/b:if\76\n\74p class\75\47comment-footer\47\76\n\74b:if cond\75\47data:post.embedCommentForm\47\76\n\74b:include data\75\47post\47 name\75\47comment-form\47\76\74/b:include\76\n\74b:else\76\74/b:else\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74a expr:href\75\47data:post.addCommentUrl\47 expr:onclick\75\47data:post.addCommentOnclick\47\76\74data:postCommentMsg\76\74/data:postCommentMsg\76\74/a\76\n\74/b:if\76\n\74/b:if\76\n\74/p\76\n\74/b:if\76\n\74div id\75\47backlinks-container\47\76\n\74div expr:id\75\47data:widget.instanceId + \46quot;_backlinks-container\46quot;\47\76\n\74b:if cond\75\47data:post.showBacklinks\47\76\n\74b:include data\75\47post\47 name\75\47backlinks\47\76\74/b:include\76\n\74/b:if\76\n\74/div\76\n\74/div\76\n\74/div\076'}, 'comment-form': {'varName': 'post', 'template': '\74div class\75\47comment-form\47\76\n\74a name\75\47comment-form\47\76\74/a\76\n\74h4 id\75\47comment-post-message\47\76\74data:postCommentMsg\76\74/data:postCommentMsg\76\74/h4\76\n\74p\76\74data:blogCommentMessage\76\74/data:blogCommentMessage\76\74/p\76\n\74data:blogTeamBlogMessage\76\74/data:blogTeamBlogMessage\76\n\74a expr:href\75\47data:post.commentFormIframeSrc\47 id\75\47comment-editor-src\47\76\74/a\76\n\74iframe allowtransparency\75\47true\47 class\75\47blogger-iframe-colorize\47 frameborder\75\0470\47 height\75\047275\47 id\75\47comment-editor\47 scrolling\75\47no\47 src\75\47\47 width\75\047100%\47\76\74/iframe\76\n\74data:post.iframeColorizer\76\74/data:post.iframeColorizer\76\n\74/div\076'}, 'backlinks': {'varName': 'post', 'template': '\74a name\75\47links\47\76\74/a\76\74h4\76\74data:post.backlinksLabel\76\74/data:post.backlinksLabel\76\74/h4\76\n\74b:if cond\75\47data:post.numBacklinks !\75 0\47\76\n\74dl class\75\47comments-block\47 id\75\47comments-block\47\76\n\74b:loop values\75\47data:post.backlinks\47 var\75\47backlink\47\76\n\74div class\75\47collapsed-backlink backlink-control\47\76\n\74dt class\75\47comment-title\47\76\n\74span class\75\47backlink-toggle-zippy\47\76\46#160;\74/span\76\n\74a expr:href\75\47data:backlink.url\47 rel\75\47nofollow\47\76\74data:backlink.title\76\74/data:backlink.title\76\74/a\76\n\74b:include data\75\47backlink\47 name\75\47backlinkDeleteIcon\47\76\74/b:include\76\n\74/dt\76\n\74dd class\75\47comment-body collapseable\47\76\n\74data:backlink.snippet\76\74/data:backlink.snippet\76\n\74/dd\76\n\74dd class\75\47comment-footer collapseable\47\76\n\74span class\75\47comment-author\47\76\74data:post.authorLabel\76\74/data:post.authorLabel\76\n\74data:backlink.author\76\74/data:backlink.author\76\74/span\76\n\74span class\75\47comment-timestamp\47\76\74data:post.timestampLabel\76\74/data:post.timestampLabel\76\n\74data:backlink.timestamp\76\74/data:backlink.timestamp\76\74/span\76\n\74/dd\76\n\74/div\76\n\74/b:loop\76\n\74/dl\76\n\74/b:if\76\n\74p class\75\47comment-footer\47\76\n\74/p\076'}, 'feedLinks': {'varName': '', 'template': '\74b:if cond\75\47data:blog.pageType !\75 \46quot;item\46quot;\47\76\n\74b:if cond\75\47data:feedLinks\47\76\n\74div class\75\47blog-feeds\47\76\n\74b:include data\75\47feedLinks\47 name\75\47feedLinksBody\47\76\74/b:include\76\n\74/div\76\n\74/b:if\76\n\74b:else\76\74/b:else\76\n\74div class\75\47post-feeds\47\76\n\74b:loop values\75\47data:posts\47 var\75\47post\47\76\n\74b:if cond\75\47data:post.allowComments\47\76\n\74b:if cond\75\47data:post.feedLinks\47\76\n\74b:include data\75\47post.feedLinks\47 name\75\47feedLinksBody\47\76\74/b:include\76\n\74/b:if\76\n\74/b:if\76\n\74/b:loop\76\n\74/div\76\n\74/b:if\076'}, 'feedLinksBody': {'varName': 'links', 'template': '\74div class\75\47feed-links\47\76\n\74data:feedLinksMsg\76\74/data:feedLinksMsg\76\n\74b:loop values\75\47data:links\47 var\75\47f\47\76\n\74a class\75\47feed-link\47 expr:href\75\47data:f.url\47 expr:type\75\47data:f.mimeType\47 target\75\47_blank\47\76\74data:f.name\76\74/data:f.name\76 (\74data:f.feedType\76\74/data:f.feedType\76)\74/a\76\n\74/b:loop\76\n\74/div\076'}, 'status-message': {'varName': '', 'template': '\74b:if cond\75\47data:navMessage\47\76\n\74div class\75\47status-msg-wrap\47\76\n\74div class\75\47status-msg-body\47\76\n\74data:navMessage\76\74/data:navMessage\76\n\74/div\76\n\74div class\75\47status-msg-border\47\76\n\74div class\75\47status-msg-bg\47\76\n\74div class\75\47status-msg-hidden\47\76\74data:navMessage\76\74/data:navMessage\76\74/div\76\n\74/div\76\n\74/div\76\n\74/div\76\n\74div style\75\47clear: both;\47\76\74/div\76\n\74/b:if\076'}}, document.getElementById('Blog1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML6', 'main',{'main': {'varName': '', 'template': '\74b:if cond\75\47data:title !\75 \46quot;\46quot;\47\76\n\74h2 class\75\47title\47\76\74data:title\76\74/data:title\76\74/h2\76\n\74/b:if\76\n\74div class\75\47widget-content\47\76\n\74data:content\76\74/data:content\76\n\74/div\76\n\74b:include name\75\47quickedit\47\76\74/b:include\076'}}, document.getElementById('HTML6'), {}, 'displayModeFull'));
+</script>
+</body></html>

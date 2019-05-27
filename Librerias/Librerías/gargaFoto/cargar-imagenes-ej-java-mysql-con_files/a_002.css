@@ -1,0 +1,94 @@
+#FJ_TListC, #FJ_TListC #FJ_TList, #FJ_TListC #FJ_TList table, #FJ_TListC #FJ_TList div, #FJ_TListC #FJ_TList tr, #FJ_TListC #FJ_TList td {
+	text-decoration: none;
+	font-variant: normal;
+	font-size-adjust: none;
+	text-align: left;
+	font-family: Verdana, Arial, Sans-Serif; 
+	font-style: normal; 
+	font-weight: normal; 
+	line-height: 1; 
+	font-size: 11px; 
+	padding: 0px;
+	margin: 0px;
+	background-color: #F1F1F1; 
+	color: #525B63;
+}
+table#FJ_TListC {
+	background-color: transparent;
+	width: 250px;
+}
+#FJ_TListC #FJ_TList img {
+	border-width: 0px; 
+	padding: 0px; 
+	margin: 0px;
+	vertical-align: middle;
+}
+#FJ_TListC .FJ_TopTable#FJ_TList {
+	border: 1px solid #5EB7C3; 
+	width: 250px;
+}
+#FJ_TListC #FJ_TList .FJ_Heading {
+	font-size: 14px; 
+	color: #336699;
+	text-align: center;
+	font-weight: bold;
+	padding: 1px;
+}
+#FJ_TListC #FJ_TList .FJ_Line {
+	color: #525B63; 
+	text-decoration: none; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-size: 11px; 
+	text-transform: none; 
+	font-family: Verdana, Arial, Sans-Serif; 
+	line-height: 12px; 
+	text-align: left;
+	border-width: 0px 0px 0px 0px;
+	padding: 0px 0px 5px 0px;
+	margin: 0px 0px 5px 0px;
+}
+#FJ_TListC #FJ_TList .FJ_Line a:link, #FJ_TListC #FJ_TList .FJ_Line a:hover, #FJ_TListC #FJ_TList .FJ_Line a:visited {
+	color: #6FB7F2; 
+	text-decoration: underline; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-size: 11px; 
+	text-transform: none; 
+	font-family: Verdana, Arial, Sans-Serif; 
+	line-height: 12px; 
+	border-width: 0px;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	background-color: transparent;
+}
+
+#FJ_TListC #FJ_TList .FJ_TrafFoot {
+	border-top: 1px solid #5EB7C3;
+	padding: 1px 0px 1px 0px !important;
+	margin: 5px 0px 0px 0px;
+	text-align: center;
+}
+#FJ_TListC #FJ_TList .FJ_TrafFoot a:link, #FJ_TListC #FJ_TList .FJ_TrafFoot a:hover, #FJ_TListC #FJ_TList .FJ_TrafFoot a:visited {
+	font-family: Arial;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1;
+	color: #888;
+	text-decoration: underline;
+        background-color: #F1F1F1;
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+}
+#FJ_TListC #FJ_TList .FJ_TrafFoot .FJ_Wrd {
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1;
+	color: #9AC90D;
+}
+
+

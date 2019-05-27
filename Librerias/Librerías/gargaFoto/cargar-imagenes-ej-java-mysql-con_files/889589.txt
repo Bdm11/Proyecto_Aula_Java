@@ -1,0 +1,2 @@
+str_contatore="Hits =31514#Hits hoy=281#Visitantes=17693#Visit. hoy=191#Online=3#";
+chfh(str_contatore);
