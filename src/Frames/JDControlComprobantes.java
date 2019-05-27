@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class JDControlComprobantes extends javax.swing.JDialog {
 
-    static Connection cnn=null;
+ 
     static Statement sta=null;
     static ResultSet rst=null;
     DefaultTableModel dtm=new DefaultTableModel();

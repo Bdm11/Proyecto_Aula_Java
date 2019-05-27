@@ -455,7 +455,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                 sta.executeUpdate(comando);
                 JOptionPane.showMessageDialog(null, "Empleado Guardado");
                 ActualizarJTable();
-                enlace().close();
+                
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
@@ -492,7 +492,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                         + " where idEmpleado='" + cod + "' ";
                 sta.executeUpdate(comando);
                 JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente");
-                enlace().close();
+          
                 ActualizarJTable();
                 limpiarcajas();
 
@@ -533,7 +533,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                         + "where idEmpleado='" + buscar + "' ";
                 sta.executeUpdate(comando);
                 ActualizarJTable();
-                enlace().close();
+          
                 JOptionPane.showMessageDialog(null, "Empelado Modificado exitosamente");
 
                 limpiarcajas();

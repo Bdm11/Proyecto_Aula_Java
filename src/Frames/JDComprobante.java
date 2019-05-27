@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class JDComprobante extends javax.swing.JDialog {
-           static Connection cnn=null;
+     
            static Statement sta=null;
            static ResultSet rst=null;
           
@@ -692,7 +692,7 @@ public class JDComprobante extends javax.swing.JDialog {
                        
 			try {
 				
-				sta=cnn.createStatement();
+				sta=Conexion.enlace().createStatement();
 				rst=sta.executeQuery("select * from PRODUCTOS");
 				boolean bandera=false;
 				String pro=txtBuscar.getText();
@@ -899,7 +899,7 @@ public class JDComprobante extends javax.swing.JDialog {
                 String comando="insert into DETALLECOMPROBANTES values('"+id+"','"+idNota+"','"+SumaTotal+"','"+Igv+"','"+montoTotal+"')";
 				sta.executeUpdate(comando);
 				ActualizarJTable();
-				cnn.close();
+				
 				
 				LimpiarBotones();
 			} catch (SQLException ex) {
@@ -934,7 +934,7 @@ public class JDComprobante extends javax.swing.JDialog {
                        
 			try {
 				
-				sta=cnn.createStatement();
+				sta=Conexion.enlace().createStatement();
 				rst=sta.executeQuery("select * from clientes");
 				boolean bandera=false;
 				String buscar=txtID.getText();

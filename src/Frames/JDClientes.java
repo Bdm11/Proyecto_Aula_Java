@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class JDClientes extends javax.swing.JDialog {
 
-    static Connection cnn = null;
+   
     static Statement sta = null;
     static ResultSet rst = null;
 
@@ -486,7 +486,7 @@ public class JDClientes extends javax.swing.JDialog {
 
             try {
 
-                sta = cnn.createStatement();
+                sta = Conexion.enlace().createStatement();
                 rst = sta.executeQuery("select * from CLIENTES");
                 boolean bandera = false;
                 String id = txtBuscar.getText();
