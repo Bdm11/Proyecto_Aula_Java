@@ -4,7 +4,9 @@
  */
 package Frames;
 
+
 import Datos.Conexion;
+import static Datos.Conexion.enlace;
 import Paneles.GenerarCodigo;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,9 +17,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class JDEmpleados extends javax.swing.JDialog {
 
-    static Connection cnn = null;
     static Statement sta = null;
     static ResultSet rst = null;
+
+   
 
     DefaultTableModel dtm = new DefaultTableModel();
 
@@ -393,9 +396,9 @@ public class JDEmpleados extends javax.swing.JDialog {
         if (btnBuscar.isEnabled()) {
 
             try {
-                cnn = Conexion.enlace(cnn);
-                sta = cnn.createStatement();
-                rst = sta.executeQuery("select * from empleados");
+
+                sta = enlace().createStatement();
+                rst = sta.executeQuery("select * from EMPLEADOS");
                 boolean bandera = false;
                 String buscar = txtBuscar.getText();
 
@@ -421,7 +424,7 @@ public class JDEmpleados extends javax.swing.JDialog {
 
                 }
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
+                JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA\n"+ex);
             }
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -434,9 +437,10 @@ public class JDEmpleados extends javax.swing.JDialog {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea Guardar el Registro?", "Pregunta", 0);
         if (resp == 0) {
             try {
-                cnn = Conexion.enlace(cnn);
+
                 sta = Conexion.declaracion(sta);
 
+                String cargo = txtCargo.getText();
                 String codigo = txtCodigo.getText();
                 String nombre = txtNombre.getText();
                 String apellido = txtApellido.getText();
@@ -445,17 +449,16 @@ public class JDEmpleados extends javax.swing.JDialog {
                 String email = txtEmail.getText();
                 String usuario = txtUsuario.getText();
                 String pass = txtContraseña.getText();
-                String cargo = txtCargo.getText();
 
                 String comando = "insert into EMPLEADOS values('" + codigo + "','" + nombre + "','" + apellido + "','" + id + "','" + direccion + "','" + email + "','" + usuario + "','" + pass + "','" + cargo + "')";
                 JOptionPane.showMessageDialog(null, comando);
                 sta.executeUpdate(comando);
                 JOptionPane.showMessageDialog(null, "Empleado Guardado");
                 ActualizarJTable();
-                cnn.close();
+                enlace().close();
 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de Guardar\n"+ex);
+                JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
 //                JOptionPane.showMessageDialog(null, "Error de Guardar");
 
             }
@@ -481,15 +484,15 @@ public class JDEmpleados extends javax.swing.JDialog {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar el Empleado?", "Pregunta", 0);
         if (resp == 0) {
             try {
-                cnn = Conexion.enlace(cnn);
+
                 sta = Conexion.declaracion(sta);
 
                 String cod = txtCodigo.getText();
-                String comando = "delete from empleados"
+                String comando = "delete from EMPLEADOS"
                         + " where idEmpleado='" + cod + "' ";
                 sta.executeUpdate(comando);
                 JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente");
-                cnn.close();
+                enlace().close();
                 ActualizarJTable();
                 limpiarcajas();
 
@@ -503,7 +506,7 @@ public class JDEmpleados extends javax.swing.JDialog {
         int resp = JOptionPane.showConfirmDialog(null, "¿Desea Modificar el Registro?", "Pregunta", 0);//el cero quiere decir que si la respuesta es correcta es cero
         if (resp == 0) {
             try {
-                cnn = Conexion.enlace(cnn);
+
                 sta = Conexion.declaracion(sta);
                 String buscar = txtCodigo.getText();
 
@@ -530,7 +533,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                         + "where idEmpleado='" + buscar + "' ";
                 sta.executeUpdate(comando);
                 ActualizarJTable();
-                cnn.close();
+                enlace().close();
                 JOptionPane.showMessageDialog(null, "Empelado Modificado exitosamente");
 
                 limpiarcajas();

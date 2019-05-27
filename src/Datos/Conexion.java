@@ -9,39 +9,54 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
 
-    static Connection cnn;
+    static Connection cnn = null;
+
     static Statement sta;
     static ResultSet rst;
+
+    public Conexion() {
+        enlace();
+    }
 
 //    static String user="root";
 //    static String pass="Brayan97.";
 //    static String url="jdbc:mysql://127.0.0.1/basededatos_ferreteria";
-    
     static String url = "jdbc:mysql://arfo8ynm6olw6vpn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/sez90fdieovgswva";
     //        + "?autoReconnect=true&useSSL=false&useJDBCCompliantTimezoneShift=true&"
     //        + "useLegacyDatetimeCode=false&serverTimezone=UTC";
     static String user = "q3pvzlxp30tali5h";
     static String pass = "jgd2tndc3pqet14v";
 
-    public static Connection enlace(Connection cnn) {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
+    public static Connection enlace() {
+        if (cnn != null) {
+            return cnn;
+        } else {
             try {
-                cnn = DriverManager.getConnection(url, user, pass);//el metodo getConnection siempre espera recibir un url,usuario y un password
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de url" + ex.getMessage());
+
+                String driver = "com.mysql.jdbc.Driver";
+                String url = "jdbc:mysql://arfo8ynm6olw6vpn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/sez90fdieovgswva";
+                //        + "?autoReconnect=true&useSSL=false&useJDBCCompliantTimezoneShift=true&"
+                //        + "useLegacyDatetimeCode=false&serverTimezone=UTC";
+                String user = "q3pvzlxp30tali5h";
+                String password = "jgd2tndc3pqet14v";
+
+                System.out.print(user);
+
+                Class.forName(driver);
+                cnn = DriverManager.getConnection(url, user, password);
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
-        } catch (ClassNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Error de Driver" + ex);
+            return cnn;
         }
-        return cnn;
-
     }
 
     public static Statement declaracion(Statement st) {
         try {
-            cnn = enlace(cnn);
+            enlace();
             st = cnn.createStatement();
 
         } catch (SQLException ex) {
@@ -53,7 +68,7 @@ public class Conexion {
     public static ResultSet enlacecliente(ResultSet rs) {
         try {
             sta = declaracion(sta);
-            rs = sta.executeQuery("select * from clientes");
+            rs = sta.executeQuery("select * from CLIENTES");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error ");
@@ -86,7 +101,7 @@ public class Conexion {
     public static ResultSet enlaceempleado(ResultSet rs) {
         try {
             sta = declaracion(sta);
-            rs = sta.executeQuery("select * from empleados");
+            rs = sta.executeQuery("select * from EMPLEADOS");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error ");
@@ -108,19 +123,20 @@ public class Conexion {
 
     public static ResultSet idEmpleado(ResultSet rs) throws SQLException {
         sta = declaracion(sta);
-        rs = sta.executeQuery("select idEmpleado from Empleados");
+        rs = sta.executeQuery("select idEmpleado from EMPLEADOS");
         return rs;
     }
 
     public static ResultSet idCliente(ResultSet rs) throws SQLException {
         sta = declaracion(sta);
-        rs = sta.executeQuery("select idCliente from Clientes");
+        rs = sta.executeQuery("select idCliente from CLIENTES");
         return rs;
     }
 
     public static ResultSet idProducto(ResultSet rs) throws SQLException {
         sta = declaracion(sta);
-        rs = sta.executeQuery("select idProducto from Productos");
+        rs = sta.executeQuery("select idProducto from PRODUCTOS");
         return rs;
     }
+
 }

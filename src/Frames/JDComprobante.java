@@ -691,7 +691,7 @@ public class JDComprobante extends javax.swing.JDialog {
          if(btnBuscar.isEnabled()){
                        
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=cnn.createStatement();
 				rst=sta.executeQuery("select * from PRODUCTOS");
 				boolean bandera=false;
@@ -874,7 +874,7 @@ public class JDComprobante extends javax.swing.JDialog {
         int resp=JOptionPane.showConfirmDialog(null,"¿Desea Guardar el Comprobante?","Pregunta",0);//el cero quiere decir que si la respuesta es correcta es cero
 		if(resp==0){
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=Conexion.declaracion(sta);
                                 
                                 if(optBoleta.isSelected()){
@@ -933,7 +933,7 @@ public class JDComprobante extends javax.swing.JDialog {
            if(btnClientes.isEnabled()){
                        
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=cnn.createStatement();
 				rst=sta.executeQuery("select * from clientes");
 				boolean bandera=false;

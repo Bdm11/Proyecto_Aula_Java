@@ -365,7 +365,7 @@ void LimpiarBotones(){
                     if(btnBuscar.isEnabled()){
                        
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=cnn.createStatement();
 				rst=sta.executeQuery("select * from PRODUCTOS");
 				boolean bandera=false;
@@ -403,7 +403,7 @@ void LimpiarBotones(){
         int resp=JOptionPane.showConfirmDialog(null,"¿Desea Guardar el Producto?","Pregunta",0);
 		if(resp==0){
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=Conexion.declaracion(sta);
 				
 				String codigo= txtCodigo.getText();
@@ -433,7 +433,7 @@ void LimpiarBotones(){
         int resp=JOptionPane.showConfirmDialog(null,"¿Desea Eliminar el Producto?","Pregunta",0);
 		if(resp==0){
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=Conexion.declaracion(sta);
 				
 				String pro= txtBuscar.getText();
@@ -456,7 +456,7 @@ void LimpiarBotones(){
         int resp=JOptionPane.showConfirmDialog(null,"¿Desea Modificar el Producto?","Pregunta",0);
 		if(resp==0){
 			try {
-				cnn=Conexion.enlace(cnn);
+				
 				sta=Conexion.declaracion(sta);
 				
 				String pro= txtBuscar.getText();

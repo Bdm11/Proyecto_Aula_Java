@@ -25,8 +25,7 @@ public class FrmLogin extends javax.swing.JFrame {
     void validar(){
          String usuario=txtUsuario.getText();
         String pass=String.valueOf(txtContraseña.getPassword());
-        String sql="select * from EMPLEADOS where userEmpleado='"+usuario+"' and claveEmpleado='"+pass+"' ";
-       cnn=Conexion.enlace(cnn);
+        String sql="select * from EMPLEADOS where userEmpleado='"+usuario+"' and claveEmpleado='"+pass+"' ";       
         sta=Conexion.declaracion(sta);
          try {
          

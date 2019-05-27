@@ -18,82 +18,79 @@ import javax.swing.table.DefaultTableModel;
  * @author JOSEPH
  */
 public class JDClientes extends javax.swing.JDialog {
-    static Connection cnn=null;
-    static Statement sta=null;
-    static ResultSet rst=null;
 
- DefaultTableModel dtm=new DefaultTableModel();
+    static Connection cnn = null;
+    static Statement sta = null;
+    static ResultSet rst = null;
+
+    DefaultTableModel dtm = new DefaultTableModel();
+
     public JDClientes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setSize(770,740);
-         JTClientes.getTableHeader().setReorderingAllowed(false);
+        this.setSize(770, 740);
+        JTClientes.getTableHeader().setReorderingAllowed(false);
         this.setLocationRelativeTo(this);
-        
-        
-     String titulos[]={"CODIGO","NOMBRE","APELLIDO","DNI","TELEFONO","RUC","DIRECCION","EMAIL"};
-	    dtm.setColumnIdentifiers(titulos);
-	    JTClientes.setModel(dtm);
-            
-         }
-         void ActivaCajas(Boolean c){
-             txtCodigo.setEnabled(c);
-         }
-     void Activabotones(Boolean g,Boolean m,Boolean e){
-	    
-	    btnModificar.setEnabled(m);
-	    btnGuardar.setEnabled(g);
-	    btnEliminar.setEnabled(e);
-    }
-      void LimpiarBotones(){
-	   
-	    txtNombre.setText("");
-            txtApellido.setText("");
-            txtID.setText("");
-            txtTelefono.setText("");
-            txtEmail.setText("");
-            txtDireccion.setText("");
-           
-	    
-	  
-	    
-    
-	    
-    }
-      void ActualizarJTable(){
-	   try {
-			int cantfilas=dtm.getRowCount();
-			if(cantfilas>0){
-				for(int i =0;i<cantfilas;i++){
-					dtm.removeRow(0);	
-				}
-			
-			}
-			
-			rst=Conexion.enlacecliente(rst);
-			String datos[] =new String[8];
-			
-			
-			
-			
-			while(rst.next()){
-				datos[0]=rst.getString(1);
-				datos[1]=rst.getString(2);
-				datos[2]=rst.getString(3);
-				datos[3]=rst.getString(4);
-				datos[4]=rst.getString(5);
-                                datos[5]=rst.getString(6);
-                                datos[6]=rst.getString(7);
-                                datos[7]=rst.getString(8);
-				
-				dtm.addRow(datos);
-			}
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error");
-		}  
-      }
 
-    
+        String titulos[] = {"CODIGO", "NOMBRE", "APELLIDO", "DNI", "TELEFONO", "RUC", "DIRECCION", "EMAIL"};
+        dtm.setColumnIdentifiers(titulos);
+        JTClientes.setModel(dtm);
+        ActualizarJTable();
+
+    }
+
+    void ActivaCajas(Boolean c) {
+        txtCodigo.setEnabled(c);
+    }
+
+    void Activabotones(Boolean g, Boolean m, Boolean e) {
+
+        btnModificar.setEnabled(m);
+        btnGuardar.setEnabled(g);
+        btnEliminar.setEnabled(e);
+    }
+
+    void LimpiarBotones() {
+
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtID.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+        txtDireccion.setText("");
+
+    }
+
+    void ActualizarJTable() {
+        try {
+            int cantfilas = dtm.getRowCount();
+            if (cantfilas > 0) {
+                for (int i = 0; i < cantfilas; i++) {
+                    dtm.removeRow(0);
+                }
+
+            }
+
+            rst = Conexion.enlacecliente(rst);
+            String datos[] = new String[8];
+
+            while (rst.next()) {
+                datos[0] = rst.getString(1);
+                datos[1] = rst.getString(2);
+                datos[2] = rst.getString(3);
+                datos[3] = rst.getString(4);
+                datos[4] = rst.getString(5);
+                datos[5] = rst.getString(6);
+                datos[6] = rst.getString(7);
+                datos[7] = rst.getString(8);
+
+                dtm.addRow(datos);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -395,108 +392,107 @@ public class JDClientes extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-                int resp=JOptionPane.showConfirmDialog(null,"¿Desea Guardar Cliente?","Pregunta",0);
-		if(resp==0){
-			try {
-				cnn=Conexion.enlace(cnn);
-				sta=Conexion.declaracion(sta);
-				
-				String codigo= txtCodigo.getText();
-				String nombre=txtNombre.getText();
-                                String apellido=txtApellido.getText();
-                                String id=txtID.getText();
-                                String tel=txtTelefono.getText();
-				
-                                String direccion=txtDireccion.getText();
-                                String email=txtEmail.getText();
-                               
-                                
-                               String comando="insert into clientes values('"+codigo+"','"+nombre+"','"+apellido+"','"+id+"','"+tel+"','"+direccion+"','"+email+"')";
-				sta.executeUpdate(comando);
-                                ActualizarJTable();
-				cnn.close();
-				
-				
-			} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,"Error de Guardar");
-			}
-		}
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Guardar Cliente?", "Pregunta", 0);
+        if (resp == 0) {
+            try {
+
+                sta = Conexion.declaracion(sta);
+
+                String codigo = txtCodigo.getText();
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                String id = txtID.getText();
+                String tel = txtTelefono.getText();
+
+                String direccion = txtDireccion.getText();
+                String email = txtEmail.getText();
+
+                String comando = "insert into CLIENTES "
+                        + "values('" + codigo + "','" + nombre
+                        + "','" + apellido + "','" + id + "','"
+                        + tel + "','"+ tel + "','" + direccion + "','" + email + "')";
+                JOptionPane.showMessageDialog(null, comando);
+                sta.executeUpdate(comando);
+                ActualizarJTable();
+          
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-             int resp=JOptionPane.showConfirmDialog(null,"¿Desea Modificar el Producto?","Pregunta",0);//el cero quiere decir que si la respuesta es correcta es cero
-		if(resp==0){
-			try {
-				cnn=Conexion.enlace(cnn);
-				sta=Conexion.declaracion(sta);
-				
-				String codigo=txtCodigo.getText();
-				String nombre=txtNombre.getText();
-				String apellido=txtApellido.getText();
-				int id=Integer.parseInt(txtID.getText());
-				int tel=Integer.parseInt(txtTelefono.getText());
-				
-				String dir=txtDireccion.getText();
-				String email=txtEmail.getText();
-                                String comando;
-                                comando = "update clientes set " 
-                                
-                                + "idCliente='"+codigo+"', "
-                                + "nomCliente='"+nombre+"', "
-                                + "apeCliente='"+apellido+"', "
-                                + "idCliente='"+id+"', "
-                                + "telCliente='"+tel+"', "
-                                + "dirCliente='"+dir+"', "
-                                + "emailCliente='"+email+"'  "
-                                + "where idCliente='"+codigo+"' ";
-				sta.executeUpdate(comando);
-				ActualizarJTable();
-				cnn.close();
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Modificar el Producto?", "Pregunta", 0);//el cero quiere decir que si la respuesta es correcta es cero
+        if (resp == 0) {
+            try {
 
-				LimpiarBotones();
-			} catch (SQLException ex) {
-				JOptionPane.showMessageDialog(null,"Error de modificacion");
-			}
-		}
-         
+                sta = Conexion.declaracion(sta);
+
+                String codigo = txtCodigo.getText();
+                String nombre = txtNombre.getText();
+                String apellido = txtApellido.getText();
+                int id = Integer.parseInt(txtID.getText());
+                int tel = Integer.parseInt(txtTelefono.getText());
+
+                String dir = txtDireccion.getText();
+                String email = txtEmail.getText();
+                String comando;
+                comando = "update CLIENTES set "
+                        + "idCliente='" + codigo + "', "
+                        + "nomCliente='" + nombre + "', "
+                        + "apeCliente='" + apellido + "', "
+                        + "idCliente='" + id + "', "
+                        + "telCliente='" + tel + "', "
+                        + "dirCliente='" + dir + "', "
+                        + "emailCliente='" + email + "'  "
+                        + "where idCliente='" + codigo + "' ";
+                sta.executeUpdate(comando);
+                ActualizarJTable();
+              
+
+                LimpiarBotones();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de modificacion");
+            }
+        }
+
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-          int resp=JOptionPane.showConfirmDialog(null,"¿Desea Eliminar el Registro?","Pregunta",0);
-		if(resp==0){
-			try {
-				cnn=Conexion.enlace(cnn);
-				sta=Conexion.declaracion(sta);
-				
-				
-				String id=txtBuscar.getText();
-				String comando="delete from clientes"
-					+" where idCliente='"+id+"'";
-				sta.executeUpdate(comando);
-                                JOptionPane.showMessageDialog(null,"Cliente eliminado exitosamente");
-				cnn.close();
-				ActualizarJTable();
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar el Registro?", "Pregunta", 0);
+        if (resp == 0) {
+            try {
 
-				
-			} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,"Cliente Registrado en Comprobante");
-			}
-		} 
+                sta = Conexion.declaracion(sta);
+
+                String id = txtBuscar.getText();
+                String comando = "delete from CLIENTES"
+                        + " where idCliente='" + id + "'";
+                sta.executeUpdate(comando);
+                JOptionPane.showMessageDialog(null, "Cliente eliminado exitosamente");
+      
+                ActualizarJTable();
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Cliente Registrado en Comprobante");
+            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
 
-        if(btnBuscar.isEnabled()){
+        if (btnBuscar.isEnabled()) {
 
             try {
-                cnn=Conexion.enlace(cnn);
-                sta=cnn.createStatement();
-                rst=sta.executeQuery("select * from CLIENTES");
-                boolean bandera=false;
-                String id=txtBuscar.getText();
 
-                while(rst.next()){
-                    if(id.equalsIgnoreCase(rst.getString(4))){
+                sta = cnn.createStatement();
+                rst = sta.executeQuery("select * from CLIENTES");
+                boolean bandera = false;
+                String id = txtBuscar.getText();
+
+                while (rst.next()) {
+                    if (id.equalsIgnoreCase(rst.getString(4))) {
                         txtCodigo.setText(rst.getString(1));
                         txtNombre.setText(rst.getString(2));
                         txtApellido.setText(rst.getString(3));
@@ -504,15 +500,14 @@ public class JDClientes extends javax.swing.JDialog {
                         txtTelefono.setText(rst.getString(5));
                         txtEmail.setText(rst.getString(8));
                         txtDireccion.setText(rst.getString(7));
-                        
 
-                        this.Activabotones(true,true,true);
-                        bandera=true;
+                        this.Activabotones(true, true, true);
+                        bandera = true;
                         break;
                     }
                 }
-                if(bandera==false){
-                    JOptionPane.showMessageDialog(null,"Nombre no Registrado");
+                if (bandera == false) {
+                    JOptionPane.showMessageDialog(null, "Nombre no Registrado");
                     this.LimpiarBotones();
                 }
             } catch (SQLException ex) {
@@ -526,20 +521,17 @@ public class JDClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            try {
-            
-            
-                    
-                            rst=Conexion.idCliente(rst);
+        try {
 
-                            
-                            GenerarCodigo idmas = new GenerarCodigo();
-                            String idparaCampo = idmas.idMasUno(rst);
-                            txtCodigo.setText("L" + idparaCampo);
+            rst = Conexion.idCliente(rst);
+
+            GenerarCodigo idmas = new GenerarCodigo();
+            String idparaCampo = idmas.idMasUno(rst);
+            txtCodigo.setText("L" + idparaCampo);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE PUDO CREAR CODIGO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
         }
-        Activabotones(true,false,false);
+        Activabotones(true, false, false);
         LimpiarBotones();
     }//GEN-LAST:event_jButton1ActionPerformed
 
