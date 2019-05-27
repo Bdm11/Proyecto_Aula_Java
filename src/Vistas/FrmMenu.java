@@ -50,8 +50,6 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -110,22 +108,6 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu4.add(jMenuItem4);
-
-        jMenuItem7.setText("Nota de Venta");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem7);
-
-        jMenuItem6.setText("Control de Ventas Diarias");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem6);
 
         jMenuBar1.add(jMenu4);
 
@@ -191,17 +173,6 @@ public class FrmMenu extends javax.swing.JFrame {
         JDComprobante jcomprobante=new JDComprobante(this, rootPaneCheckingEnabled);
         jcomprobante.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-      JDControlComprobantes jdcomprobantes= new JDControlComprobantes(this, rootPaneCheckingEnabled);
-      jdcomprobantes.setVisible(rootPaneCheckingEnabled);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       JDNotadeventas jnota=new JDNotadeventas(this, rootPaneCheckingEnabled);
-       jnota.setVisible(rootPaneCheckingEnabled);
-               
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        JDEmpleados jempleados=new JDEmpleados(this, rootPaneCheckingEnabled);
@@ -270,8 +241,6 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package Frames;
 
 import Datos.Conexion;
 import Paneles.GenerarCodigo;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class JDMantenimiento extends javax.swing.JDialog {
-
 
     static Statement sta = null;
     static ResultSet rst = null;
@@ -26,12 +26,13 @@ public class JDMantenimiento extends javax.swing.JDialog {
         this.setSize(800, 750);
         JTProductos.getTableHeader().setReorderingAllowed(false);
         this.setLocationRelativeTo(this);
-        ActualizarJTable();
+
         String titulos[] = {"CODIGO", "NOMBRE", "UNIDADESENSTOCK",
             "DESCRIPCION", "PRECIOUNITARIO", "UBICACION", "TIPO DE PRODUCTO"};
         //creamos un arreglo para todas las columnas de la tabla
         dtm.setColumnIdentifiers(titulos);
         JTProductos.setModel(dtm);
+        ActualizarJTable();
     }
 
     void ActivaBotones(Boolean g, Boolean e, Boolean m, Boolean c) {
@@ -127,6 +128,11 @@ public class JDMantenimiento extends javax.swing.JDialog {
                 "Codigo", "Nombre", "Descripcion", "Precio Unitario", "Unidades en Stock"
             }
         ));
+        JTProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTProductosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTProductos);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
@@ -416,11 +422,12 @@ public class JDMantenimiento extends javax.swing.JDialog {
                         + tipoProducto + "')";
                 sta.executeUpdate(comando);
                 ActualizarJTable();
-               
 
                 LimpiarBotones();
+            } catch (MySQLIntegrityConstraintViolationException ex) {
+                JOptionPane.showMessageDialog(null, "Se repite\n" + ex);
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error de Guardar\n"+ex);
+                JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -437,10 +444,13 @@ public class JDMantenimiento extends javax.swing.JDialog {
                 String comando = "delete from PRODUCTOS"
                         + " where nomProducto='" + pro + "'";
                 sta.executeUpdate(comando);
-              
+
                 ActualizarJTable();
 
                 LimpiarBotones();
+            } catch (MySQLIntegrityConstraintViolationException ex) {
+                JOptionPane.showMessageDialog(null, "Se repite\n" + ex);
+
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de eliminacion");
             }
@@ -472,9 +482,10 @@ public class JDMantenimiento extends javax.swing.JDialog {
                         + "where nomProducto='" + pro + "' ";
                 sta.executeUpdate(comando);
                 ActualizarJTable();
-               
 
                 LimpiarBotones();
+            } catch (MySQLIntegrityConstraintViolationException ex) {
+                JOptionPane.showMessageDialog(null, "Se repite\n" + ex);
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error de modificacion");
             }
@@ -487,7 +498,7 @@ public class JDMantenimiento extends javax.swing.JDialog {
             rst = Conexion.idProducto(rst);
 
             GenerarCodigo idmas = new GenerarCodigo();
-            String idparaCampo = idmas.idMasUno(rst);
+            String idparaCampo = idmas.randomID();
             txtCodigo.setText("P" + idparaCampo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
@@ -496,6 +507,10 @@ public class JDMantenimiento extends javax.swing.JDialog {
         txtBuscar.setText("");
         LimpiarBotones();
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void JTProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTProductosMouseClicked
+        txtBuscar.setText(JTProductos.getValueAt(JTProductos.getSelectedRow(), 1).toString());
+    }//GEN-LAST:event_JTProductosMouseClicked
 
     /**
      * @param args the command line arguments

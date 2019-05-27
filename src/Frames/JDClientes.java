@@ -32,7 +32,7 @@ public class JDClientes extends javax.swing.JDialog {
         JTClientes.getTableHeader().setReorderingAllowed(false);
         this.setLocationRelativeTo(this);
 
-        String titulos[] = {"CODIGO", "NOMBRE", "APELLIDO", "DNI", "TELEFONO", "RUC", "DIRECCION", "EMAIL"};
+        String titulos[] = {"CODIGO", "NOMBRE", "APELLIDO", "ID", "TELEFONO", "DIRECCION", "EMAIL"};
         dtm.setColumnIdentifiers(titulos);
         JTClientes.setModel(dtm);
         ActualizarJTable();
@@ -416,7 +416,7 @@ public class JDClientes extends javax.swing.JDialog {
                         + "values('" + codigo + "','" + nombre
                         + "','" + apellido + "','" + id + "','"
                         + tel + "','"+ tel + "','" + direccion + "','" + email + "')";
-                JOptionPane.showMessageDialog(null, comando);
+//                JOptionPane.showMessageDialog(null, comando);
                 sta.executeUpdate(comando);
                 ActualizarJTable();
           
@@ -480,7 +480,7 @@ public class JDClientes extends javax.swing.JDialog {
                 ActualizarJTable();
 
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Cliente Registrado en Comprobante");
+                JOptionPane.showMessageDialog(null, ex);
             }
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
@@ -497,7 +497,7 @@ public class JDClientes extends javax.swing.JDialog {
                 String id = txtBuscar.getText();
 
                 while (rst.next()) {
-                    if (id.equalsIgnoreCase(rst.getString(4))) {
+                    if (id.equalsIgnoreCase(rst.getString(1))) {
                         txtCodigo.setText(rst.getString(1));
                         txtNombre.setText(rst.getString(2));
                         txtApellido.setText(rst.getString(3));
@@ -527,11 +527,9 @@ public class JDClientes extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-
             rst = Conexion.idCliente(rst);
-
             GenerarCodigo idmas = new GenerarCodigo();
-            String idparaCampo = idmas.idMasUno(rst);
+            String idparaCampo = idmas.randomID();
             txtCodigo.setText("L" + idparaCampo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
@@ -541,7 +539,7 @@ public class JDClientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTClientesMouseClicked
-        // TODO add your handling code here:
+        txtBuscar.setText(JTClientes.getValueAt(JTClientes.getSelectedRow(), 0).toString());
     }//GEN-LAST:event_JTClientesMouseClicked
 
     /**

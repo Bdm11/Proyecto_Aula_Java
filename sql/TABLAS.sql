@@ -21,16 +21,16 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 DROP TABLE IF EXISTS `CLIENTES` ;
 
 CREATE TABLE IF NOT EXISTS `CLIENTES` (
-  `idCliente` CHAR(6) NOT NULL,
-  `nomCliente` VARCHAR(25) NULL,
-  `apeCliente` VARCHAR(25) NULL,
-  `dniCliente` INT NOT NULL,
-  `telCliente` INT NULL,
-  `rucCliente` INT NULL,
-  `dirCliente` VARCHAR(30) NULL,
-  `emailCliente` VARCHAR(30) NULL,
-  PRIMARY KEY (`idCliente`))
-ENGINE = InnoDB;
+    `idCliente` VARCHAR(30) NOT NULL,
+    `nomCliente` VARCHAR(25) NULL,
+    `apeCliente` VARCHAR(25) NULL,
+    `dniCliente` INT NOT NULL,
+    `telCliente` INT NULL,
+    `rucCliente` INT NULL,
+    `dirCliente` VARCHAR(30) NULL,
+    `emailCliente` VARCHAR(30) NULL,
+    PRIMARY KEY (`idCliente`)
+)  ENGINE=INNODB;
 
 
 -- -----------------------------------------------------
@@ -39,18 +39,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `COMPROBANTES` ;
 
 CREATE TABLE IF NOT EXISTS `COMPROBANTES` (
-  `idComprobante` CHAR(6) NOT NULL,
+  `idComprobante` VARCHAR(30) NOT NULL,
   `fechaComprobante` DATE NULL,
-  `tipoComprobante` CHAR(10) NULL,
+  `tipoComprobante` VARCHAR(30) NULL,
   `numComprobante` INT NULL,
-  `idCliente` CHAR(6) NOT NULL,
+  `idCliente` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idComprobante`),
-  INDEX `fk_COMPROBANTES_CLIENTES1_idx` (`idCliente` ASC),
-  CONSTRAINT `fk_COMPROBANTES_CLIENTES1`
     FOREIGN KEY (`idCliente`)
-    REFERENCES `CLIENTES` (`idCliente`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `CLIENTES` (`idCliente`)   
+    )
 ENGINE = InnoDB;
 
 
@@ -60,7 +57,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `PRODUCTOS` ;
 
 CREATE TABLE IF NOT EXISTS `PRODUCTOS` (
-  `idProducto` CHAR(6) NOT NULL,
+  `idProducto` VARCHAR(30) NOT NULL,
   `nomProducto` VARCHAR(30) NULL,
   `stockProducto` INT NULL,
   `desProducto` VARCHAR(30) NULL,
@@ -77,7 +74,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `EMPLEADOS` ;
 
 CREATE TABLE IF NOT EXISTS `EMPLEADOS` (
-  `idEmpleado` CHAR(6) NOT NULL,
+  `idEmpleado` VARCHAR(30) NOT NULL,
   `nomEmpleado` VARCHAR(30) NULL,
   `apeEmpleado` VARCHAR(30) NULL,
   `dniEmpleado` INT NOT NULL,
@@ -96,15 +93,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `NOTADEPEDIDOS` ;
 
 CREATE TABLE IF NOT EXISTS `NOTADEPEDIDOS` (
-  `idNotaPedido` CHAR(6) NOT NULL,
-  `idEmpleado` CHAR(6) NOT NULL,
+  `idNotaPedido` VARCHAR(30) NOT NULL,
+  `idEmpleado` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`idNotaPedido`),
-  INDEX `fk_NOTADEPEDIDOS_EMPLEADOS1_idx` (`idEmpleado` ASC),
-  CONSTRAINT `fk_NOTADEPEDIDOS_EMPLEADOS1`
     FOREIGN KEY (`idEmpleado`)
-    REFERENCES `EMPLEADOS` (`idEmpleado`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    REFERENCES `EMPLEADOS` (`idEmpleado`)    
+    )
 ENGINE = InnoDB;
 
 
@@ -114,24 +108,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `DETALLECOMPROBANTES` ;
 
 CREATE TABLE IF NOT EXISTS `DETALLECOMPROBANTES` (
-  `idComprobante` CHAR(6) unique,
-  `idNotaPedido` CHAR(6) unique,
+  `idComprobante` VARCHAR(30) unique,
+  `idNotaPedido` VARCHAR(30) unique,
   `montoTotal` DOUBLE NULL,
   `montoIgv` DOUBLE NULL,
   `montoNeto` DOUBLE NULL,
-  INDEX `fk_COMPROBANTES_has_NOTADEPEDIDOS_NOTADEPEDIDOS1_idx` (`idNotaPedido` ASC),
-  INDEX `fk_COMPROBANTES_has_NOTADEPEDIDOS_COMPROBANTES_idx` (`idComprobante` ASC),
   PRIMARY KEY  (`idComprobante`, `idNotaPedido`),
-  CONSTRAINT `fk_COMPROBANTES_has_NOTADEPEDIDOS_COMPROBANTES`
     FOREIGN KEY (`idComprobante`)
-    REFERENCES `COMPROBANTES` (`idComprobante`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_COMPROBANTES_has_NOTADEPEDIDOS_NOTADEPEDIDOS1`
+    REFERENCES `COMPROBANTES` (`idComprobante`),
     FOREIGN KEY (`idNotaPedido`)
     REFERENCES `NOTADEPEDIDOS` (`idNotaPedido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+   )
 ENGINE = InnoDB;
 
 
@@ -141,22 +128,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `DETALLENOTADEPEDIDOS` ;
 
 CREATE TABLE IF NOT EXISTS `DETALLENOTADEPEDIDOS` (
-  `idProducto` CHAR(6) NOT NULL,
-  `idNotaPedido` CHAR(6) NOT NULL,
-  `unidadesNotaPedido` INT NULL,
-  INDEX `fk_PRODUCTOS_has_NOTADEPEDIDOS_NOTADEPEDIDOS1_idx` (`idNotaPedido` ASC),
-  INDEX `fk_PRODUCTOS_has_NOTADEPEDIDOS_PRODUCTOS1_idx` (`idProducto` ASC),
-  PRIMARY KEY (`idProducto`, `idNotaPedido`),
-  CONSTRAINT `fk_PRODUCTOS_has_NOTADEPEDIDOS_PRODUCTOS1`
+  `idProducto` VARCHAR(30) NOT NULL,
+  `idNotaPedido` VARCHAR(30) NOT NULL,
+  `unidadesNotaPedido` INT NULL, 
+  PRIMARY KEY (`idProducto`, `idNotaPedido`), 
     FOREIGN KEY (`idProducto`)
-    REFERENCES `PRODUCTOS` (`idProducto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_PRODUCTOS_has_NOTADEPEDIDOS_NOTADEPEDIDOS1`
+    REFERENCES `PRODUCTOS` (`idProducto`), 
     FOREIGN KEY (`idNotaPedido`)
     REFERENCES `NOTADEPEDIDOS` (`idNotaPedido`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    )
 ENGINE = InnoDB;
 
 

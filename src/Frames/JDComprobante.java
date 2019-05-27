@@ -6,43 +6,32 @@ package Frames;
 
 import Datos.Conexion;
 import Paneles.GenerarCodigo;
-import java.sql.Connection;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.DateFormat;
-import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class JDComprobante extends javax.swing.JDialog {
-     
-           static Statement sta=null;
-           static ResultSet rst=null;
-          
-          
-            
-    DefaultTableModel dtm=new DefaultTableModel();
-    DefaultTableModel dtm1=new DefaultTableModel();
+
+    static Statement sta = null;
+    static ResultSet rst = null;
+
+    DefaultTableModel dtm = new DefaultTableModel();
+    DefaultTableModel dtm1 = new DefaultTableModel();
+
     public JDComprobante(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-         initComponents();
-        
-            this.setLocationRelativeTo(this);
-          
-            
-            
-            String titulos[]={"CANTIDAD","DESCRIPCION","PRECIO UNITARIO","VALORDEVENTA"};
-            dtm.setColumnIdentifiers(titulos);
-            JTDescripcion.setModel(dtm);
-         
-            
-            
-	
-            
-        
-            
+        initComponents();
+
+        this.setLocationRelativeTo(this);
+        optBoleta.setVisible(false);
+        optNota.setVisible(false);
+        String titulos[] = {"CANTIDAD", "DESCRIPCION", "PRECIO UNITARIO", "VALORDEVENTA"};
+        dtm.setColumnIdentifiers(titulos);
+        JTDescripcion.setModel(dtm);
+
 //            try{
 //   
 //        
@@ -66,116 +55,109 @@ public class JDComprobante extends javax.swing.JDialog {
 //    }catch(IOException ex){
 //        JOptionPane.showMessageDialog(null,"error");
 //    }
-             
-            Calendar c=Calendar.getInstance();
-               DateFormat df1= DateFormat.getDateInstance(DateFormat.FULL);
-            lblFecha.setText(""+df1.format(c.getTime()));
-       
+        java.util.Date dt = new java.util.Date();
+        java.text.SimpleDateFormat sdf
+                = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String currentTime = sdf.format(dt);
+        lblFecha.setText("" + currentTime);
+        ActualizarJTable();
+
     }
-       
-   
-    void aceptar(){
-         double valorventa=Double.parseDouble(txtUniLLevar.getText())*Double.parseDouble(txtPrecio.getText());
-         int can=Integer.parseInt(txtUnidades.getText());
-         int llevar=Integer.parseInt(txtUniLLevar.getText());
-         if(llevar<=can){
-               String descripcion[] =new String[4];
-			
-			
-		descripcion[0]=txtUniLLevar.getText();
-		descripcion[1]=txtBuscar.getText();
-		descripcion[2]=txtPrecio.getText();
-		descripcion[3]=String.valueOf(valorventa);
-				dtm.addRow(descripcion);
-                                txtBuscar.setText("");
-                                txtUnidades.setText("");
-                                txtPrecio.setText("");
-                                txtUniLLevar.setText("");
-                                txtBuscar.requestFocus();
-               }else{
-             JOptionPane.showMessageDialog(null,"Stock No Disponible");
-         }
+
+    void aceptar() {
+        double valorventa = Double.parseDouble(txtUniLLevar.getText()) * Double.parseDouble(txtPrecio.getText());
+        int can = Integer.parseInt(txtUnidades.getText());
+        int llevar = Integer.parseInt(txtUniLLevar.getText());
+        if (llevar <= can) {
+            String descripcion[] = new String[4];
+
+            descripcion[0] = txtUniLLevar.getText();
+            descripcion[1] = txtBuscar.getText();
+            descripcion[2] = txtPrecio.getText();
+            descripcion[3] = String.valueOf(valorventa);
+            dtm.addRow(descripcion);
+            txtBuscar.setText("");
+            txtUnidades.setText("");
+            txtPrecio.setText("");
+            txtUniLLevar.setText("");
+            txtBuscar.requestFocus();
+        } else {
+            JOptionPane.showMessageDialog(null, "Stock No Disponible");
+        }
     }
-    void limpiarcajacliente(){
+
+    void limpiarcajacliente() {
         txtDireccion.setText("");
         txtNombre.setText("");
         txtID.setText("");
-      
-    }
-    
-    void LimpiarBotones(){
-	    
-	    txtTotal.setText("");
-            txtSumaTotal.setText("");
-            txtIva.setText("");
-    	    
-    }
-      void ActualizarJTable(){
-	   try {
-			int cantfilas=dtm.getRowCount();
-			if(cantfilas>0){
-				for(int i =0;i<cantfilas;i++){
-					dtm.removeRow(0);	
-				}
-			
-			}
-			
-			rst=Conexion.enlaceDetalleComprobante(rst);
-			String datos[] =new String[5];
-			
-			
-			
-			
-			while(rst.next()){
-				datos[0]=rst.getString(1);
-				datos[1]=rst.getString(2);
-				datos[2]=rst.getString(3);
-				datos[3]=rst.getString(4);
-                                datos[4]=rst.getString(5);
-				
-				
-				dtm.addRow(datos);
-			}
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error ");
-		}  
-      }
-      
-      void ActualizarJTableClientes(){
-	   try {
-			int cantfilas=dtm1.getRowCount();
-			if(cantfilas>0){
-				for(int i =0;i<cantfilas;i++){
-					dtm1.removeRow(0);	
-				}
-			
-			}
-			
-			rst=Conexion.enlacecliente(rst);
-			String datos[] =new String[8];
-			
-			
-			
-			
-			while(rst.next()){
-				datos[0]=rst.getString(1);
-				datos[1]=rst.getString(2);
-				datos[2]=rst.getString(3);
-				datos[3]=rst.getString(4);
-				datos[4]=rst.getString(5);
-                                datos[5]=rst.getString(6);
-                                datos[6]=rst.getString(7);
-                                datos[7]=rst.getString(8);
-				
-				dtm1.addRow(datos);
-			}
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error");
-		}  
-      }
 
-          
-    
+    }
+
+    void LimpiarBotones() {
+
+        txtTotal.setText("");
+        txtSumaTotal.setText("");
+        txtIva.setText("");
+
+    }
+
+    void ActualizarJTable() {
+        try {
+            int cantfilas = dtm.getRowCount();
+            if (cantfilas > 0) {
+                for (int i = 0; i < cantfilas; i++) {
+                    dtm.removeRow(0);
+                }
+
+            }
+
+            rst = Conexion.enlaceDetalleComprobante(rst);
+            String datos[] = new String[5];
+
+            while (rst.next()) {
+                datos[0] = rst.getString(1);
+                datos[1] = rst.getString(2);
+                datos[2] = rst.getString(3);
+                datos[3] = rst.getString(4);
+                datos[4] = rst.getString(5);
+
+                dtm.addRow(datos);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error ");
+        }
+    }
+
+    void ActualizarJTableClientes() {
+        try {
+            int cantfilas = dtm1.getRowCount();
+            if (cantfilas > 0) {
+                for (int i = 0; i < cantfilas; i++) {
+                    dtm1.removeRow(0);
+                }
+
+            }
+
+            rst = Conexion.enlacecliente(rst);
+            String datos[] = new String[8];
+
+            while (rst.next()) {
+                datos[0] = rst.getString(1);
+                datos[1] = rst.getString(2);
+                datos[2] = rst.getString(3);
+                datos[3] = rst.getString(4);
+                datos[4] = rst.getString(5);
+                datos[5] = rst.getString(6);
+                datos[6] = rst.getString(7);
+                datos[7] = rst.getString(8);
+
+                dtm1.addRow(datos);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -512,6 +494,7 @@ public class JDComprobante extends javax.swing.JDialog {
 
         buttonGroup1.add(optBoleta);
         optBoleta.setText("Boleta");
+        optBoleta.setEnabled(false);
         optBoleta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optBoletaActionPerformed(evt);
@@ -520,6 +503,7 @@ public class JDComprobante extends javax.swing.JDialog {
 
         buttonGroup1.add(optNota);
         optNota.setText("Venta");
+        optNota.setEnabled(false);
         optNota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optNotaActionPerformed(evt);
@@ -679,7 +663,7 @@ public class JDComprobante extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMantenimientoActionPerformed
-        JDClientes jclientes =new JDClientes(null, rootPaneCheckingEnabled);
+        JDClientes jclientes = new JDClientes(null, rootPaneCheckingEnabled);
         jclientes.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnMantenimientoActionPerformed
 
@@ -688,285 +672,220 @@ public class JDComprobante extends javax.swing.JDialog {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-         if(btnBuscar.isEnabled()){
-                       
-			try {
-				
-				sta=Conexion.enlace().createStatement();
-				rst=sta.executeQuery("select * from PRODUCTOS");
-				boolean bandera=false;
-				String pro=txtBuscar.getText();
-				
-				while(rst.next()){
-					if(pro.equalsIgnoreCase(rst.getString(2))){
-                                               txtUnidades.setText(rst.getString(3));
-                                                txtPrecio.setText(rst.getString(5));
-                                               bandera=true;
-						break;
-					}
-				}
-				if(bandera==false){
-					JOptionPane.showMessageDialog(null,"Producto no Registrado");
-					
-				}
-			} catch (SQLException ex) {
-				JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
-			}
-}
+        if (btnBuscar.isEnabled()) {
+            try {
+                sta = Conexion.enlace().createStatement();
+                rst = sta.executeQuery("select * from PRODUCTOS");
+                boolean bandera = false;
+                String pro = txtBuscar.getText();
+
+                while (rst.next()) {
+                    if (pro.equalsIgnoreCase(rst.getString(2))) {
+                        txtUnidades.setText(rst.getString(3));
+                        txtPrecio.setText(rst.getString(5));
+                        bandera = true;
+                        break;
+                    }
+                }
+                if (bandera == false) {
+                    JOptionPane.showMessageDialog(null, "Producto no Registrado");
+
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
+            }
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-              aceptar();
+        aceptar();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnRealizarCalculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarCalculosActionPerformed
-        double total=0;
-        double Iva=0;
+        double total = 0;
+        double Iva = 0;
         // <editor-fold desc="Suma total"> 
         double a;
-        double b=0;
-        for(int i= 0; i<dtm.getRowCount();i++){
+        double b = 0;
+        for (int i = 0; i < dtm.getRowCount(); i++) {
             String Calculo = String.valueOf(dtm.getValueAt(i, 3));
-            a=Double.parseDouble(Calculo);
-            b=b+a;
-            if(i==dtm.getRowCount()-1){
-                txtSumaTotal.setText(""+b);
-                Iva=b*0.19;
-                total=b;
+            a = Double.parseDouble(Calculo);
+            b = b + a;
+            if (i == dtm.getRowCount() - 1) {
+                txtSumaTotal.setText("" + b);
+                Iva = b * 0.19;
+                total = b;
             }
         }
         // </editor-fold> 
         //<editor-fold desc="IGV">
-        txtIva.setText(Iva+"");
+        txtIva.setText(Iva + "");
         //</editor-fold>
         //<editor-fold desc="Total">
-        txtTotal.setText(""+(total+Iva));
+        txtTotal.setText("" + (total + Iva));
         //</editor-fold>
     }//GEN-LAST:event_btnRealizarCalculosActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        
+
 
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void JTDescripcionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTDescripcionMouseClicked
-        
+
     }//GEN-LAST:event_JTDescripcionMouseClicked
 
     private void btnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarActionPerformed
-         int fila= JTDescripcion.getSelectedRow();
-			if(fila>=0){
-				for(int i=-1;i<fila;i++){
-					dtm.removeRow(fila);
-		
+        int fila = JTDescripcion.getSelectedRow();
+        if (fila >= 0) {
+            for (int i = -1; i < fila; i++) {
+                dtm.removeRow(fila);
+
 //		txtCodigo.setText(id);
 //		txtNombre.setText(nom);
 //		txtResolucion.setText(res);
 //		txtFecha.setText(fec);
 //		this.Activabotones(false,true,true,false);
-                                }
-                        }
+            }
+        }
     }//GEN-LAST:event_btnQuitarActionPerformed
 
     private void optFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optFacturaActionPerformed
-      try {
-            
-            
-                    
-                            rst=Conexion.idComprobante(rst);
+        try {
 
-                            
-                            GenerarCodigo idmas = new GenerarCodigo();
-                            String idparaCampo = idmas.idMasUno(rst);
-                            TxtCode.setText("C" + idparaCampo);
+            rst = Conexion.idComprobante(rst);
+
+            GenerarCodigo idmas = new GenerarCodigo();
+            String idparaCampo = idmas.randomID();
+            TxtCode.setText("C" + idparaCampo);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE PUDO CREAR CODIGO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
         }
-        if(optFactura.isSelected()){
-                 txtUnidades.setEnabled(false);
-       txtPrecio.setEnabled(false);
-       txtBuscar.setEnabled(false);
-       btnBuscar.setEnabled(false);
-       btnQuitar.setEnabled(false);
-       btnEnviar.setEnabled(false);
-        txtIva.setEnabled(true);
-        txtTotal.setEnabled(true);
-        txtDireccion.setEnabled(true);
-        txtNombre.setEnabled(true);
-        btnMantenimiento.setEnabled(true);
-        btnClientes.setEnabled(true);
-         txtID.setEnabled(true);
-            }
-     
+        if (optFactura.isSelected()) {
+            txtUnidades.setEnabled(false);
+            txtPrecio.setEnabled(false);
+            txtBuscar.setEnabled(false);
+            btnBuscar.setEnabled(false);
+            btnQuitar.setEnabled(false);
+            btnEnviar.setEnabled(false);
+            txtIva.setEnabled(true);
+            txtTotal.setEnabled(true);
+            txtDireccion.setEnabled(true);
+            txtNombre.setEnabled(true);
+            btnMantenimiento.setEnabled(true);
+            btnClientes.setEnabled(true);
+            txtID.setEnabled(true);
+        }
+
     }//GEN-LAST:event_optFacturaActionPerformed
 
-    private void optBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optBoletaActionPerformed
-   try {
-            
-            
-                    
-                            rst=Conexion.idComprobante(rst);
-
-                            
-                            GenerarCodigo idmas = new GenerarCodigo();
-                            String idparaCampo = idmas.idMasUno(rst);
-                            TxtCode.setText("C" + idparaCampo);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE PUDO CREAR CODIGO");
-        }
-        if(optBoleta.isSelected()){
-                
-        txtBuscar.setEnabled(false);
-        txtUnidades.setEnabled(false);
-        txtPrecio.setEnabled(false);
-        btnQuitar.setEnabled(false);
-        btnEnviar.setEnabled(false);
-        btnBuscar.setEnabled(false);
-        btnAceptar.setEnabled(false);
-        txtUniLLevar.setEnabled(false);
-        txtIva.setEnabled(false);
-        txtTotal.setEnabled(false);
-        txtDireccion.setEnabled(true);
-        txtNombre.setEnabled(true);
-        btnMantenimiento.setEnabled(true);
-        btnClientes.setEnabled(true);
-         txtID.setEnabled(true);
-            }
-           
-       
-    }//GEN-LAST:event_optBoletaActionPerformed
-
-    private void optNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNotaActionPerformed
-        try {
-            
-            
-                    
-                            rst=Conexion.idComprobante(rst);
-
-                            
-                            GenerarCodigo idmas = new GenerarCodigo();
-                            String idparaCampo = idmas.idMasUno(rst);
-                            TxtCode.setText("C" + idparaCampo);
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE PUDO CREAR CODIGO");
-        }
-            if (optNota.isSelected()){
-                txtID.setEnabled(false);
-        txtDireccion.setEnabled(false);
-        txtNombre.setEnabled(false);
-        txtBuscar.setEnabled(false);
-        txtUnidades.setEnabled(false);
-        txtUniLLevar.setEnabled(false);
-        txtPrecio.setEnabled(false);
-        btnBuscar.setEnabled(false);
-        btnMantenimiento.setEnabled(false);
-        btnClientes.setEnabled(false);
-        btnAceptar.setEnabled(false);
-        btnQuitar.setEnabled(false);
-        btnEnviar.setEnabled(false);
-        txtIva.setEnabled(false);
-        txtTotal.setEnabled(false);
-            }
-    }//GEN-LAST:event_optNotaActionPerformed
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        String tipo="";
-        int resp=JOptionPane.showConfirmDialog(null,"¿Desea Guardar el Comprobante?","Pregunta",0);//el cero quiere decir que si la respuesta es correcta es cero
-		if(resp==0){
-			try {
-				
-				sta=Conexion.declaracion(sta);
-                                
-                                if(optBoleta.isSelected()){
-                                    tipo="boleta";
-                                }else if(optFactura.isSelected()){
-                                    tipo="factura";
-                                }else{
-                                    tipo="Nota de Venta";
-                                }
-                                    String idNota="";
-                                    int numero=0;
-				String id=TxtCode.getText();
-                               String fecha=lblFecha.getText();
-				String SumaTotal=txtSumaTotal.getText();
-				String Igv=txtIva.getText();
-                                String montoTotal=txtTotal.getText();
-                                
-		String comando1="insert into COMPROBANTES values('"+id+"','"+fecha+"','"+tipo+"','"+numero+"')";
-				sta.executeUpdate(comando1);
-				ActualizarJTable();
-                                
-                String comando="insert into DETALLECOMPROBANTES values('"+id+"','"+idNota+"','"+SumaTotal+"','"+Igv+"','"+montoTotal+"')";
-				sta.executeUpdate(comando);
-				ActualizarJTable();
-				
-				
-				LimpiarBotones();
-			} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,"Error de Guardar");
-			}
-		}
+        String tipo = "";
+        int resp = JOptionPane.showConfirmDialog(null, 
+                "¿Desea Guardar el Comprobante?", "Pregunta", 0);//el cero quiere decir que si la respuesta es correcta es cero
+        if (resp == 0) {
+            try {
+
+                sta = Conexion.declaracion(sta);
+
+                if (optBoleta.isSelected()) {
+                    tipo = "boleta";
+                } else if (optFactura.isSelected()) {
+                    tipo = "factura";
+                } else {
+                    tipo = "Nota Venta";
+                }
+                String idNota = "";
+                int numero = 0;
+                String id = TxtCode.getText();
+                String fecha = lblFecha.getText();
+                String SumaTotal = txtSumaTotal.getText();
+                String Iva = txtIva.getText();
+                String montoTotal = txtTotal.getText();
+                String IdCliente = txtID.getText();
+//                JOptionPane.showMessageDialog(null, TxtCode.getText());
+
+                String comando1 = "insert into COMPROBANTES values('"
+                        + id + "','" + fecha + "','" + tipo + "','"
+                        + numero + "','" + IdCliente + "')";
+                sta.executeUpdate(comando1);
+                ActualizarJTable();
+
+                String comando = "insert into DETALLECOMPROBANTES values('"
+                        + id + "','" + idNota + "','" + SumaTotal + "','"
+                        + Iva + "','" + montoTotal + "')";
+                sta.executeUpdate(comando);
+                ActualizarJTable();
+
+                LimpiarBotones();
+            } catch (MySQLIntegrityConstraintViolationException ex) {
+                //JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
+            } catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex) {
+                //JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
+            } 
+            catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de Guardar\n" + ex);
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void optNotaPedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNotaPedidosActionPerformed
-          if (optNotaPedidos.isSelected()){
-                txtID.setEnabled(true);
-        txtDireccion.setEnabled(true);
-        txtNombre.setEnabled(true);
-        txtBuscar.setEnabled(true);
-        txtUnidades.setEnabled(true);
-        txtUniLLevar.setEnabled(true);
-        txtPrecio.setEnabled(true);
-        btnBuscar.setEnabled(true);
-        btnMantenimiento.setEnabled(true);
-        btnClientes.setEnabled(true);
-        btnAceptar.setEnabled(true);
-        btnQuitar.setEnabled(true);
-        btnEnviar.setEnabled(true);
-        txtIva.setEnabled(true);
-        txtTotal.setEnabled(true);
-            }
+        if (optNotaPedidos.isSelected()) {
+            txtID.setEnabled(true);
+            txtDireccion.setEnabled(true);
+            txtNombre.setEnabled(true);
+            txtBuscar.setEnabled(true);
+            txtUnidades.setEnabled(true);
+            txtUniLLevar.setEnabled(true);
+            txtPrecio.setEnabled(true);
+            btnBuscar.setEnabled(true);
+            btnMantenimiento.setEnabled(true);
+            btnClientes.setEnabled(true);
+            btnAceptar.setEnabled(true);
+            btnQuitar.setEnabled(true);
+            btnEnviar.setEnabled(true);
+            txtIva.setEnabled(true);
+            txtTotal.setEnabled(true);
+        }
     }//GEN-LAST:event_optNotaPedidosActionPerformed
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
-        
-           if(btnClientes.isEnabled()){
-                       
-			try {
-				
-				sta=Conexion.enlace().createStatement();
-				rst=sta.executeQuery("select * from clientes");
-				boolean bandera=false;
-				String buscar=txtID.getText();
-				
-				while(rst.next()){
-					if(buscar.equalsIgnoreCase(rst.getString(4))){//aqui te falta darle el valor del dni en la base de datos
-						
-                                                txtNombre.setText(rst.getString(2));
-						txtDireccion.setText(rst.getString(7));
-						
-						
-						 
-						
-						bandera=true;
-						break;
-					}
-				}
-				if(bandera==false){
-					JOptionPane.showMessageDialog(null,"Nombre no Registrado");
-					
-				}
-			} catch (SQLException ex) {
-				JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
-			}
-}
+
+        if (btnClientes.isEnabled()) {
+
+            try {
+
+                sta = Conexion.enlace().createStatement();
+                rst = sta.executeQuery("select * from CLIENTES");
+                boolean bandera = false;
+                String buscar = txtID.getText();
+
+                while (rst.next()) {
+                    if (buscar.equalsIgnoreCase(rst.getString(4))) {
+//aqui te falta darle el valor del dni en la base de datos
+
+                        txtNombre.setText(rst.getString(2));
+                        txtDireccion.setText(rst.getString(7));
+
+                        bandera = true;
+                        break;
+                    }
+                }
+                if (bandera == false) {
+                    JOptionPane.showMessageDialog(null, "Nombre no Registrado");
+
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
+            }
+        }
     }//GEN-LAST:event_btnClientesActionPerformed
 
     private void btnBorrarCajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarCajasActionPerformed
-            txtID.setText("");
-            txtNombre.setText("");
-            txtDireccion.setText("");
-            
+        txtID.setText("");
+        txtNombre.setText("");
+        txtDireccion.setText("");
+
     }//GEN-LAST:event_btnBorrarCajasActionPerformed
 
     private void txtIvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIvaActionPerformed
@@ -976,6 +895,67 @@ public class JDComprobante extends javax.swing.JDialog {
     private void txtSumaTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSumaTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSumaTotalActionPerformed
+
+    private void optNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optNotaActionPerformed
+        try {
+            rst = Conexion.idComprobante(rst);
+
+            GenerarCodigo idmas = new GenerarCodigo();
+            String idparaCampo = idmas.randomID();
+            TxtCode.setText("C" + idparaCampo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
+        }
+        if (optNota.isSelected()) {
+            txtID.setEnabled(false);
+            txtDireccion.setEnabled(false);
+            txtNombre.setEnabled(false);
+            txtBuscar.setEnabled(false);
+            txtUnidades.setEnabled(false);
+            txtUniLLevar.setEnabled(false);
+            txtPrecio.setEnabled(false);
+            btnBuscar.setEnabled(false);
+            btnMantenimiento.setEnabled(false);
+            btnClientes.setEnabled(false);
+            btnAceptar.setEnabled(false);
+            btnQuitar.setEnabled(false);
+            btnEnviar.setEnabled(false);
+            txtIva.setEnabled(false);
+            txtTotal.setEnabled(false);
+        }
+    }//GEN-LAST:event_optNotaActionPerformed
+
+    private void optBoletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optBoletaActionPerformed
+        try {
+
+            rst = Conexion.idComprobante(rst);
+
+            GenerarCodigo idmas = new GenerarCodigo();
+            String idparaCampo = idmas.randomID();
+            TxtCode.setText("C" + idparaCampo);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
+        }
+        if (optBoleta.isSelected()) {
+
+            txtBuscar.setEnabled(false);
+            txtUnidades.setEnabled(false);
+            txtPrecio.setEnabled(false);
+            btnQuitar.setEnabled(false);
+            btnEnviar.setEnabled(false);
+            btnBuscar.setEnabled(false);
+            btnAceptar.setEnabled(false);
+            txtUniLLevar.setEnabled(false);
+            txtIva.setEnabled(false);
+            txtTotal.setEnabled(false);
+            txtDireccion.setEnabled(true);
+            txtNombre.setEnabled(true);
+            btnMantenimiento.setEnabled(true);
+            btnClientes.setEnabled(true);
+            txtID.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_optBoletaActionPerformed
 
     /**
      * @param args the command line arguments

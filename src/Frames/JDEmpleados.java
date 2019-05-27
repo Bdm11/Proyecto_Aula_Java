@@ -57,9 +57,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                 for (int i = 0; i < cantfilas; i++) {
                     dtm.removeRow(0);
                 }
-
             }
-
             rst = Conexion.enlaceempleado(rst);
             String datos[] = new String[9];
 
@@ -403,6 +401,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                 String buscar = txtBuscar.getText();
 
                 while (rst.next()) {
+                    
                     if (buscar.equalsIgnoreCase(rst.getString(4))) {
                         txtCodigo.setText(rst.getString(1));
                         txtNombre.setText(rst.getString(2));
@@ -471,7 +470,7 @@ public class JDEmpleados extends javax.swing.JDialog {
             rst = Conexion.idEmpleado(rst);
 
             GenerarCodigo idmas = new GenerarCodigo();
-            String idparaCampo = idmas.idMasUno(rst);
+            String idparaCampo = idmas.randomID();
             txtCodigo.setText("E" + idparaCampo);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
