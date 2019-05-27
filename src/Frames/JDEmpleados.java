@@ -520,7 +520,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                 String pass = txtContraseña.getText();
                 String cargo = txtCargo.getText();
 
-                String comando = "update empleados set "
+                String comando = "update EMPLEADOS set "
                         + "idEmpleado='" + codigo + "', "
                         + "nomEmpleado='" + nombre + "', "
                         + "apeEmpleado='" + apellido + "', "

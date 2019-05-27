@@ -323,6 +323,11 @@ public class JDClientes extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        JTClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTClientesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(JTClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -534,6 +539,10 @@ public class JDClientes extends javax.swing.JDialog {
         Activabotones(true, false, false);
         LimpiarBotones();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void JTClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTClientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTClientesMouseClicked
 
     /**
      * @param args the command line arguments

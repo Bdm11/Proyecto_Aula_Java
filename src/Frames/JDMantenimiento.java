@@ -13,79 +13,75 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class JDMantenimiento extends javax.swing.JDialog {
 
-   static Connection cnn=null;
-    static Statement sta=null;
-    static ResultSet rst=null;
-    DefaultTableModel dtm=new DefaultTableModel();
+
+    static Statement sta = null;
+    static ResultSet rst = null;
+    DefaultTableModel dtm = new DefaultTableModel();
+
     public JDMantenimiento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setSize(800, 750);
-         JTProductos.getTableHeader().setReorderingAllowed(false);
+        JTProductos.getTableHeader().setReorderingAllowed(false);
         this.setLocationRelativeTo(this);
-        
-         String titulos[]={"CODIGO","NOMBRE","UNIDADESENSTOCK","DESCRIPCION","PRECIOUNITARIO","UBICACION","TIPO DE PRODUCTO"};//creamos un arreglo para todas las columnas de la tabla
-	    dtm.setColumnIdentifiers(titulos);
-	    JTProductos.setModel(dtm);
+        ActualizarJTable();
+        String titulos[] = {"CODIGO", "NOMBRE", "UNIDADESENSTOCK",
+            "DESCRIPCION", "PRECIOUNITARIO", "UBICACION", "TIPO DE PRODUCTO"};
+        //creamos un arreglo para todas las columnas de la tabla
+        dtm.setColumnIdentifiers(titulos);
+        JTProductos.setModel(dtm);
     }
-    void ActivaBotones(Boolean g, Boolean e, Boolean m,Boolean c ){
-       
+
+    void ActivaBotones(Boolean g, Boolean e, Boolean m, Boolean c) {
+
         btnGuardar.setEnabled(g);
         btnEliminar.setEnabled(e);
         btnModificar.setEnabled(m);
         txtCodigo.setEnabled(c);
     }
-void LimpiarBotones(){
-	   
-	    txtNombre.setText("");
-            txtPrecio.setText("");
-            txtUnidades.setText("");
-            txtDescripcion.setText("");
-            txtUbicacion.setText("");
-            txtTipoProducto.setText("");
-            
-                   	    
-	  
-	     
-	    
-    }
-      void ActualizarJTable(){
-	   try {
-			int cantfilas=dtm.getRowCount();
-			if(cantfilas>0){
-				for(int i =0;i<cantfilas;i++){
-					dtm.removeRow(0);	
-				}
-			
-			}
-			
-			rst=Conexion.enlaceproducto(rst);
-			String datos[] =new String[7];
-			
-			
-			
-			
-			while(rst.next()){
-				datos[0]=rst.getString(1);
-				datos[1]=rst.getString(2);
-				datos[2]=rst.getString(3);
-				datos[3]=rst.getString(4);
-				datos[4]=rst.getString(5);
-                                datos[5]=rst.getString(6);
-                                datos[6]=rst.getString(7);
-				
-				dtm.addRow(datos);
-			}
-		} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null, "Error");
-		}  
-      }
 
-    
-    
+    void LimpiarBotones() {
+
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        txtUnidades.setText("");
+        txtDescripcion.setText("");
+        txtUbicacion.setText("");
+        txtTipoProducto.setText("");
+
+    }
+
+    void ActualizarJTable() {
+        try {
+            int cantfilas = dtm.getRowCount();
+            if (cantfilas > 0) {
+                for (int i = 0; i < cantfilas; i++) {
+                    dtm.removeRow(0);
+                }
+
+            }
+
+            rst = Conexion.enlaceproducto(rst);
+            String datos[] = new String[7];
+
+            while (rst.next()) {
+                datos[0] = rst.getString(1);
+                datos[1] = rst.getString(2);
+                datos[2] = rst.getString(3);
+                datos[3] = rst.getString(4);
+                datos[4] = rst.getString(5);
+                datos[5] = rst.getString(6);
+                datos[6] = rst.getString(7);
+
+                dtm.addRow(datos);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error");
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -362,147 +358,143 @@ void LimpiarBotones(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-                    if(btnBuscar.isEnabled()){
-                       
-			try {
-				
-				sta=cnn.createStatement();
-				rst=sta.executeQuery("select * from PRODUCTOS");
-				boolean bandera=false;
-				String pro=txtBuscar.getText();
-				
-				while(rst.next()){
-					if(pro.equalsIgnoreCase(rst.getString(2))){
-                                                txtCodigo.setText(rst.getString(1));
-						txtNombre.setText(rst.getString(2));
-						txtDescripcion.setText(rst.getString(4));
-						
-						txtUnidades.setText(rst.getString(3));
-                                                txtPrecio.setText(rst.getString(5));
-                                                txtUbicacion.setText(rst.getString(6));
-                                                txtTipoProducto.setText(rst.getString(7));
-						
-						
-						 ActivaBotones(false,true ,true ,false );
-						
-						bandera=true;
-						break;
-					}
-				}
-				if(bandera==false){
-					JOptionPane.showMessageDialog(null,"Producto no Registrado");
-					this.LimpiarBotones();
-				}
-			} catch (SQLException ex) {
-				JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
-			}
-}
+        if (btnBuscar.isEnabled()) {
+
+            try {
+
+                sta = Conexion.enlace().createStatement();
+                rst = sta.executeQuery("select * from PRODUCTOS");
+                boolean bandera = false;
+                String pro = txtBuscar.getText();
+
+                while (rst.next()) {
+                    if (pro.equalsIgnoreCase(rst.getString(2))) {
+                        txtCodigo.setText(rst.getString(1));
+                        txtNombre.setText(rst.getString(2));
+                        txtDescripcion.setText(rst.getString(4));
+
+                        txtUnidades.setText(rst.getString(3));
+                        txtPrecio.setText(rst.getString(5));
+                        txtUbicacion.setText(rst.getString(6));
+                        txtTipoProducto.setText(rst.getString(7));
+
+                        ActivaBotones(false, true, true, false);
+
+                        bandera = true;
+                        break;
+                    }
+                }
+                if (bandera == false) {
+                    JOptionPane.showMessageDialog(null, "Producto no Registrado");
+                    this.LimpiarBotones();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "ERROR DE BUSQUEDA");
+            }
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        int resp=JOptionPane.showConfirmDialog(null,"¿Desea Guardar el Producto?","Pregunta",0);
-		if(resp==0){
-			try {
-				
-				sta=Conexion.declaracion(sta);
-				
-				String codigo= txtCodigo.getText();
-				String nombre=txtNombre.getText();
-				String descripcion=txtDescripcion.getText();
-				String unidades=txtUnidades.getText();
-                                String precio=txtPrecio.getText();
-                                String ubicacion=txtUbicacion.getText();
-                                String tipoProducto=txtTipoProducto.getText();
-                                
-				
-				
-		
-				String comando="insert into PRODUCTOS values('"+codigo+"','"+nombre+"','"+unidades+"','"+descripcion+"','"+precio+"','"+ubicacion+"','"+tipoProducto+"')";
-				sta.executeUpdate(comando);
-				ActualizarJTable();
-				cnn.close();
-				
-				LimpiarBotones();
-			} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,"Error de Guardar");
-			}
-		}
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Guardar el Producto?", "Pregunta", 0);
+        if (resp == 0) {
+            try {
+
+                sta = Conexion.declaracion(sta);
+
+                String codigo = txtCodigo.getText();
+                String nombre = txtNombre.getText();
+                String descripcion = txtDescripcion.getText();
+                String unidades = txtUnidades.getText();
+                String precio = txtPrecio.getText();
+                String ubicacion = txtUbicacion.getText();
+                String tipoProducto = txtTipoProducto.getText();
+
+                String comando = "insert into PRODUCTOS "
+                        + "values('" + codigo + "','" + nombre + "','"
+                        + unidades + "','" + descripcion + "','"
+                        + precio + "','" + ubicacion + "','"
+                        + tipoProducto + "')";
+                sta.executeUpdate(comando);
+                ActualizarJTable();
+               
+
+                LimpiarBotones();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de Guardar\n"+ex);
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int resp=JOptionPane.showConfirmDialog(null,"¿Desea Eliminar el Producto?","Pregunta",0);
-		if(resp==0){
-			try {
-				
-				sta=Conexion.declaracion(sta);
-				
-				String pro= txtBuscar.getText();
-				
-				String comando="delete from PRODUCTOS"
-					+" where nomProducto='"+pro+"'";
-				sta.executeUpdate(comando);
-				cnn.close();
-				ActualizarJTable();
-				
-				
-				LimpiarBotones();
-			} catch (SQLException ex) {
-			JOptionPane.showMessageDialog(null,"Error de eliminacion");
-			}
-		} 
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Eliminar el Producto?", "Pregunta", 0);
+        if (resp == 0) {
+            try {
+
+                sta = Conexion.declaracion(sta);
+
+                String pro = txtBuscar.getText();
+
+                String comando = "delete from PRODUCTOS"
+                        + " where nomProducto='" + pro + "'";
+                sta.executeUpdate(comando);
+              
+                ActualizarJTable();
+
+                LimpiarBotones();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de eliminacion");
+            }
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        int resp=JOptionPane.showConfirmDialog(null,"¿Desea Modificar el Producto?","Pregunta",0);
-		if(resp==0){
-			try {
-				
-				sta=Conexion.declaracion(sta);
-				
-				String pro= txtBuscar.getText();
-				String nombre=txtNombre.getText();
-				String descripcion=txtDescripcion.getText();
-				String precio=txtPrecio.getText();
-				String unidades=txtUnidades.getText();
-                                String ubicacion=txtUbicacion.getText();
-                                String tipoProducto=txtTipoProducto.getText();                                
-				String comando;
-                        comando = "update PRODUCTOS set " 
-                           + "nomProducto='"+nombre+"', "
-                           + "stockProducto='"+unidades+"',"
-                           + "desProducto='"+descripcion+"', "					
-                           + "precioUnitarioProducto='"+precio+"', "
-                           +  "ubicacionProducto='"+ubicacion+"', "
-                           +  "tipoProducto='"+tipoProducto+"' "
-                           + "where nomProducto='"+pro+"' ";
-				sta.executeUpdate(comando);
-				ActualizarJTable();
-				cnn.close();
+        int resp = JOptionPane.showConfirmDialog(null, "¿Desea Modificar el Producto?", "Pregunta", 0);
+        if (resp == 0) {
+            try {
 
-				LimpiarBotones();
-			} catch (SQLException ex) {
-				JOptionPane.showMessageDialog(null,"Error de modificacion");
-			}
-		}
+                sta = Conexion.declaracion(sta);
+
+                String pro = txtBuscar.getText();
+                String nombre = txtNombre.getText();
+                String descripcion = txtDescripcion.getText();
+                String precio = txtPrecio.getText();
+                String unidades = txtUnidades.getText();
+                String ubicacion = txtUbicacion.getText();
+                String tipoProducto = txtTipoProducto.getText();
+                String comando;
+                comando = "update PRODUCTOS set "
+                        + "nomProducto='" + nombre + "', "
+                        + "stockProducto='" + unidades + "',"
+                        + "desProducto='" + descripcion + "', "
+                        + "precioUnitarioProducto='" + precio + "', "
+                        + "ubicacionProducto='" + ubicacion + "', "
+                        + "tipoProducto='" + tipoProducto + "' "
+                        + "where nomProducto='" + pro + "' ";
+                sta.executeUpdate(comando);
+                ActualizarJTable();
+               
+
+                LimpiarBotones();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error de modificacion");
+            }
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-try {
-            
-            
-                    
-                            rst=Conexion.idProducto(rst);
+        try {
 
-                            
-                            GenerarCodigo idmas = new GenerarCodigo();
-                            String idparaCampo = idmas.idMasUno(rst);
-                            txtCodigo.setText("P" + idparaCampo);
+            rst = Conexion.idProducto(rst);
+
+            GenerarCodigo idmas = new GenerarCodigo();
+            String idparaCampo = idmas.idMasUno(rst);
+            txtCodigo.setText("P" + idparaCampo);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"NO SE PUDO CREAR CODIGO");
+            JOptionPane.showMessageDialog(null, "NO SE PUDO CREAR CODIGO");
         }
-        ActivaBotones(true,false ,false,true);
-       txtBuscar.setText("");
-       LimpiarBotones();
+        ActivaBotones(true, false, false, true);
+        txtBuscar.setText("");
+        LimpiarBotones();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
