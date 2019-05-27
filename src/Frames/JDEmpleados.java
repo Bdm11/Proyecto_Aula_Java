@@ -450,7 +450,7 @@ public class JDEmpleados extends javax.swing.JDialog {
                 String pass = txtContraseña.getText();
 
                 String comando = "insert into EMPLEADOS values('" + codigo + "','" + nombre + "','" + apellido + "','" + id + "','" + direccion + "','" + email + "','" + usuario + "','" + pass + "','" + cargo + "')";
-                JOptionPane.showMessageDialog(null, comando);
+//                JOptionPane.showMessageDialog(null, comando);
                 sta.executeUpdate(comando);
                 JOptionPane.showMessageDialog(null, "Empleado Guardado");
                 ActualizarJTable();
